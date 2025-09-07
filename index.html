@@ -61,8 +61,11 @@
     .content { display: flex; flex-direction: column; width: 100%; }
     header {
       background: rgba(0,0,0,0.3); padding: var(--gap) calc(var(--gap)*2);
-      display: flex; justify-content: flex-end; align-items: center;
       border-bottom: 2px solid var(--color-accent);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .real-time-clock {
+      font-size: 1rem; font-weight: bold; margin-right: auto; white-space: nowrap;
     }
     .user-info { display: flex; align-items: center; gap: 12px; }
     .user-info img {
@@ -168,6 +171,7 @@
     <!-- Main Content -->
     <div class="content">
       <header>
+        <div id="realTimeClock" class="real-time-clock">Loading…</div>
         <div class="user-info">
           <img src="https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg"
                alt="Avatar"/>
@@ -219,7 +223,6 @@
             <div class="saldo-value" id="usdtBalanceCard">0.00 USDT</div>
           </div>
         </div>
-
         <!-- Right Column -->
         <div class="right-column">
           <div class="card">
@@ -230,13 +233,8 @@
             </div>
             <table>
               <thead>
-                <tr>
-                  <th>Hari</th>
-                  <th>Waktu</th>
-                  <th>Jumlah</th>
-                  <th>Jenis</th>
-                  <th>Berakhir Kontrak</th>
-                </tr>
+                <tr><th>Hari</th><th>Waktu</th><th>Jumlah</th>
+                    <th>Jenis</th><th>Berakhir Kontrak</th></tr>
               </thead>
               <tbody id="walletHistory"></tbody>
             </table>
@@ -250,12 +248,7 @@
             </div>
             <table>
               <thead>
-                <tr>
-                  <th>Hari</th>
-                  <th>Waktu</th>
-                  <th>BossX</th>
-                  <th>USDT</th>
-                </tr>
+                <tr><th>Hari</th><th>Waktu</th><th>BossX</th><th>USDT</th></tr>
               </thead>
               <tbody id="convertHistory"></tbody>
             </table>
@@ -269,13 +262,8 @@
             </div>
             <table>
               <thead>
-                <tr>
-                  <th>Hari</th>
-                  <th>Tanggal</th>
-                  <th>Jam</th>
-                  <th>BossX</th>
-                  <th>Auto-Claim</th>
-                </tr>
+                <tr><th>Hari</th><th>Tanggal</th><th>Jam</th>
+                    <th>BossX</th><th>Auto-Claim</th></tr>
               </thead>
               <tbody id="history"></tbody>
             </table>
@@ -291,9 +279,29 @@
       <div class="footer">©2025 Dashboard BossX • Terbuka untuk umum 🌐</div>
     </div>
   </div>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Ambil elemen
+    // Real-time clock
+    function updateRealTimeClock() {
+      const now = new Date();
+      const days   = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+      const months = ["Januari","Februari","Maret","April","Mei","Juni",
+                      "Juli","Agustus","September","Oktober","November","Desember"];
+      const hari    = days[now.getDay()];
+      const tanggal = now.getDate();
+      const bulan   = months[now.getMonth()];
+      const tahun   = now.getFullYear();
+      const jam     = String(now.getHours()).padStart(2,'0');
+      const menit   = String(now.getMinutes()).padStart(2,'0');
+      const detik   = String(now.getSeconds()).padStart(2,'0');
+      document.getElementById("realTimeClock").textContent =
+        `${hari}, ${tanggal} ${bulan} ${tahun} — ${jam}:${menit}:${detik}`;
+    }
+    setInterval(updateRealTimeClock, 1000);
+    updateRealTimeClock();
+
+    // Ambil elemen & variabel
     const amountInput    = document.getElementById("amountInput");
     const buyBtn         = document.getElementById("buyBtn");
     const onBtn          = document.getElementById("onBtn");
@@ -310,7 +318,6 @@
     const toggleBtn      = document.getElementById("toggleSidebar");
     const container      = document.getElementById("container");
 
-    // Variabel global
     let hasPackage       = false;
     let isMiningActive   = false;
     let walletBossX      = 0;
@@ -321,7 +328,6 @@
     let countdown        = 60;
     let stopCountdown    = 0;
 
-    // Variabel kontrak
     let contractEndTime    = null;
     let contractInterval   = null;
     let dailyCheckInterval = null;
@@ -389,7 +395,6 @@
         }
       }, 1000);
     }
-
     // Aktivasi Paket → catat countdown detik di History Aktivasi
     buyBtn.addEventListener("click", () => {
       const amt = Number(amountInput.value);
@@ -401,14 +406,10 @@
       walletBossX += amt;
       walletLabel.textContent = walletBossX + " BossX";
 
-      // Set total detik kontrak dan waktu habis
       let totalSeconds = contractSeconds;
       contractEndTime = Date.now() + totalSeconds * 1000;
 
-      // ID unik untuk countdown di tabel
       const countdownId = "countdown_" + Date.now();
-
-      // Tambah baris ke History Aktivasi
       const w = formatNow();
       const row = document.createElement("tr");
       row.innerHTML = `
@@ -420,7 +421,6 @@
       `;
       walletHistory.prepend(row);
 
-      // Loop hitung mundur detik untuk baris ini
       const historyTimer = setInterval(() => {
         totalSeconds--;
         const el = document.getElementById(countdownId);
@@ -435,12 +435,11 @@
 
       buyBtn.disabled = true;
     });
+
     // Tombol ON → mulai mining & background contract/daily
     onBtn.addEventListener("click", () => {
       if (!hasPackage || isMiningActive) return;
       isMiningActive = true;
-
-      // Pastikan contractEndTime sudah di-set
       if (!contractEndTime) {
         contractEndTime = Date.now() + contractSeconds * 1000;
       }
@@ -453,14 +452,12 @@
       countdown = 60;
       stopLabel.textContent = `Stop validasi jam 06:00 dalam: ${formatTime(stopCountdown)}`;
 
-      // Loop mining per detik
       const miningInterval = setInterval(() => {
         if (!isMiningActive) return clearInterval(miningInterval);
         mining += rewardPerSecond;
         miningLabel.textContent = mining.toFixed(9) + " BossX";
       }, 1000);
 
-      // Auto-claim per 60 detik
       const claimInterval = setInterval(() => {
         if (!isMiningActive) return clearInterval(claimInterval);
         if (mining > 0) {
@@ -481,7 +478,6 @@
         }
       }, 60000);
 
-      // UI countdown auto-claim
       const countdownInterval = setInterval(() => {
         if (!isMiningActive) return clearInterval(countdownInterval);
         countdown--;
@@ -489,7 +485,6 @@
         if (countdown <= 0) countdown = 60;
       }, 1000);
 
-      // Hitung mundur ke 06:00
       const stopInterval = setInterval(() => {
         if (!isMiningActive) return clearInterval(stopInterval);
         stopCountdown--;
@@ -506,8 +501,6 @@
           stopLabel.textContent = "06:00 tercapai, klik ON untuk mulai lagi";
         }
       }, 1000);
-    });
-
     // Convert BossX → USDT
     convertBtn.addEventListener("click", () => {
       if (balance < 1) return alert("Minimal convert adalah 1 BossX");
