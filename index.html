@@ -434,3 +434,113 @@
         stopCountdown = getSecondsToNext6AM();
         countdown = 60;
         stopLabel.textContent = `Stop validasi jam 06:00 dalam: ${formatTime(stopCountdown)}`;
+        const miningInterval = setInterval(() => {
+          if (!isMiningActive) return clearInterval(miningInterval);
+          mining += rewardPerSecond;
+          miningLabel.textContent = mining.toFixed(9) + " BossX";
+        }, 1000);
+
+        const claimInterval = setInterval(() => {
+          if (!isMiningActive) return clearInterval(claimInterval);
+          if (mining > 0) {
+            balance += mining;
+            const w = formatNow();
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${w.hari}</td>
+              <td>${w.tanggal}</td>
+              <td>${w.jam}</td>
+              <td>+${mining.toFixed(9)} BossX</td>
+              <td>✅</td>
+            `;
+            historyBody.prepend(row);
+            mining = 0;
+            miningLabel.textContent = "0.000000000 BossX";
+            balanceLabel.textContent = balance.toFixed(9) + " BossX";
+          }
+        }, 60000);
+
+        const countdownInterval = setInterval(() => {
+          if (!isMiningActive) return clearInterval(countdownInterval);
+          countdown--;
+          countdownLabel.textContent = `Auto-claim: ${countdown}s`;
+          if (countdown <= 0) countdown = 60;
+        }, 1000);
+
+        const stopInterval = setInterval(() => {
+          if (!isMiningActive) return clearInterval(stopInterval);
+          stopCountdown--;
+          if (stopCountdown > 0) {
+            stopLabel.textContent = `Stop validasi jam 06:00 dalam: ${formatTime(stopCountdown)}`;
+          } else {
+            clearInterval(miningInterval);
+            clearInterval(claimInterval);
+            clearInterval(countdownInterval);
+            clearInterval(stopInterval);
+            isMiningActive = false;
+            onBtn.disabled = false;
+            onBtn.classList.remove("active");
+            stopLabel.textContent = "06:00 tercapai, klik ON untuk mulai lagi";
+          }
+        }, 1000);
+      });
+
+      // Convert to USDT
+      convertBtn.addEventListener("click", () => {
+        if (balance < 1) return alert("Minimal convert adalah 1 BossX");
+        const usdt = balance * bossXtoUSDT;
+        usdtBalance += usdt;
+        updateUSDTDisplay();
+        const w = formatNow();
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${w.hari}</td>
+          <td>${w.tanggal} ${w.jam}</td>
+          <td>${balance.toFixed(9)}</td>
+          <td>${usdt.toFixed(2)}</td>
+        `;
+        convertHistory.prepend(row);
+        balance = 0;
+        balanceLabel.textContent = "0.000000000 BossX";
+      });
+
+      // Inisialisasi tampilan
+      stopLabel.textContent = "Belum berjalan";
+      countdownLabel.textContent = "Auto-claim: 60s";
+      walletLabel.textContent = walletBossX + " BossX";
+      updateUSDTDisplay();
+
+      // Ambil CSS variable untuk Chart.js
+      const accentColor = getComputedStyle(document.documentElement)
+        .getPropertyValue('--color-accent').trim();
+
+      // Chart.js
+      const ctx = document.getElementById("dailyRewardBarChart").getContext("2d");
+      const grad = ctx.createLinearGradient(0, 0, 0, 400);
+      grad.addColorStop(0, "purple");
+      grad.addColorStop(1, accentColor);
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu"],
+          datasets: [{
+            label: "Reward BossX",
+            data: [12.5,15.2,14.8,16.0,17.3,18.1,19.0],
+            backgroundColor: grad
+          }]
+        },
+        options: {
+          scales: {
+            x: { ticks: { color: accentColor } },
+            y: { ticks: { color: accentColor }, beginAtZero: false }
+          },
+          plugins: {
+            legend: { labels: { color: accentColor } }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
