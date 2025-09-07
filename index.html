@@ -16,16 +16,17 @@
 
       /* Light mode */
       --bg-from: #6a0dad;
-      --bg-to:   #ff69b4;
+      --bg-to: #ff69b4;
       --text-color: var(--color-accent);
       --card-bg: rgba(0,0,0,0.3);
       --card-border: var(--color-accent);
       --table-border: var(--color-accent);
     }
 
+    /* Dark mode */
     [data-theme="dark"] {
       --bg-from: #222;
-      --bg-to:   #000;
+      --bg-to: #000;
       --text-color: #EEE;
       --card-bg: rgba(255,255,255,0.08);
       --card-border: #555;
@@ -43,19 +44,21 @@
     .container {
       display: grid;
       grid-template-columns: var(--sidebar-width) 1fr;
-      transition: 0.3s;
+      transition: grid-template-columns 0.3s ease;
       width: 100%;
     }
-    .container.collapsed { grid-template-columns: var(--sidebar-collapsed) 1fr; }
+    .container.collapsed {
+      grid-template-columns: var(--sidebar-collapsed) 1fr;
+    }
 
+    /* Sidebar */
     aside.sidebar {
       background: rgba(0,0,0,0.4);
       display: flex; flex-direction: column;
     }
     .sidebar-header {
       display: flex; align-items: center; justify-content: space-between;
-      padding: var(--gap);
-      border-bottom: 1px solid var(--color-accent);
+      padding: var(--gap); border-bottom: 1px solid var(--color-accent);
     }
     .logo-container { display: flex; align-items: center; }
     .sidebar-logo { height: 80px; transition: 0.3s; }
@@ -70,20 +73,41 @@
       font-size: 1.6rem; cursor: pointer;
     }
     .sidebar-nav {
-      display: flex; flex-direction: column; padding-top: var(--gap);
+      display: flex; flex-direction: column; padding: var(--gap) 0;
     }
     .nav-item {
       display: flex; align-items: center;
       padding: 12px var(--gap);
-      color: var(--color-accent);
-      text-decoration: none;
-      transition: 0.2s;
+      color: var(--color-accent); text-decoration: none;
+      transition: background 0.2s;
     }
     .nav-item:hover { background: rgba(255,215,0,0.1); }
     .nav-item.active { background: rgba(255,215,0,0.2); }
-    .nav-item .icon { width: 24px; text-align: center; }
+    .nav-item .icon {
+      width: 24px; text-align: center; font-size: 1.2rem;
+    }
     .nav-item .label { margin-left: 12px; white-space: nowrap; }
 
+    /* Follow us */
+    .sidebar-follow {
+      margin-top: auto; padding: var(--gap); text-align: center;
+    }
+    .sidebar-follow .follow-text {
+      display: block; margin-bottom: 8px;
+      font-size: 0.9rem; color: var(--text-color);
+    }
+    .sidebar-follow .social-link {
+      margin: 0 6px; display: inline-block;
+    }
+    .sidebar-follow .social-icon {
+      width: 24px; height: 24px;
+      filter: invert(1); transition: filter 0.3s;
+    }
+    .sidebar-follow .social-link:hover .social-icon {
+      filter: invert(0.6);
+    }
+
+    /* Content */
     .content { display: flex; flex-direction: column; width: 100%; }
     header {
       background: rgba(0,0,0,0.3);
@@ -131,7 +155,7 @@
       padding: 8px 16px; background: var(--color-accent);
       color: var(--color-primary);
       border: none; border-radius: 8px; cursor: pointer;
-      transition: 0.3s;
+      transition: background 0.3s;
     }
     .btn:hover { background: #ffec8b; }
     .btn:disabled { background: #333; color: #888; cursor: not-allowed; }
@@ -151,12 +175,10 @@
     .power-btn.active svg { stroke: #fff; }
 
     input[type="text"], input[type="search"], input[type="number"] {
-      padding: 6px;
-      border: 1px solid var(--table-border);
-      border-radius: 6px;
-      background: rgba(255,255,255,0.1);
-      color: var(--text-color);
-      margin-bottom: 8px;
+      padding: 6px; border: 1px solid var(--table-border);
+      border-radius: 6px; background: rgba(255,255,255,0.1);
+      color: var(--text-color); margin-bottom: 8px;
+      width: 100%;
     }
 
     .filter-bar {
@@ -189,22 +211,55 @@
   </style>
 </head>
 <body data-theme="light">
-  <div id="container" class="container">
+  <div class="container" id="container">
     <aside class="sidebar">
       <div class="sidebar-header">
         <div class="logo-container">
-          <img src="https://i.ibb.co/qYBkPDH3/Picsart-25-04-01-16-25-47-054.png"
-               alt="Logo BossX" class="sidebar-logo"/>
+          <img
+            src="https://i.ibb.co/qYBkPDH3/Picsart-25-04-01-16-25-47-054.png"
+            alt="Logo BossX" class="sidebar-logo"/>
           <span class="sidebar-logo-text">BossX</span>
         </div>
         <button class="collapse-btn" id="toggleSidebar">☰</button>
       </div>
       <nav class="sidebar-nav">
-        <a href="#" class="nav-item active"><span class="icon">🏠</span><span class="label">Dashboard</span></a>
-        <a href="#" class="nav-item"><span class="icon">📜</span><span class="label">History</span></a>
-        <a href="#" class="nav-item"><span class="icon">⚙️</span><span class="label">Settings</span></a>
-        <a href="#" class="nav-item"><span class="icon">🔒</span><span class="label">Logout</span></a>
+        <a href="#" class="nav-item active">
+          <span class="icon">🏠</span><span class="label">Beranda</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">💰</span><span class="label">Deposit</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">💸</span><span class="label">Withdrawal</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">🔄</span><span class="label">Peer to Peer</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">🤝</span><span class="label">Referral</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">🚀</span><span class="label">Masternode</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">❓</span><span class="label">FAQ</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">📞</span><span class="label">Support</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">👤</span><span class="label">Profil</span>
+        </a>
       </nav>
+      <div class="sidebar-follow">
+        <span class="follow-text">Follow us on</span>
+        <a href="https://t.me/YourTelegram" class="social-link" target="_blank">
+          <img src="https://simpleicons.org/icons/telegram.svg" alt="Telegram" class="social-icon"/>
+        </a>
+        <a href="https://twitter.com/YourTwitter" class="social-link" target="_blank">
+          <img src="https://simpleicons.org/icons/twitter.svg" alt="Twitter" class="social-icon"/>
+        </a>
+      </div>
     </aside>
 
     <div class="content">
@@ -212,8 +267,13 @@
         <div id="realTimeClock" class="real-time-clock">Loading…</div>
         <button id="themeToggle" class="btn" style="margin:0 16px;">🌙</button>
         <div class="user-info">
-          <img src="https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg" alt="Avatar"/>
-          <div class="info-text"><h2>Fery Muliawan</h2><p>Validator ID: 8055</p></div>
+          <img
+            src="https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg"
+            alt="Avatar"/>
+          <div class="info-text">
+            <h2>Fery Muliawan</h2>
+            <p>Validator ID: 8055</p>
+          </div>
         </div>
       </header>
 
@@ -225,7 +285,9 @@
             <div class="timer" id="stopCountdown">Belum berjalan</div>
             <div class="btn-container">
               <button class="power-btn" id="onBtn">
-                <svg viewBox="0 0 24 24"><path d="M12 2v10M5.6 5.6a8 8 0 1 0 11.3 0"/></svg>
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2v10M5.6 5.6a8 8 0 1 0 11.3 0"/>
+                </svg>
               </button>
             </div>
           </div>
@@ -241,8 +303,14 @@
 
           <div class="card">
             <h2>Node Amount</h2>
-            <div class="saldo-value"><span id="walletBossX">0bossX</span></div>
-            <input type="text" id="amountInput" placeholder="100 bossX"/>
+            <div class="saldo-value">
+              <span id="walletBossX">0bossX</span>
+            </div>
+            <input
+              type="text"
+              id="amountInput"
+              placeholder="100 bossX"
+            />
             <div class="btn-container">
               <button class="btn" id="buyBtn">Aktivkan Masternode</button>
             </div>
@@ -257,10 +325,19 @@
         <div class="right-column">
           <div class="card">
             <h2>History Aktivasi</h2>
-            <div class="filter-bar"><span class="icon">🔍</span><input type="search" id="filterAktivasi" placeholder="Cari…"/></div>
-            <table>
+            <div class="filter-bar">
+              <span class="icon">🔍</span>
+              <input type="search" id="filterAktivasi" placeholder="Cari…"/>
+            </div>
+            <table>  
               <thead>
-                <tr><th>Hari</th><th>Waktu</th><th>Jumlah</th><th>Jenis</th><th>Masa Akhir Kontrak</th></tr>
+                <tr>
+                  <th>Hari</th>
+                  <th>Waktu</th>
+                  <th>Jumlah</th>
+                  <th>Jenis</th>
+                  <th>Masa Akhir Kontrak</th>
+                </tr>
               </thead>
               <tbody id="walletHistory"></tbody>
             </table>
@@ -268,18 +345,39 @@
 
           <div class="card">
             <h2>History Convert</h2>
-            <div class="filter-bar"><span class="icon">🔍</span><input type="search" id="filterConvert" placeholder="Cari…"/></div>
-            <table>
-              <thead><tr><th>Hari</th><th>Waktu</th><th>BossX</th><th>USDT</th></tr></thead>
+            <div class="filter-bar">
+              <span class="icon">🔍</span>
+              <input type="search" id="filterConvert" placeholder="Cari…"/>
+            </div>
+            <table>  
+              <thead>
+                <tr>
+                  <th>Hari</th>
+                  <th>Waktu</th>
+                  <th>BossX</th>
+                  <th>USDT</th>
+                </tr>
+              </thead>
               <tbody id="convertHistory"></tbody>
             </table>
           </div>
 
           <div class="card">
             <h2>History Validasi</h2>
-            <div class="filter-bar"><span class="icon">🔍</span><input type="search" id="filterValidasi" placeholder="Cari…"/></div>
-            <table>
-              <thead><tr><th>Hari</th><th>Tanggal</th><th>Jam</th><th>BossX</th><th>Auto-Claim</th></tr></thead>
+            <div class="filter-bar">
+              <span class="icon">🔍</span>
+              <input type="search" id="filterValidasi" placeholder="Cari…"/>
+            </div>
+            <table>  
+              <thead>
+                <tr>
+                  <th>Hari</th>
+                  <th>Tanggal</th>
+                  <th>Jam</th>
+                  <th>BossX</th>
+                  <th>Auto-Claim</th>
+                </tr>
+              </thead>
               <tbody id="history"></tbody>
             </table>
           </div>
@@ -294,7 +392,6 @@
       <div class="footer">©2025 Dashboard BossX • Terbuka untuk umum 🌐</div>
     </div>
   </div>
-
   <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Real-time clock
@@ -315,11 +412,11 @@
     setInterval(updateRealTimeClock, 1000);
     updateRealTimeClock();
 
-    // Dark Mode Toggle
+    // Dark mode toggle
     const themeToggle = document.getElementById("themeToggle");
     const root = document.documentElement;
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") root.setAttribute("data-theme","dark");
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") root.setAttribute("data-theme","dark");
     function updateToggleIcon() {
       const isDark = root.getAttribute("data-theme")==="dark";
       themeToggle.textContent = isDark ? "☀️" : "🌙";
@@ -332,7 +429,7 @@
       updateToggleIcon();
     });
 
-    // elements & variables
+    // Elements & vars
     const amountInput    = document.getElementById("amountInput");
     const buyBtn         = document.getElementById("buyBtn");
     const onBtn          = document.getElementById("onBtn");
@@ -363,11 +460,10 @@
     let contractInterval   = null;
     let dailyCheckInterval = null;
 
-    // countdown rows saved until ON pressed
-    let historyCountdowns = [];
+    let historyCountdowns = []; // {id, secondsLeft, intervalId}
 
     const monthlyYieldRate = 0.10;
-    const contractSeconds  = 31 * 24 * 60 * 60; // 2,678,400
+    const contractSeconds  = 31 * 24 * 60 * 60; // 2.678.400 detik
     const bossXtoUSDT      = 1;
 
     function formatNow() {
@@ -395,6 +491,7 @@
       usdtLabel.textContent = usdtBalance.toFixed(2) + " USDT";
     }
 
+    // Toggle sidebar
     toggleBtn.addEventListener("click", () => {
       container.classList.toggle("collapsed");
     });
@@ -426,17 +523,18 @@
       }, 1000);
     }
 
+    // Buy package
     buyBtn.addEventListener("click", () => {
       const raw = amountInput.value.trim();
       if (!raw) return alert("Masukkan jumlah BossX.");
-      const normalized = raw.replace(/\s+/g,'').replace(/bossx$/i,'bossX');
-      const numericPart = parseFloat(normalized.replace(/bossX$/i,''));
-      if (isNaN(numericPart) || numericPart < 50) return alert("Minimal paket adalah 50 BossX.");
+      const normalized = raw.replace(/\s+/g, '').replace(/bossx$/i, 'bossX');
+      const num = parseFloat(normalized.replace(/bossX$/i, ''));
+      if (isNaN(num) || num < 50) return alert("Minimal paket adalah 50 BossX.");
       if (hasPackage) return alert("Paket hanya dapat diaktifkan sekali.");
 
       hasPackage = true;
-      rewardPerSecond = (numericPart * monthlyYieldRate) / contractSeconds;
-      walletBossX += numericPart;
+      rewardPerSecond = (num * monthlyYieldRate) / contractSeconds;
+      walletBossX += num;
       walletLabel.textContent = normalized;
 
       contractEndTime = Date.now() + contractSeconds * 1000;
@@ -447,7 +545,7 @@
       row.innerHTML = `
         <td>${w.hari}</td>
         <td>${w.tanggal} ${w.jam}</td>
-        <td>${numericPart} BossX</td>
+        <td>${num} BossX</td>
         <td>Aktivkan Masternode</td>
         <td><span id="${countdownId}">${contractSeconds.toLocaleString('id-ID')} detik</span></td>
       `;
@@ -457,6 +555,7 @@
       buyBtn.disabled = true;
     });
 
+    // ON button
     onBtn.addEventListener("click", () => {
       if (!hasPackage || isMiningActive) return;
       isMiningActive = true;
@@ -485,12 +584,14 @@
         }, 1000);
       });
 
+      // Mining per detik
       const miningInterval = setInterval(() => {
         if (!isMiningActive) return clearInterval(miningInterval);
         mining += rewardPerSecond;
         miningLabel.textContent = mining.toFixed(9) + " BossX";
       }, 1000);
 
+      // Auto-claim
       const claimInterval = setInterval(() => {
         if (!isMiningActive) return clearInterval(claimInterval);
         if (mining > 0) {
@@ -511,6 +612,7 @@
         }
       }, 60000);
 
+      // Auto-claim countdown
       const countdownInterval = setInterval(() => {
         if (!isMiningActive) return clearInterval(countdownInterval);
         countdown--;
@@ -518,6 +620,7 @@
         if (countdown <= 0) countdown = 60;
       }, 1000);
 
+      // Stop at 06:00
       const stopInterval = setInterval(() => {
         if (!isMiningActive) return clearInterval(stopInterval);
         stopCountdown--;
@@ -536,6 +639,7 @@
       }, 1000);
     });
 
+    // Convert
     convertBtn.addEventListener("click", () => {
       if (balance < 1) return alert("Minimal convert adalah 1 BossX");
       const usdt = balance * bossXtoUSDT;
@@ -554,18 +658,20 @@
       balanceLabel.textContent = "0.000000000 BossX";
     });
 
+    // Init display
     stopLabel.textContent = "Belum berjalan";
     countdownLabel.textContent = "Auto-claim: 60s";
     walletLabel.textContent = walletBossX + "bossX";
     updateUSDTDisplay();
 
-    const accentColor = getComputedStyle(document.documentElement)
+    // Chart.js
+    const accent = getComputedStyle(document.documentElement)
       .getPropertyValue('--color-accent').trim();
     const ctx = document.getElementById("dailyRewardBarChart")?.getContext("2d");
     if (ctx) {
-      const grad = ctx.createLinearGradient(0, 0, 0, 400);
+      const grad = ctx.createLinearGradient(0,0,0,400);
       grad.addColorStop(0, "purple");
-      grad.addColorStop(1, accentColor);
+      grad.addColorStop(1, accent);
       new Chart(ctx, {
         type: "bar",
         data: {
@@ -578,10 +684,10 @@
         },
         options: {
           scales: {
-            x: { ticks: { color: accentColor } },
-            y: { ticks: { color: accentColor }, beginAtZero: false }
+            x: { ticks: { color: accent } },
+            y: { ticks: { color: accent }, beginAtZero: false }
           },
-          plugins: { legend: { labels: { color: accentColor } } }
+          plugins: { legend: { labels: { color: accent } } }
         }
       });
     }
