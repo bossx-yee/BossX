@@ -14,7 +14,7 @@
       --sidebar-width: 250px;
       --sidebar-collapsed: 60px;
 
-      /* Light mode default */
+      /* Light mode */
       --bg-from: #6a0dad;
       --bg-to:   #ff69b4;
       --text-color: var(--color-accent);
@@ -23,7 +23,6 @@
       --table-border: var(--color-accent);
     }
 
-    /* Dark mode override */
     [data-theme="dark"] {
       --bg-from: #222;
       --bg-to:   #000;
@@ -44,47 +43,57 @@
     .container {
       display: grid;
       grid-template-columns: var(--sidebar-width) 1fr;
-      transition: grid-template-columns 0.3s ease;
+      transition: 0.3s;
       width: 100%;
     }
     .container.collapsed { grid-template-columns: var(--sidebar-collapsed) 1fr; }
 
-    /* Sidebar */
-    aside.sidebar { background: rgba(0,0,0,0.4); display: flex; flex-direction: column; }
+    aside.sidebar {
+      background: rgba(0,0,0,0.4);
+      display: flex; flex-direction: column;
+    }
     .sidebar-header {
       display: flex; align-items: center; justify-content: space-between;
-      padding: var(--gap); border-bottom: 1px solid var(--color-accent);
+      padding: var(--gap);
+      border-bottom: 1px solid var(--color-accent);
     }
     .logo-container { display: flex; align-items: center; }
-    .sidebar-logo { height: 80px; transition: height 0.3s ease; }
+    .sidebar-logo { height: 80px; transition: 0.3s; }
     .sidebar-logo-text {
-      margin-left: 8px; font-size: 1.2rem; font-weight: bold; color: var(--color-accent);
-      transition: opacity 0.3s ease;
+      margin-left: 8px; font-size: 1.2rem; font-weight: bold;
+      color: var(--color-accent); transition: 0.3s;
     }
     .container.collapsed .sidebar-logo { height: 60px; }
     .container.collapsed .sidebar-logo-text { opacity: 0; }
     .collapse-btn {
-      background: none; border: none; color: var(--color-accent); font-size: 1.6rem; cursor: pointer;
+      background: none; border: none; color: var(--color-accent);
+      font-size: 1.6rem; cursor: pointer;
     }
-    .sidebar-nav { display: flex; flex-direction: column; padding-top: var(--gap); }
+    .sidebar-nav {
+      display: flex; flex-direction: column; padding-top: var(--gap);
+    }
     .nav-item {
-      display: flex; align-items: center; padding: 12px var(--gap);
-      color: var(--color-accent); text-decoration: none; transition: background 0.2s;
+      display: flex; align-items: center;
+      padding: 12px var(--gap);
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: 0.2s;
     }
     .nav-item:hover { background: rgba(255,215,0,0.1); }
     .nav-item.active { background: rgba(255,215,0,0.2); }
-    .nav-item .icon { width: 24px; text-align: center; font-size: 1.2rem; }
+    .nav-item .icon { width: 24px; text-align: center; }
     .nav-item .label { margin-left: 12px; white-space: nowrap; }
 
-    /* Content */
     .content { display: flex; flex-direction: column; width: 100%; }
     header {
-      background: rgba(0,0,0,0.3); padding: var(--gap) calc(var(--gap)*2);
+      background: rgba(0,0,0,0.3);
+      padding: var(--gap) calc(var(--gap)*2);
       border-bottom: 2px solid var(--color-accent);
       display: flex; align-items: center; justify-content: space-between;
     }
     .real-time-clock {
-      font-size: 1rem; font-weight: bold; margin-right: auto; white-space: nowrap;
+      font-size: 1rem; font-weight: bold; margin-right: auto;
+      white-space: nowrap;
     }
     .user-info { display: flex; align-items: center; gap: 12px; }
     .user-info img {
@@ -96,114 +105,119 @@
     .user-info p { font-size: 0.9rem; opacity: 0.8; }
 
     main {
-      flex: 1; padding: var(--gap); max-width: 1200px; margin: auto;
+      flex: 1; padding: var(--gap);
+      max-width: 1200px; margin: auto;
       display: flex; gap: var(--gap); flex-wrap: wrap;
     }
-    .left-column, .right-column { display: flex; flex-direction: column; gap: var(--gap); }
+    .left-column, .right-column {
+      display: flex; flex-direction: column; gap: var(--gap);
+    }
     .left-column { flex: 1; min-width: 280px; }
     .right-column { flex: 2; min-width: 320px; }
 
     .card {
-      background: var(--card-bg); padding: var(--gap);
-      border-radius: var(--radius); border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      padding: var(--gap);
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
     }
     .card h2 { margin-bottom: 8px; font-size: 1.2rem; }
-    .saldo-value { font-size: 1.4rem; font-weight: bold; margin-bottom: 8px; }
+    .saldo-value {
+      font-size: 1.4rem; font-weight: bold; margin-bottom: 8px;
+    }
     .timer { margin-bottom: 12px; }
     .btn-container { display: flex; gap: 8px; flex-wrap: wrap; }
     .btn {
-      padding: 8px 16px; background: var(--color-accent); color: var(--color-primary);
-      border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s;
+      padding: 8px 16px; background: var(--color-accent);
+      color: var(--color-primary);
+      border: none; border-radius: 8px; cursor: pointer;
+      transition: 0.3s;
     }
     .btn:hover { background: #ffec8b; }
     .btn:disabled { background: #333; color: #888; cursor: not-allowed; }
 
     .power-btn {
-      width: 48px; height: 48px; border: 2px solid #888; border-radius: 50%;
+      width: 48px; height: 48px;
+      border: 2px solid #888; border-radius: 50%;
       background: #222; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: all 0.3s;
+      cursor: pointer; transition: 0.3s;
     }
-    .power-btn.active { background: #2ecc71; border-color: #27ae60; }
-    .power-btn svg { width: 24px; height: 24px; stroke: #888; fill: none; }
+    .power-btn.active {
+      background: #2ecc71; border-color: #27ae60;
+    }
+    .power-btn svg {
+      width: 24px; height: 24px; stroke: #888; fill: none;
+    }
     .power-btn.active svg { stroke: #fff; }
 
-    input[type="number"] {
-      padding: 6px; width: 100px; border-radius: 6px; border: none; margin-bottom: 8px;
+    input[type="text"], input[type="search"], input[type="number"] {
+      padding: 6px;
+      border: 1px solid var(--table-border);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      color: var(--text-color);
+      margin-bottom: 8px;
     }
 
-    .filter-bar { display: flex; align-items: center; margin-bottom: 8px; }
+    .filter-bar {
+      display: flex; align-items: center; margin-bottom: 8px;
+    }
     .filter-bar .icon { margin-right: 6px; }
-    .filter-bar input {
-      flex: 1; padding: 6px; border: 1px solid var(--table-border);
-      border-radius: 6px; background: rgba(255,255,255,0.1); color: var(--text-color);
-    }
 
-    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    table {
+      width: 100%; border-collapse: collapse; margin-top: 8px;
+    }
     th, td {
-      border: 1px solid var(--table-border); padding: 6px; text-align: center; font-size: 0.9rem;
+      border: 1px solid var(--table-border);
+      padding: 6px; text-align: center; font-size: 0.9rem;
     }
     th { background: var(--color-accent); color: var(--color-primary); }
 
     .footer {
-      text-align: center; padding: var(--gap); background: rgba(0,0,0,0.2);
+      text-align: center; padding: var(--gap);
+      background: rgba(0,0,0,0.2);
       border-top: 1px solid var(--color-accent);
     }
 
     @media (max-width: 768px) {
       aside.sidebar, header { display: none; }
       .container { grid-template-columns: 1fr; }
-      main { padding: var(--gap); display: block; }
+      main { display: block; padding: var(--gap); }
       .left-column, .right-column { flex: 1 1 100%; }
       .card { margin-bottom: var(--gap); }
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
   <div id="container" class="container">
-    <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-header">
         <div class="logo-container">
           <img src="https://i.ibb.co/qYBkPDH3/Picsart-25-04-01-16-25-47-054.png"
-               alt="Logo BossX"
-               class="sidebar-logo"/>
+               alt="Logo BossX" class="sidebar-logo"/>
           <span class="sidebar-logo-text">BossX</span>
         </div>
         <button class="collapse-btn" id="toggleSidebar">☰</button>
       </div>
       <nav class="sidebar-nav">
-        <a href="#" class="nav-item active">
-          <span class="icon">🏠</span><span class="label">Dashboard</span>
-        </a>
-        <a href="#" class="nav-item">
-          <span class="icon">📜</span><span class="label">History</span>
-        </a>
-        <a href="#" class="nav-item">
-          <span class="icon">⚙️</span><span class="label">Settings</span>
-        </a>
-        <a href="#" class="nav-item">
-          <span class="icon">🔒</span><span class="label">Logout</span>
-        </a>
+        <a href="#" class="nav-item active"><span class="icon">🏠</span><span class="label">Dashboard</span></a>
+        <a href="#" class="nav-item"><span class="icon">📜</span><span class="label">History</span></a>
+        <a href="#" class="nav-item"><span class="icon">⚙️</span><span class="label">Settings</span></a>
+        <a href="#" class="nav-item"><span class="icon">🔒</span><span class="label">Logout</span></a>
       </nav>
     </aside>
 
-    <!-- Main Content -->
     <div class="content">
       <header>
         <div id="realTimeClock" class="real-time-clock">Loading…</div>
-        <!-- Dark Mode Toggle -->
         <button id="themeToggle" class="btn" style="margin:0 16px;">🌙</button>
         <div class="user-info">
           <img src="https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg" alt="Avatar"/>
-          <div class="info-text">
-            <h2>Fery Muliawan</h2>
-            <p>Validator ID: 8055</p>
-          </div>
+          <div class="info-text"><h2>Fery Muliawan</h2><p>Validator ID: 8055</p></div>
         </div>
       </header>
 
       <main>
-        <!-- Left Column -->
         <div class="left-column">
           <div class="card">
             <h2>Validasi Masternode</h2>
@@ -211,9 +225,7 @@
             <div class="timer" id="stopCountdown">Belum berjalan</div>
             <div class="btn-container">
               <button class="power-btn" id="onBtn">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 2v10M5.6 5.6a8 8 0 1 0 11.3 0"/>
-                </svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2v10M5.6 5.6a8 8 0 1 0 11.3 0"/></svg>
               </button>
             </div>
           </div>
@@ -229,10 +241,8 @@
 
           <div class="card">
             <h2>Node Amount</h2>
-            <div class="saldo-value">
-              <span id="walletBossX">0</span> BossX
-            </div>
-            <input type="number" id="amountInput" placeholder="Minimal 50" min="50"/>
+            <div class="saldo-value"><span id="walletBossX">0bossX</span></div>
+            <input type="text" id="amountInput" placeholder="100 bossX"/>
             <div class="btn-container">
               <button class="btn" id="buyBtn">Aktivkan Masternode</button>
             </div>
@@ -243,23 +253,14 @@
             <div class="saldo-value" id="usdtBalanceCard">0.00 USDT</div>
           </div>
         </div>
-        <!-- Right Column -->
+
         <div class="right-column">
           <div class="card">
             <h2>History Aktivasi</h2>
-            <div class="filter-bar">
-              <span class="icon">🔍</span>
-              <input type="search" id="filterAktivasi" placeholder="Cari…"/>
-            </div>
+            <div class="filter-bar"><span class="icon">🔍</span><input type="search" id="filterAktivasi" placeholder="Cari…"/></div>
             <table>
               <thead>
-                <tr>
-                  <th>Hari</th>
-                  <th>Waktu</th>
-                  <th>Jumlah</th>
-                  <th>Jenis</th>
-                  <th>Masa Akhir Kontrak</th>
-                </tr>
+                <tr><th>Hari</th><th>Waktu</th><th>Jumlah</th><th>Jenis</th><th>Masa Akhir Kontrak</th></tr>
               </thead>
               <tbody id="walletHistory"></tbody>
             </table>
@@ -267,39 +268,18 @@
 
           <div class="card">
             <h2>History Convert</h2>
-            <div class="filter-bar">
-              <span class="icon">🔍</span>
-              <input type="search" id="filterConvert" placeholder="Cari…"/>
-            </div>
+            <div class="filter-bar"><span class="icon">🔍</span><input type="search" id="filterConvert" placeholder="Cari…"/></div>
             <table>
-              <thead>
-                <tr>
-                  <th>Hari</th>
-                  <th>Waktu</th>
-                  <th>BossX</th>
-                  <th>USDT</th>
-                </tr>
-              </thead>
+              <thead><tr><th>Hari</th><th>Waktu</th><th>BossX</th><th>USDT</th></tr></thead>
               <tbody id="convertHistory"></tbody>
             </table>
           </div>
 
           <div class="card">
             <h2>History Validasi</h2>
-            <div class="filter-bar">
-              <span class="icon">🔍</span>
-              <input type="search" id="filterValidasi" placeholder="Cari…"/>
-            </div>
+            <div class="filter-bar"><span class="icon">🔍</span><input type="search" id="filterValidasi" placeholder="Cari…"/></div>
             <table>
-              <thead>
-                <tr>
-                  <th>Hari</th>
-                  <th>Tanggal</th>
-                  <th>Jam</th>
-                  <th>BossX</th>
-                  <th>Auto-Claim</th>
-                </tr>
-              </thead>
+              <thead><tr><th>Hari</th><th>Tanggal</th><th>Jam</th><th>BossX</th><th>Auto-Claim</th></tr></thead>
               <tbody id="history"></tbody>
             </table>
           </div>
@@ -314,320 +294,299 @@
       <div class="footer">©2025 Dashboard BossX • Terbuka untuk umum 🌐</div>
     </div>
   </div>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // Real-time clock
-  function updateRealTimeClock() {
-    const now = new Date();
-    const days   = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
-    const months = ["Januari","Februari","Maret","April","Mei","Juni",
-                    "Juli","Agustus","September","Oktober","November","Desember"];
-    const hari    = days[now.getDay()];
-    const tanggal = now.getDate();
-    const bulan   = months[now.getMonth()];
-    const tahun   = now.getFullYear();
-    const jam     = String(now.getHours()).padStart(2,'0');
-    const menit   = String(now.getMinutes()).padStart(2,'0');
-    const detik   = String(now.getSeconds()).padStart(2,'0');
-    document.getElementById("realTimeClock").textContent =
-      `${hari}, ${tanggal} ${bulan} ${tahun} — ${jam}:${menit}:${detik}`;
-  }
-  setInterval(updateRealTimeClock, 1000);
-  updateRealTimeClock();
 
-  // Dark Mode Toggle
-  const themeToggle = document.getElementById("themeToggle");
-  const root = document.documentElement;
-  const saved = localStorage.getItem("theme");
-  if (saved === "dark") root.setAttribute("data-theme","dark");
-  function updateToggleIcon() {
-    const isDark = root.getAttribute("data-theme")==="dark";
-    themeToggle.textContent = isDark ? "☀️" : "🌙";
-  }
-  updateToggleIcon();
-  themeToggle.addEventListener("click", () => {
-    const isDark = root.getAttribute("data-theme")==="dark";
-    root.setAttribute("data-theme", isDark ? "light" : "dark");
-    localStorage.setItem("theme", isDark ? "light" : "dark");
-    updateToggleIcon();
-  });
-
-  // Elemen & variabel
-  const amountInput    = document.getElementById("amountInput");
-  const buyBtn         = document.getElementById("buyBtn");
-  const onBtn          = document.getElementById("onBtn");
-  const convertBtn     = document.getElementById("convertBtn");
-  const walletLabel    = document.getElementById("walletBossX");
-  const balanceLabel   = document.getElementById("balance");
-  const miningLabel    = document.getElementById("mining");
-  const stopLabel      = document.getElementById("stopCountdown");
-  const countdownLabel = document.getElementById("countdown");
-  const usdtLabel      = document.getElementById("usdtBalanceCard");
-  const walletHistory  = document.getElementById("walletHistory");
-  const convertHistory = document.getElementById("convertHistory");
-  const historyBody    = document.getElementById("history");
-  const toggleBtn      = document.getElementById("toggleSidebar");
-  const container      = document.getElementById("container");
-
-  let hasPackage       = false;
-  let isMiningActive   = false;
-  let walletBossX      = 0;
-  let rewardPerSecond  = 0;
-  let mining           = 0;
-  let balance          = 0;
-  let usdtBalance      = 0;
-  let countdown        = 60;
-  let stopCountdown    = 0;
-
-  // Kontrak & reset harian
-  let contractEndTime    = null;
-  let contractInterval   = null;
-  let dailyCheckInterval = null;
-
-  // Countdown History Aktivasi dimulai saat ON ditekan
-  let historyCountdowns = []; // { id, secondsLeft, intervalId }
-
-  const monthlyYieldRate = 0.10;
-  const contractSeconds  = 31 * 24 * 60 * 60; // 2.678.400
-  const bossXtoUSDT      = 1;
-
-  // Utils
-  function formatNow() {
-    const d = new Date();
-    const days = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
-    return {
-      hari: days[d.getDay()],
-      tanggal: d.toLocaleDateString("id-ID"),
-      jam: d.toLocaleTimeString("id-ID")
-    };
-  }
-  function getSecondsToNext6AM() {
-    const now = new Date(), target = new Date(now);
-    target.setHours(6,0,0,0);
-    if (now >= target) target.setDate(target.getDate()+1);
-    return Math.floor((target - now)/1000);
-  }
-  function formatTime(sec) {
-    const h = String(Math.floor(sec/3600)).padStart(2,'0');
-    const m = String(Math.floor((sec%3600)/60)).padStart(2,'0');
-    const s = String(sec%60).padStart(2,'0');
-    return `${h}:${m}:${s}`;
-  }
-  function updateUSDTDisplay() {
-    usdtLabel.textContent = usdtBalance.toFixed(2) + " USDT";
-  }
-
-  // Toggle sidebar
-  toggleBtn.addEventListener("click", () => {
-    container.classList.toggle("collapsed");
-  });
-
-  // Countdown kontrak (background, independen dari tabel)
-  function startContractCountdown() {
-    if (contractInterval) clearInterval(contractInterval);
-    contractInterval = setInterval(() => {
-      const diff = contractEndTime - Date.now();
-      if (diff <= 0) {
-        clearInterval(contractInterval);
-        if (dailyCheckInterval) clearInterval(dailyCheckInterval);
-        stopLabel.textContent = "Kontrak Berakhir";
-        onBtn.disabled = true;
-        isMiningActive = false;
-      }
-    }, 1000);
-  }
-
-  // Reset harian jam 06:00
-  function startDailyCheck() {
-    if (dailyCheckInterval) clearInterval(dailyCheckInterval);
-    dailyCheckInterval = setInterval(() => {
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Real-time clock
+    function updateRealTimeClock() {
       const now = new Date();
-      if (now.getHours() === 6 && now.getMinutes() === 0 && now.getSeconds() === 0) {
-        isMiningActive = false;
-        onBtn.disabled = false;
-        onBtn.classList.remove("active");
-        stopLabel.textContent = "Masternode OFF - Tekan ON untuk melanjutkan";
-      }
-    }, 1000);
-  }
+      const days   = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+      const months = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+      const hari    = days[now.getDay()];
+      const tanggal = now.getDate();
+      const bulan   = months[now.getMonth()];
+      const tahun   = now.getFullYear();
+      const jam     = String(now.getHours()).padStart(2,'0');
+      const menit   = String(now.getMinutes()).padStart(2,'0');
+      const detik   = String(now.getSeconds()).padStart(2,'0');
+      document.getElementById("realTimeClock").textContent =
+        `${hari}, ${tanggal} ${bulan} ${tahun} — ${jam}:${menit}:${detik}`;
+    }
+    setInterval(updateRealTimeClock, 1000);
+    updateRealTimeClock();
 
-  // Aktivasi paket (tidak memulai countdown tabel dulu)
-  buyBtn.addEventListener("click", () => {
-    const amt = Number(amountInput.value);
-    if (isNaN(amt) || amt < 50) return alert("Minimal paket adalah 50 BossX.");
-    if (hasPackage) return alert("Paket hanya dapat diaktifkan sekali.");
-
-    hasPackage = true;
-    rewardPerSecond = (amt * monthlyYieldRate) / contractSeconds;
-    walletBossX += amt;
-    walletLabel.textContent = walletBossX + " BossX";
-
-    // Siapkan end-time kontrak (tetap berdasarkan pembelian)
-    contractEndTime = Date.now() + contractSeconds * 1000;
-
-    // Tambah baris History Aktivasi
-    const countdownId = "countdown_" + Date.now();
-    const w = formatNow();
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${w.hari}</td>
-      <td>${w.tanggal} ${w.jam}</td>
-      <td>${amt} BossX</td>
-      <td>Aktivkan Masternode</td>
-      <td><span id="${countdownId}">${contractSeconds.toLocaleString('id-ID')} detik</span></td>
-    `;
-    walletHistory.prepend(row);
-
-    // Simpan untuk mulai berjalan nanti saat ON
-    historyCountdowns.push({
-      id: countdownId,
-      secondsLeft: contractSeconds,
-      intervalId: null
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById("themeToggle");
+    const root = document.documentElement;
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") root.setAttribute("data-theme","dark");
+    function updateToggleIcon() {
+      const isDark = root.getAttribute("data-theme")==="dark";
+      themeToggle.textContent = isDark ? "☀️" : "🌙";
+    }
+    updateToggleIcon();
+    themeToggle.addEventListener("click", () => {
+      const isDark = root.getAttribute("data-theme")==="dark";
+      root.setAttribute("data-theme", isDark ? "light" : "dark");
+      localStorage.setItem("theme", isDark ? "light" : "dark");
+      updateToggleIcon();
     });
 
-    buyBtn.disabled = true;
-  });
+    // elements & variables
+    const amountInput    = document.getElementById("amountInput");
+    const buyBtn         = document.getElementById("buyBtn");
+    const onBtn          = document.getElementById("onBtn");
+    const convertBtn     = document.getElementById("convertBtn");
+    const walletLabel    = document.getElementById("walletBossX");
+    const balanceLabel   = document.getElementById("balance");
+    const miningLabel    = document.getElementById("mining");
+    const stopLabel      = document.getElementById("stopCountdown");
+    const countdownLabel = document.getElementById("countdown");
+    const usdtLabel      = document.getElementById("usdtBalanceCard");
+    const walletHistory  = document.getElementById("walletHistory");
+    const convertHistory = document.getElementById("convertHistory");
+    const historyBody    = document.getElementById("history");
+    const toggleBtn      = document.getElementById("toggleSidebar");
+    const container      = document.getElementById("container");
 
-  // Tombol ON → mulai mining, reset harian, dan mulai countdown tabel
-  onBtn.addEventListener("click", () => {
-    if (!hasPackage || isMiningActive) return;
-    isMiningActive = true;
+    let hasPackage       = false;
+    let isMiningActive   = false;
+    let walletBossX      = 0;
+    let rewardPerSecond  = 0;
+    let mining           = 0;
+    let balance          = 0;
+    let usdtBalance      = 0;
+    let countdown        = 60;
+    let stopCountdown    = 0;
 
-    if (!contractEndTime) {
-      contractEndTime = Date.now() + contractSeconds * 1000;
+    let contractEndTime    = null;
+    let contractInterval   = null;
+    let dailyCheckInterval = null;
+
+    // countdown rows saved until ON pressed
+    let historyCountdowns = [];
+
+    const monthlyYieldRate = 0.10;
+    const contractSeconds  = 31 * 24 * 60 * 60; // 2,678,400
+    const bossXtoUSDT      = 1;
+
+    function formatNow() {
+      const d = new Date();
+      const days = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+      return {
+        hari: days[d.getDay()],
+        tanggal: d.toLocaleDateString("id-ID"),
+        jam: d.toLocaleTimeString("id-ID")
+      };
     }
-    startContractCountdown();
-    startDailyCheck();
+    function getSecondsToNext6AM() {
+      const now = new Date(), target = new Date(now);
+      target.setHours(6,0,0,0);
+      if (now >= target) target.setDate(target.getDate()+1);
+      return Math.floor((target - now)/1000);
+    }
+    function formatTime(sec) {
+      const h = String(Math.floor(sec/3600)).padStart(2,'0'),
+            m = String(Math.floor((sec%3600)/60)).padStart(2,'0'),
+            s = String(sec%60).padStart(2,'0');
+      return `${h}:${m}:${s}`;
+    }
+    function updateUSDTDisplay() {
+      usdtLabel.textContent = usdtBalance.toFixed(2) + " USDT";
+    }
 
-    onBtn.disabled = true;
-    onBtn.classList.add("active");
-    stopCountdown = getSecondsToNext6AM();
-    countdown = 60;
-    stopLabel.textContent = `Stop validasi jam 06:00 dalam: ${formatTime(stopCountdown)}`;
+    toggleBtn.addEventListener("click", () => {
+      container.classList.toggle("collapsed");
+    });
 
-    // Mulai countdown "Masa Akhir Kontrak" di tabel (baru berjalan saat ON)
-    historyCountdowns.forEach(item => {
-      if (item.intervalId) return; // jangan dobel
-      item.intervalId = setInterval(() => {
-        item.secondsLeft--;
-        const el = document.getElementById(item.id);
-        if (!el) { clearInterval(item.intervalId); return; }
-        if (item.secondsLeft <= 0) {
-          el.textContent = "0 detik";
-          clearInterval(item.intervalId);
-          return;
+    function startContractCountdown() {
+      if (contractInterval) clearInterval(contractInterval);
+      contractInterval = setInterval(() => {
+        const diff = contractEndTime - Date.now();
+        if (diff <= 0) {
+          clearInterval(contractInterval);
+          if (dailyCheckInterval) clearInterval(dailyCheckInterval);
+          stopLabel.textContent = "Kontrak Berakhir";
+          onBtn.disabled = true;
+          isMiningActive = false;
         }
-        el.textContent = item.secondsLeft.toLocaleString('id-ID') + " detik";
+      }, 1000);
+    }
+
+    function startDailyCheck() {
+      if (dailyCheckInterval) clearInterval(dailyCheckInterval);
+      dailyCheckInterval = setInterval(() => {
+        const now = new Date();
+        if (now.getHours() === 6 && now.getMinutes() === 0 && now.getSeconds() === 0) {
+          isMiningActive = false;
+          onBtn.disabled = false;
+          onBtn.classList.remove("active");
+          stopLabel.textContent = "Masternode OFF - Tekan ON untuk melanjutkan";
+        }
+      }, 1000);
+    }
+
+    buyBtn.addEventListener("click", () => {
+      const raw = amountInput.value.trim();
+      if (!raw) return alert("Masukkan jumlah BossX.");
+      const normalized = raw.replace(/\s+/g,'').replace(/bossx$/i,'bossX');
+      const numericPart = parseFloat(normalized.replace(/bossX$/i,''));
+      if (isNaN(numericPart) || numericPart < 50) return alert("Minimal paket adalah 50 BossX.");
+      if (hasPackage) return alert("Paket hanya dapat diaktifkan sekali.");
+
+      hasPackage = true;
+      rewardPerSecond = (numericPart * monthlyYieldRate) / contractSeconds;
+      walletBossX += numericPart;
+      walletLabel.textContent = normalized;
+
+      contractEndTime = Date.now() + contractSeconds * 1000;
+
+      const countdownId = "countdown_" + Date.now();
+      const w = formatNow();
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${w.hari}</td>
+        <td>${w.tanggal} ${w.jam}</td>
+        <td>${numericPart} BossX</td>
+        <td>Aktivkan Masternode</td>
+        <td><span id="${countdownId}">${contractSeconds.toLocaleString('id-ID')} detik</span></td>
+      `;
+      walletHistory.prepend(row);
+
+      historyCountdowns.push({ id: countdownId, secondsLeft: contractSeconds, intervalId: null });
+      buyBtn.disabled = true;
+    });
+
+    onBtn.addEventListener("click", () => {
+      if (!hasPackage || isMiningActive) return;
+      isMiningActive = true;
+      if (!contractEndTime) contractEndTime = Date.now() + contractSeconds * 1000;
+      startContractCountdown();
+      startDailyCheck();
+
+      onBtn.disabled = true;
+      onBtn.classList.add("active");
+      stopCountdown = getSecondsToNext6AM();
+      countdown = 60;
+      stopLabel.textContent = `Stop validasi jam 06:00 dalam: ${formatTime(stopCountdown)}`;
+
+      historyCountdowns.forEach(item => {
+        if (item.intervalId) return;
+        item.intervalId = setInterval(() => {
+          item.secondsLeft--;
+          const el = document.getElementById(item.id);
+          if (!el) { clearInterval(item.intervalId); return; }
+          if (item.secondsLeft <= 0) {
+            el.textContent = "0 detik";
+            clearInterval(item.intervalId);
+            return;
+          }
+          el.textContent = item.secondsLeft.toLocaleString('id-ID') + " detik";
+        }, 1000);
+      });
+
+      const miningInterval = setInterval(() => {
+        if (!isMiningActive) return clearInterval(miningInterval);
+        mining += rewardPerSecond;
+        miningLabel.textContent = mining.toFixed(9) + " BossX";
+      }, 1000);
+
+      const claimInterval = setInterval(() => {
+        if (!isMiningActive) return clearInterval(claimInterval);
+        if (mining > 0) {
+          balance += mining;
+          const w = formatNow();
+          const r = document.createElement("tr");
+          r.innerHTML = `
+            <td>${w.hari}</td>
+            <td>${w.tanggal}</td>
+            <td>${w.jam}</td>
+            <td>+${mining.toFixed(9)} BossX</td>
+            <td>✅</td>
+          `;
+          historyBody.prepend(r);
+          mining = 0;
+          miningLabel.textContent = "0.000000000 BossX";
+          balanceLabel.textContent = balance.toFixed(9) + " BossX";
+        }
+      }, 60000);
+
+      const countdownInterval = setInterval(() => {
+        if (!isMiningActive) return clearInterval(countdownInterval);
+        countdown--;
+        countdownLabel.textContent = `Auto-claim: ${countdown}s`;
+        if (countdown <= 0) countdown = 60;
+      }, 1000);
+
+      const stopInterval = setInterval(() => {
+        if (!isMiningActive) return clearInterval(stopInterval);
+        stopCountdown--;
+        if (stopCountdown > 0) {
+          stopLabel.textContent = `Stop validasi jam 06:00 dalam: ${formatTime(stopCountdown)}`;
+        } else {
+          clearInterval(miningInterval);
+          clearInterval(claimInterval);
+          clearInterval(countdownInterval);
+          clearInterval(stopInterval);
+          isMiningActive = false;
+          onBtn.disabled = false;
+          onBtn.classList.remove("active");
+          stopLabel.textContent = "06:00 tercapai, klik ON untuk mulai lagi";
+        }
       }, 1000);
     });
 
-    // Loop mining per detik
-    const miningInterval = setInterval(() => {
-      if (!isMiningActive) return clearInterval(miningInterval);
-      mining += rewardPerSecond;
-      miningLabel.textContent = mining.toFixed(9) + " BossX";
-    }, 1000);
-
-    // Auto-claim per 60 detik
-    const claimInterval = setInterval(() => {
-      if (!isMiningActive) return clearInterval(claimInterval);
-      if (mining > 0) {
-        balance += mining;
-        const w = formatNow();
-        const r = document.createElement("tr");
-        r.innerHTML = `
-          <td>${w.hari}</td>
-          <td>${w.tanggal}</td>
-          <td>${w.jam}</td>
-          <td>+${mining.toFixed(9)} BossX</td>
-          <td>✅</td>
-        `;
-        historyBody.prepend(r);
-        mining = 0;
-        miningLabel.textContent = "0.000000000 BossX";
-        balanceLabel.textContent = balance.toFixed(9) + " BossX";
-      }
-    }, 60000);
-
-    // UI countdown auto-claim
-    const countdownInterval = setInterval(() => {
-      if (!isMiningActive) return clearInterval(countdownInterval);
-      countdown--;
-      countdownLabel.textContent = `Auto-claim: ${countdown}s`;
-      if (countdown <= 0) countdown = 60;
-    }, 1000);
-
-    // Hitung mundur ke 06:00
-    const stopInterval = setInterval(() => {
-      if (!isMiningActive) return clearInterval(stopInterval);
-      stopCountdown--;
-      if (stopCountdown > 0) {
-        stopLabel.textContent = `Stop validasi jam 06:00 dalam: ${formatTime(stopCountdown)}`;
-      } else {
-        clearInterval(miningInterval);
-        clearInterval(claimInterval);
-        clearInterval(countdownInterval);
-        clearInterval(stopInterval);
-        isMiningActive = false;
-        onBtn.disabled = false;
-        onBtn.classList.remove("active");
-        stopLabel.textContent = "06:00 tercapai, klik ON untuk mulai lagi";
-      }
-    }, 1000);
-  });
-  // Convert BossX → USDT
-  convertBtn.addEventListener("click", () => {
-    if (balance < 1) return alert("Minimal convert adalah 1 BossX");
-    const usdt = balance * bossXtoUSDT;
-    usdtBalance += usdt;
-    updateUSDTDisplay();
-    const w = formatNow();
-    const r = document.createElement("tr");
-    r.innerHTML = `
-      <td>${w.hari}</td>
-      <td>${w.tanggal} ${w.jam}</td>
-      <td>${balance.toFixed(9)}</td>
-      <td>${usdt.toFixed(2)}</td>
-    `;
-    convertHistory.prepend(r);
-    balance = 0;
-    balanceLabel.textContent = "0.000000000 BossX";
-  });
-
-  // Inisialisasi tampilan
-  stopLabel.textContent = "Belum berjalan";
-  countdownLabel.textContent = "Auto-claim: 60s";
-  walletLabel.textContent = walletBossX + " BossX";
-  updateUSDTDisplay();
-
-  // Chart.js
-  const accentColor = getComputedStyle(document.documentElement)
-    .getPropertyValue('--color-accent').trim();
-  const ctx = document.getElementById("dailyRewardBarChart")?.getContext("2d");
-  if (ctx) {
-    const grad = ctx.createLinearGradient(0, 0, 0, 400);
-    grad.addColorStop(0, "purple");
-    grad.addColorStop(1, accentColor);
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: ["Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu"],
-        datasets: [{
-          label: "Reward BossX",
-          data: [12.5,15.2,14.8,16.0,17.3,18.1,19.0],
-          backgroundColor: grad
-        }]
-      },
-      options: {
-        scales: {
-          x: { ticks: { color: accentColor } },
-          y: { ticks: { color: accentColor }, beginAtZero: false }
-        },
-        plugins: { legend: { labels: { color: accentColor } } }
-      }
+    convertBtn.addEventListener("click", () => {
+      if (balance < 1) return alert("Minimal convert adalah 1 BossX");
+      const usdt = balance * bossXtoUSDT;
+      usdtBalance += usdt;
+      updateUSDTDisplay();
+      const w = formatNow();
+      const r = document.createElement("tr");
+      r.innerHTML = `
+        <td>${w.hari}</td>
+        <td>${w.tanggal} ${w.jam}</td>
+        <td>${balance.toFixed(9)}</td>
+        <td>${usdt.toFixed(2)}</td>
+      `;
+      convertHistory.prepend(r);
+      balance = 0;
+      balanceLabel.textContent = "0.000000000 BossX";
     });
-  }
-}); // DOMContentLoaded
-</script>
+
+    stopLabel.textContent = "Belum berjalan";
+    countdownLabel.textContent = "Auto-claim: 60s";
+    walletLabel.textContent = walletBossX + "bossX";
+    updateUSDTDisplay();
+
+    const accentColor = getComputedStyle(document.documentElement)
+      .getPropertyValue('--color-accent').trim();
+    const ctx = document.getElementById("dailyRewardBarChart")?.getContext("2d");
+    if (ctx) {
+      const grad = ctx.createLinearGradient(0, 0, 0, 400);
+      grad.addColorStop(0, "purple");
+      grad.addColorStop(1, accentColor);
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu"],
+          datasets: [{
+            label: "Reward BossX",
+            data: [12.5,15.2,14.8,16.0,17.3,18.1,19.0],
+            backgroundColor: grad
+          }]
+        },
+        options: {
+          scales: {
+            x: { ticks: { color: accentColor } },
+            y: { ticks: { color: accentColor }, beginAtZero: false }
+          },
+          plugins: { legend: { labels: { color: accentColor } } }
+        }
+      });
+    }
+  });
+  </script>
 </body>
 </html>
+```
