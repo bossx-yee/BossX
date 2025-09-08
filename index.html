@@ -447,19 +447,23 @@
   <script>
     // ===== RUNNING TEXT SCRIPT DUMMY REAL-TIME =====
     (function() {
+      // Data awal dengan DOGE, SHIB, SUI
       const coins = {
         'BOSSX/USDT': { price: 1.00, change: 0.00 },
         'BTC/USDT': { price: 62000.00, change: 1.20 },
         'ETH/USDT': { price: 4295.88, change: 0.02 },
         'SOL/USDT': { price: 207.16, change: 2.10 },
         'TRX/USDT': { price: 0.3316, change: 0.91 },
-        'TRUMP/USDT': { price: 8.51, change: 0.35 }
+        'TRUMP/USDT': { price: 8.51, change: 0.35 },
+        'DOGE/USDT': { price: 0.1500, change: 0.50 },
+        'SHIB/USDT': { price: 0.000025, change: -0.20 },
+        'SUI/USDT': { price: 0.8500, change: 1.80 }
       };
 
       function formatPrice(price) {
         if (price >= 1000) return price.toLocaleString('en-US', { maximumFractionDigits: 2 });
         if (price >= 1) return price.toFixed(2);
-        return price.toFixed(4);
+        return price.toFixed(6).replace(/0+$/, '').replace(/\.$/, '') || '0';
       }
 
       function createTickerItem(label, price, change) {
@@ -482,7 +486,7 @@
           const delta = (Math.random() - 0.5) * 1.0; // -0.5% to +0.5%
           coin.change = delta;
           coin.price = coin.price * (1 + delta / 100);
-          if (coin.price < 0.0001) coin.price = 0.0001;
+          if (coin.price < 0.000001) coin.price = 0.000001;
         }
       }
 
@@ -492,7 +496,7 @@
           const coin = coins[symbol];
           content += createTickerItem(symbol, coin.price, coin.change);
         }
-        return content + content;
+        return content + content; // Duplicate for smooth scroll
       }
 
       function updateTicker() {
