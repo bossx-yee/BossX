@@ -41,12 +41,12 @@
       padding: 8px 0;
       width: 100%;
       z-index: 1000;
-      cursor: pointer;
+      cursor: pointer; /* Menunjukkan bisa di-hover */
     }
     .ticker-track {
       display: inline-block;
       white-space: nowrap;
-      animation: ticker-scroll 60s linear infinite; /* 👈 KECEPATAN 60 DETIK */
+      will-change: transform;
       padding-left: 100%;
     }
     .ticker-item {
@@ -69,10 +69,6 @@
     }
     .price-up { color: #00c853; }
     .price-down { color: #ff3d00; }
-    @keyframes ticker-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
     @media (max-width: 768px) {
       .ticker-item { margin-right: 20px; font-size: 13px; }
     }
@@ -446,10 +442,11 @@
   </div>
 
   <script>
-    // ===== RUNNING TEXT SCRIPT FIXED (60s + PAUSE ON HOVER) =====
+    // ===== RUNNING TEXT SCRIPT DUMMY REAL-TIME (PAUSE ON HOVER + TRUMP/USDT + SLOW) =====
     (function() {
+      // Data awal — BOSSX selalu 1.00, tidak berubah
       const coins = {
-        'BOSSX/USDT': { price: 1.00, change: 0.00, fixed: true },
+        'BOSSX/USDT': { price: 1.00, change: 0.00, fixed: true }, // TETAP 1.00
         'BTC/USDT': { price: 62000.00, change: 1.20 },
         'ETH/USDT': { price: 4295.88, change: 0.02 },
         'TRX/USDT': { price: 0.3316, change: 0.91 },
@@ -457,9 +454,10 @@
         'DOGE/USDT': { price: 0.1500, change: 0.50 },
         'SHIB/USDT': { price: 0.000025, change: -0.20 },
         'SUI/USDT': { price: 0.8500, change: 1.80 },
-        'TRUMP/USDT': { price: 8.51, change: 0.35 }
+        'TRUMP/USDT': { price: 8.51, change: 0.35 } // TRUMP/USDT ditambahkan
       };
 
+      // Urutan tampilan sesuai permintaan Anda + TRUMP/USDT
       const displayOrder = [
         'BOSSX/USDT',
         'BTC/USDT',
@@ -475,6 +473,9 @@
         'BOSSX/USDT',
         'TRUMP/USDT'
       ];
+
+      let animationInterval;
+      let isPaused = false;
 
       function formatPrice(price) {
         if (price >= 1000) return price.toLocaleString('en-US', { maximumFractionDigits: 2 });
@@ -499,8 +500,8 @@
       function updatePrices() {
         for (let symbol in coins) {
           const coin = coins[symbol];
-          if (coin.fixed) continue;
-          const delta = (Math.random() - 0.5) * 1.0;
+          if (coin.fixed) continue; // Jangan ubah harga BOSSX
+          const delta = (Math.random() - 0.5) * 1.0; // -0.5% to +0.5%
           coin.change = delta;
           coin.price = coin.price * (1 + delta / 100);
           if (coin.price < 0.000001) coin.price = 0.000001;
@@ -513,7 +514,7 @@
           const coin = coins[symbol];
           content += createTickerItem(symbol, coin.price, coin.change);
         }
-        return content + content;
+        return content + content; // Duplicate for smooth scroll
       }
 
       function updateTicker() {
@@ -524,31 +525,42 @@
         }
       }
 
-      let isPaused = false;
+      function startAnimation() {
+        if (animationInterval) clearInterval(animationInterval);
+        animationInterval = setInterval(() => {
+          if (!isPaused) {
+            const tickerTrack = document.querySelector('.ticker-track');
+            if (tickerTrack) {
+              const computedStyle = getComputedStyle(tickerTrack);
+              const transform = computedStyle.transform;
+              if (transform === 'none') {
+                tickerTrack.style.transform = 'translateX(-50%)';
+              } else {
+                const matrix = new DOMMatrix(transform);
+                const currentX = matrix.m41;
+                tickerTrack.style.transform = `translateX(${currentX - 1}px)`;
+              }
+            }
+          }
+        }, 80); // SLOW: 80ms (semakin besar, semakin lambat)
+      }
 
       function pauseAnimation() {
         isPaused = true;
-        const tickerTrack = document.querySelector('.ticker-track');
-        if (tickerTrack) {
-          tickerTrack.style.animationPlayState = 'paused';
-        }
       }
 
       function resumeAnimation() {
         isPaused = false;
-        const tickerTrack = document.querySelector('.ticker-track');
-        if (tickerTrack) {
-          tickerTrack.style.animationPlayState = 'running';
-        }
       }
 
       // Jalankan pertama kali
       updateTicker();
+      startAnimation();
 
       // Update harga setiap 10 detik
       setInterval(updateTicker, 10000);
 
-      // Event listener hover
+      // Event listener untuk pause/resume
       const tickerBar = document.querySelector('.crypto-ticker');
       if (tickerBar) {
         tickerBar.addEventListener('mouseenter', pauseAnimation);
@@ -838,7 +850,7 @@
         grad.addColorStop(1, accent);
         new Chart(ctx, {
           type: "bar",
-           {
+          data: {
             labels: ["Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu"],
             datasets: [{
               label: "Reward BossX",
