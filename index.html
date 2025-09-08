@@ -444,9 +444,9 @@
   <script>
     // ===== RUNNING TEXT SCRIPT DUMMY REAL-TIME (PAUSE ON HOVER + TRUMP/USDT + SLOW) =====
     (function() {
-      // Data awal — BOSSX selalu 1.00, tidak berubah
+      // Data awal — BOSSX selalu 1, tidak berubah
       const coins = {
-        'BOSSX/USDT': { price: 1.00, change: 0.00, fixed: true }, // TETAP 1.00
+        'BOSSX/USDT': { price: 1.00, change: 0.00, fixed: true }, // TETAP 1
         'BTC/USDT': { price: 62000.00, change: 1.20 },
         'ETH/USDT': { price: 4295.88, change: 0.02 },
         'TRX/USDT': { price: 0.3316, change: 0.91 },
@@ -542,7 +542,7 @@
               }
             }
           }
-        }, 80); // SLOW: 80ms (semakin besar, semakin lambat)
+        }, 70); // SLOW: 70ms (semakin besar, semakin lambat)
       }
 
       function pauseAnimation() {
