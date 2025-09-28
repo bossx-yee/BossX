@@ -908,18 +908,6 @@
                     <span class="ml-2 font-medium menu-text text-sm">Logout</span>
                 </a>
             </nav>
-            <!-- Footer -->
-            <div id="sidebar-footer" class="absolute bottom-4 left-2 right-2">
-                <div class="gradient-card p-3 rounded-xl gradient-border">
-                    <div class="text-center">
-                        <div class="w-6 h-6 bg-amber-400 rounded-full mx-auto mb-1 flex items-center justify-center">
-                            <span class="text-xs font-bold text-black">BX</span>
-                        </div>
-                        <p class="text-xs text-gray-400">Premium Member</p>
-                        <p class="text-sm font-semibold text-amber-400">VIP Access</p>
-                    </div>
-                </div>
-            </div>
         </div>
         <!-- Main Content -->
         <div class="flex-1 flex flex-col min-w-0">
@@ -2689,19 +2677,16 @@
             document.getElementById('toggle-sidebar').addEventListener('click', function() {
                 const sidebar = document.getElementById('sidebar');
                 const logoText = document.getElementById('logo-text');
-                const sidebarFooter = document.getElementById('sidebar-footer');
                 const menuTexts = document.querySelectorAll('.menu-text');
                 const toggleIcon = this.querySelector('[data-lucide]');
                 if (sidebar.classList.contains('collapsed')) {
                     sidebar.classList.remove('collapsed');
                     logoText.style.display = 'block';
-                    sidebarFooter.style.display = 'block';
                     menuTexts.forEach(text => text.style.display = 'inline');
                     toggleIcon.setAttribute('data-lucide', 'chevron-left');
                 } else {
                     sidebar.classList.add('collapsed');
                     logoText.style.display = 'none';
-                    sidebarFooter.style.display = 'none';
                     menuTexts.forEach(text => text.style.display = 'none');
                     toggleIcon.setAttribute('data-lucide', 'chevron-right');
                 }
@@ -3039,7 +3024,7 @@
                 const currentRoomMessages = messages.filter(msg => msg.room === currentRoom);
                 return (
                     h('div', { className: "min-h-screen bg-black text-white p-4 flex items-center justify-center" },
-                        h('div', { className: "w-full max-w-7xl" },
+                        h('div', { className: "w-full max-w-full" },
                             // Back Button
                             h('button',
                                 {
@@ -3049,7 +3034,7 @@
                                 "← Kembali ke Dashboard"
                             ),
                             // Chat Room Card dengan Glowing Border
-                            h('div', { className: "relative bg-gray-900/90 border border-gray-700 backdrop-blur-sm h-[800px] overflow-hidden rounded-3xl glowing-border" },
+                            h('div', { className: "relative bg-gray-900/90 border border-gray-700 backdrop-blur-sm h-[calc(100vh-100px)] overflow-hidden rounded-3xl glowing-border" },
                                 h('div', { className: "relative bg-gray-900/95 rounded-3xl h-full" },
                                     // Header
                                     h('div', { className: "bg-black/50 border-b border-gray-700 p-6" },
