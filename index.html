@@ -859,7 +859,7 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-2">
                         <div class="crypto-icon">
-                            <img src="https://i.ibb.co/qYBkPDH3/Picsart-25-04-01-16-25-47-054.png" alt="BossX Logo" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'background: linear-gradient(145deg, #f59e0b, #d97706); color: white; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75rem;\'>BX</div>'" />
+                            <img src="https://i.ibb.co/qYBkPDH3/Picsart-25-04-01-16-25-47-054.png" alt="BossX Logo" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\\'background: linear-gradient(145deg, #f59e0b, #d97706); color: white; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75rem;\\'>BX</div>'" />
                         </div>
                         <div id="logo-text">
                             <h1 class="text-lg font-bold text-amber-400">BossX</h1>
@@ -893,6 +893,11 @@
                 <a href="#" class="menu-item flex items-center px-2 py-2 mb-2 rounded-xl text-gray-400" data-page="chat-room">
                     <i data-lucide="message-circle" class="w-4 h-4"></i>
                     <span class="ml-2 font-medium menu-text text-sm">Chat Room</span>
+                </a>
+                <!-- Fitur baru: Referral, ditambahkan tepat di bawah Chat Room -->
+                <a href="#" class="menu-item flex items-center px-2 py-2 mb-2 rounded-xl text-gray-400" data-page="referral">
+                    <i data-lucide="user-plus" class="w-4 h-4"></i>
+                    <span class="ml-2 font-medium menu-text text-sm">Referral</span>
                 </a>
                 <!-- END MENU BARU -->
                 <a href="#" class="menu-item flex items-center px-2 py-2 mb-2 rounded-xl text-gray-400" data-page="faq">
@@ -951,7 +956,7 @@
                         <!-- User Profile -->
                         <div class="flex items-center space-x-2 px-2 py-1 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-amber-500/50 transition-colors cursor-pointer">
                             <div class="profile-picture">
-                                <img src="https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg" alt="Fery Muliawan" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'background: linear-gradient(145deg, #3b82f6, #2563eb); color: white; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75rem; border-radius: 50%;\'>FM</div>'" />
+                                <img src="https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg" alt="Fery Muliawan" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\\'background: linear-gradient(145deg, #3b82f6, #2563eb); color: white; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75rem; border-radius: 50%;\\'>FM</div>'" />
                             </div>
                             <div class="text-sm">
                                 <p class="text-white font-medium">Fery Muliawan</p>
@@ -970,7 +975,7 @@
                         <div class="bg-gray-900 border border-amber-500/20 rounded-xl p-3 overflow-hidden">
                             <div class="relative">
                                 <div id="running-text" class="whitespace-nowrap text-amber-400 font-medium text-sm">
-                                    <span id="running-text-content">🔥 BTC +5.2% $35,000 • ETH +3.8% $1,875 • BNB -1.2% $206 • ADA +7.1% $0.52 • SOL +12.5% $98 • DOT +2.3% $6.75 • MATIC +8.9% $0.89 • LINK +4.2% $14.30 • UNI +6.7% $7.25 • AVAX +9.1% $28.40 • Market Cap: $1.2T • 24h Vol: $45.6B 🚀 | BossX Validator Masternode System Active</span>
+                                    🔥 BTC +5.2% $35,000 • ETH +3.8% $1,875 • BNB -1.2% $206 • ADA +7.1% $0.52 • SOL +12.5% $98 • DOT +2.3% $6.75 • MATIC +8.9% $0.89 • LINK +4.2% $14.30 • UNI +6.7% $7.25 • AVAX +9.1% $28.40 • Market Cap: $1.2T • 24h Vol: $45.6B 🚀 | BossX Validator Masternode System Active
                                 </div>
                             </div>
                         </div>
@@ -1553,6 +1558,36 @@
                         <div id="chat-room-container" class="w-full h-full"></div>
                     </div>
                     <!-- END HALAMAN BARU -->
+                    <!-- Referral Page (Fitur baru) -->
+                    <div id="referral-page" class="page-content">
+                        <div class="p-6">
+                            <h1 class="text-2xl font-bold text-amber-400 mb-4">Referral</h1>
+                            <div class="stat-card p-6 mb-6">
+                                <h3 class="text-xl font-bold text-white mb-4">Kode Referral Anda</h3>
+                                <div class="flex items-center space-x-2 mb-4">
+                                    <input id="referral-code" type="text" class="node-input flex-1" readonly value="REF-XXXXXX" />
+                                    <button onclick="copyReferralCode()" class="copy-button flex items-center px-3 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-black rounded-lg font-semibold hover:from-amber-600 hover:to-orange-600 transition-all duration-300 transform hover:scale-105">
+                                        <i data-lucide="copy" class="mr-1 w-4 h-4"></i> Copy
+                                    </button>
+                                </div>
+                                <button onclick="generateReferralCode()" class="node-button mb-4">Generate Kode Baru</button>
+                                <p class="text-gray-400">Bagikan kode referral Anda untuk mendapatkan reward. Setiap referral sukses memberikan 10% bonus dari deposit pertama mereka.</p>
+                            </div>
+                            <div class="stat-card p-6">
+                                <h3 class="text-xl font-bold text-white mb-4">Statistik Referral</h3>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <p class="text-gray-400">Total Referral</p>
+                                        <p class="text-2xl font-bold text-white">0</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400">Reward Didapat</p>
+                                        <p class="text-2xl font-bold text-white">0 BossX</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- P2P Page -->
                     <div id="p2p-page" class="page-content exchange-bg">
                         <div class="exchange-card p-6 mb-6">
@@ -1957,8 +1992,9 @@
             currentPage = pageId;
             if (pageId === 'deposit') updateDepositContent();
             else if (pageId === 'withdrawal') updateWithdrawalContent();
-            else if (pageId === 'p2p') updateP2PContent();
-            else if (pageId === 'exchange') {
+            else if (pageId === 'p2p') {
+                updateP2PContent();
+            } else if (pageId === 'exchange') {
                 // Init exchange page if needed
                 initExchangePage();
             } else if (pageId === 'chat-room') {
@@ -2761,7 +2797,7 @@
             const username = document.getElementById('p2p-username').value.trim();
             const amount = parseFloat(document.getElementById('p2p-amount').value) || 0;
             if (!username || !username.startsWith('@')) {
-                showErrorMessage('Username harus diawali dengan @ dan tidak boleh kosong dan tidak boleh kosong!');
+                showErrorMessage('Username harus diawali dengan @ dan tidak boleh kosong!');
                 return;
             }
             if (amount < 1) {
@@ -2855,6 +2891,16 @@
             const totalReceived = p2pHistory.filter(t => t.type === 'in').reduce((sum, t) => sum + t.amount, 0);
             document.getElementById('p2p-total-sent').textContent = formatAmount(totalSent) + ' BossX';
             document.getElementById('p2p-total-received').textContent = formatAmount(totalReceived) + ' BossX';
+        }
+        // Referral Functions (Fitur baru)
+        function generateReferralCode() {
+            const code = 'REF-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+            document.getElementById('referral-code').value = code;
+            showSuccessMessage('Kode referral baru berhasil digenerate!');
+        }
+        function copyReferralCode() {
+            const code = document.getElementById('referral-code').value;
+            copyToClipboard(code);
         }
         // Event Listeners
         document.addEventListener('DOMContentLoaded', function() {
@@ -2968,7 +3014,6 @@
                 h('svg', { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", className },
                     h('path', { d: "m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z" })
                 )
-            )
             );
             const UsersIcon = ({ size = 24, className = "" }) => (
                 h('svg', { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", className },
@@ -3015,8 +3060,7 @@
                 {
                     id: 1,
                     sender: 'BossX Bot',
-                    content: '👋 Selamat datang di Chat Room BossX!
-Diskusi tentang validator & masternode dimulai di sini.',
+                    content: '👋 Selamat datang di Chat Room BossX!\nDiskusi tentang validator & masternode dimulai di sini.',
                     timestamp: '10:00',
                     room: '#validator',
                     isUser: false
@@ -3381,45 +3425,6 @@ Diskusi tentang validator & masternode dimulai di sini.',
             // Render the app
             ReactDOM.render(h(App), document.getElementById('chat-room-container'));
         }
-        // Tambahan: Function untuk update running text real-time
-        async function updateRunningText() {
-            try {
-                // Symbols dari Binance (tanpa BossX, karena hardcode)
-                const symbols = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "ADAUSDT", "SOLUSDT", "DOTUSDT", "MATICUSDT", "LINKUSDT", "UNIUSDT", "AVAXUSDT"];
-                const encodedSymbols = encodeURIComponent(JSON.stringify(symbols));
-                const binanceResponse = await fetch(`https://api.binance.com/api/v3/ticker/24hr?symbols=${encodedSymbols}`);
-                const binanceData = await binanceResponse.json();
-
-                // Fetch total market cap & volume dari CoinGecko
-                const coingeckoResponse = await fetch('https://api.coingecko.com/api/v3/global');
-                const coingeckoData = await coingeckoResponse.json();
-
-                // Proses data Binance
-                let text = '🔥 BossX +0.0% $1 ';  // Hardcode BossX flat $1 +0%
-                for (const item of binanceData) {
-                    const coin = item.symbol.replace('USDT', '');
-                    const price = parseFloat(item.lastPrice).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                    const change = parseFloat(item.priceChangePercent).toFixed(1);
-                    const sign = change >= 0 ? '+' : '';
-                    text += `• ${coin} ${sign}${change}% $${price} `;
-                }
-
-                // Tambah total market cap & volume
-                const marketCap = (coingeckoData.data.total_market_cap.usd / 1e12).toFixed(1);
-                const volume = (coingeckoData.data.total_volume.usd / 1e9).toFixed(1);
-                text += `• Market Cap: $${marketCap}T • 24h Vol: $${volume}B 🚀 | BossX Validator Masternode System Active`;
-
-                // Update DOM
-                document.getElementById('running-text-content').textContent = text;
-            } catch (error) {
-                console.error('Gagal fetch data real-time:', error);
-                // Fallback ke statis jika error
-            }
-        }
-
-        // Jalankan pertama kali & update setiap 60 detik
-        updateRunningText();
-        setInterval(updateRunningText, 60000);
     </script>
 </body>
 </html>
