@@ -174,7 +174,7 @@
         /* Border Lines */
         .border-line {
             position: absolute;
-            background: linear-gradient(90deg, transparent, #10b981, #22c55e, #10b981, transparent);
+            background: linear-gradient(90deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
@@ -187,7 +187,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #10b981, #22c55e, #10b981, transparent);
+            background: linear-gradient(90deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
             animation: borderTop 3s linear infinite;
             transform-origin: left;
         }
@@ -196,7 +196,7 @@
             right: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(180deg, transparent, #10b981, #22c55e, #10b981, transparent);
+            background: linear-gradient(180deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
             animation: borderRight 3s linear infinite 0.7s;
             transform-origin: top;
         }
@@ -205,7 +205,7 @@
             right: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(270deg, transparent, #10b981, #22c55e, #10b981, transparent);
+            background: linear-gradient(270deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
             animation: borderBottom 3s linear infinite 1.4s;
             transform-origin: right;
         }
@@ -214,7 +214,7 @@
             left: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(0deg, transparent, #10b981, #22c55e, #10b981, transparent);
+            background: linear-gradient(0deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
             animation: borderLeft 3s linear infinite 2.1s;
             transform-origin: bottom;
         }
@@ -429,9 +429,9 @@
             color: #9ca3af;
         }
         .node-input:disabled {
-            background: rgba(31, 41, 55, 0.3);
+            background: rgba(31, 41, 55, 0.6);
             border-color: #4b5563;
-            color: #6b7280;
+            color: #9ca3af;
             cursor: not-allowed;
         }
         /* Button styles */
@@ -708,7 +708,6 @@
         .log-entry.auto-claim {
             color: #f59e0b; /* Emas untuk auto-claim */
         }
-
         /* CSS Tambahan untuk Desain Mewah, Modern, Elegant, Canggih seperti Binance */
         .exchange-bg {
             background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
@@ -741,7 +740,9 @@
             box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
             margin-bottom: 1rem;
             display: block;
-            width: 100%;
+            min-width: 100px;
+            flex-shrink: 0;
+            width: auto;
         }
         .pair-button:hover {
             background: linear-gradient(145deg, #d97706, #b45309);
@@ -773,6 +774,9 @@
             border-radius: 0.75rem;
             padding: 1rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
         }
         .trade-button.buy {
             background: linear-gradient(145deg, #10b981, #059669);
@@ -802,14 +806,14 @@
         /* Border Lines Gold Variant */
         .border-line-gold {
             position: absolute;
-            background: linear-gradient(90deg, transparent, #f59e0b, #d97706, #f59e0b, transparent);
+            background: linear-gradient(90deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
         }
         .stat-card:hover .border-line-gold,
         .log-engine:hover .border-line-gold,
-        .info-system:hover .border-line-gold {  /* Tambah selector untuk elemen baru */
+        .info-system:hover .border-line-gold { /* Tambah selector untuk elemen baru */
             opacity: 1;
         }
         .border-top-gold {
@@ -817,7 +821,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #f59e0b, #d97706, #f59e0b, transparent);
+            background: linear-gradient(90deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
             animation: borderTop 3s linear infinite;
             transform-origin: left;
         }
@@ -826,7 +830,7 @@
             right: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(180deg, transparent, #f59e0b, #d97706, #f59e0b, transparent);
+            background: linear-gradient(180deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
             animation: borderRight 3s linear infinite 0.7s;
             transform-origin: top;
         }
@@ -835,7 +839,7 @@
             right: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(270deg, transparent, #f59e0b, #d97706, #f59e0b, transparent);
+            background: linear-gradient(270deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
             animation: borderBottom 3s linear infinite 1.4s;
             transform-origin: right;
         }
@@ -844,14 +848,63 @@
             left: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(0deg, transparent, #f59e0b, #d97706, #f59e0b, transparent);
+            background: linear-gradient(0deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
+            animation: borderLeft 3s linear infinite 2.1s;
+            transform-origin: bottom;
+        }
+        /* Border Lines White Variant (New for Team Developer Cards) */
+        .border-line-white {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .exchange-card:hover .border-line-white {
+            opacity: 1;
+        }
+        .border-top-white {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
+            animation: borderTop 3s linear infinite;
+            transform-origin: left;
+        }
+        .border-right-white {
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
+            animation: borderRight 3s linear infinite 0.7s;
+            transform-origin: top;
+        }
+        .border-bottom-white {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(270deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
+            animation: borderBottom 3s linear infinite 1.4s;
+            transform-origin: right;
+        }
+        .border-left-white {
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(0deg, transparent, #ffffff, #f0f0f0, #ffffff, transparent);
             animation: borderLeft 3s linear infinite 2.1s;
             transform-origin: bottom;
         }
         /* Order Book Styles */
         .order-book-section {
-            height: 500px;
+            height: auto;
+            max-height: 300px;
             overflow-y: auto;
+            scrollbar-width: thin;
         }
         .order-book-item {
             display: flex;
@@ -862,6 +915,7 @@
         }
         .order-book-item:hover {
             background: rgba(245, 158, 11, 0.05);
+            transition: background 0.3s ease;
         }
         .order-book-buy {
             color: #10b981;
@@ -883,6 +937,12 @@
             padding: 0.5rem;
             border-bottom: 1px solid rgba(55, 65, 81, 0.5);
             text-align: right;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .order-book table {
+            width: 100%;
+            table-layout: fixed;
         }
         .buy-order {
             color: #26a69a; /* Binance green */
@@ -909,8 +969,12 @@
         }
         /* Adjust chart container for larger size */
         #chart-container {
-            height: 90vh !important;
-            min-height: 600px;
+            height: 100% !important;
+            min-height: 400px;
+        }
+        #tradingview-chart {
+            height: 100%;
+            width: 100%;
         }
         /* Binance-like colors and fonts */
         body {
@@ -928,7 +992,25 @@
             text-align: center;
             margin: 10px 0;
             font-size: 18px;
-            color: #ff6b6b;
+            color: #f59e0b;
+        }
+        .skeleton-loading {
+            animation: pulse 1.5s infinite;
+        }
+        @media (max-width: 768px) {
+            .order-book-section {
+                max-height: 200px;
+            }
+            .pair-button {
+                padding: 0.5rem 1rem;
+            }
+            .market-data {
+                grid-template-columns: repeat(2, 1fr);
+                text-align: center;
+            }
+            .grid-cols-2 {
+                grid-cols-1;
+            }
         }
     </style>
 </head>
@@ -1416,7 +1498,7 @@
                                     <p class="text-gray-400">Tarik USDT dan BOSSX dari wallet Anda dengan aman dan cepat</p>
                                 </div>
                                 <div class="crypto-icon-large">
-                                    <i data-lucide="arrow-up-circle" class="text-red-400 w-8 h-8"></i>
+                                    <i data-lucide="arrow-up" class="text-red-400 w-8 h-8"></i>
                                 </div>
                             </div>
                         </div>
@@ -1681,26 +1763,41 @@
                             <h1 class="text-3xl font-bold text-amber-400 mb-6">Team Developer</h1>
                             <p class="text-gray-400 mb-8">Temui tim di balik BossX Crypto Exchange Platform.</p>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <!-- Owner Profile -->
-                                <div class="exchange-card p-6 text-center">
+                                <!-- CEO Profile -->
+                                <div class="exchange-card p-6 text-center relative overflow-hidden">
+                                    <!-- Border Lines White -->
+                                    <div class="border-line-white border-top-white"></div>
+                                    <div class="border-line-white border-right-white"></div>
+                                    <div class="border-line-white border-bottom-white"></div>
+                                    <div class="border-line-white border-left-white"></div>
                                     <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-amber-500">
-                                        <img src="https://via.placeholder.com/150?text=Owner" alt="Owner" class="w-full h-full object-cover">
+                                        <img src="https://i.ibb.co.com/N2RF70Vs/IMG-1097-removebg-preview.png" alt="CEO" class="w-full h-full object-cover">
                                     </div>
                                     <h3 class="text-xl font-bold text-white mb-2">Fery Muliawan</h3>
-                                    <p class="text-amber-400 mb-4">Owner</p>
+                                    <p class="text-amber-400 mb-4">CEO (Chief Executive Officer)</p>
                                     <p class="text-gray-300">Pendiri dan visioner BossX, dengan pengalaman 10 tahun di industri crypto.</p>
                                 </div>
-                                <!-- Director Profile -->
-                                <div class="exchange-card p-6 text-center">
+                                <!-- CFO Profile -->
+                                <div class="exchange-card p-6 text-center relative overflow-hidden">
+                                    <!-- Border Lines White -->
+                                    <div class="border-line-white border-top-white"></div>
+                                    <div class="border-line-white border-right-white"></div>
+                                    <div class="border-line-white border-bottom-white"></div>
+                                    <div class="border-line-white border-left-white"></div>
                                     <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-amber-500">
-                                        <img src="https://via.placeholder.com/150?text=Director" alt="Director" class="w-full h-full object-cover">
+                                        <img src="https://i.ibb.co.com/xKDSrKYw/Picsart-25-10-03-12-44-06-927.png" alt="CFO" class="w-full h-full object-cover">
                                     </div>
-                                    <h3 class="text-xl font-bold text-white mb-2">apa yang bagus</h3>
-                                    <p class="text-amber-400 mb-4">Director</p>
+                                    <h3 class="text-xl font-bold text-white mb-2">Mr.Ramadhan S.E</h3>
+                                    <p class="text-amber-400 mb-4">CFO Chief Financial Officer</p>
                                     <p class="text-gray-300">Mengawasi operasi harian dan strategi bisnis platform.</p>
                                 </div>
                                 <!-- Manager Profile -->
-                                <div class="exchange-card p-6 text-center">
+                                <div class="exchange-card p-6 text-center relative overflow-hidden">
+                                    <!-- Border Lines White -->
+                                    <div class="border-line-white border-top-white"></div>
+                                    <div class="border-line-white border-right-white"></div>
+                                    <div class="border-line-white border-bottom-white"></div>
+                                    <div class="border-line-white border-left-white"></div>
                                     <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-amber-500">
                                         <img src="https://via.placeholder.com/150?text=Manager" alt="Manager" class="w-full h-full object-cover">
                                     </div>
@@ -1708,17 +1805,27 @@
                                     <p class="text-amber-400 mb-4">Manager</p>
                                     <p class="text-gray-300">Mengatur tim operasional dan memastikan kelancaran platform.</p>
                                 </div>
-                                <!-- IT Profile -->
-                                <div class="exchange-card p-6 text-center">
+                                <!-- CTO Profile -->
+                                <div class="exchange-card p-6 text-center relative overflow-hidden">
+                                    <!-- Border Lines White -->
+                                    <div class="border-line-white border-top-white"></div>
+                                    <div class="border-line-white border-right-white"></div>
+                                    <div class="border-line-white border-bottom-white"></div>
+                                    <div class="border-line-white border-left-white"></div>
                                     <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-amber-500">
-                                        <img src="https://via.placeholder.com/150?text=IT" alt="IT" class="w-full h-full object-cover">
+                                        <img src="https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg" alt="CIO" class="w-full h-full object-cover">
                                     </div>
-                                    <h3 class="text-xl font-bold text-white mb-2">Sarah Lee</h3>
-                                    <p class="text-amber-400 mb-4">IT Specialist</p>
+                                    <h3 class="text-xl font-bold text-white mb-2">Lee</h3>
+                                    <p class="text-amber-400 mb-4">CTO (Chief Technology Officer)</p>
                                     <p class="text-gray-300">Bertanggung jawab atas infrastruktur teknis dan keamanan sistem.</p>
                                 </div>
                                 <!-- Secretary Profile -->
-                                <div class="exchange-card p-6 text-center">
+                                <div class="exchange-card p-6 text-center relative overflow-hidden">
+                                    <!-- Border Lines White -->
+                                    <div class="border-line-white border-top-white"></div>
+                                    <div class="border-line-white border-right-white"></div>
+                                    <div class="border-line-white border-bottom-white"></div>
+                                    <div class="border-line-white border-left-white"></div>
                                     <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-amber-500">
                                         <img src="https://via.placeholder.com/150?text=Secretary" alt="Secretary" class="w-full h-full object-cover">
                                     </div>
@@ -1834,29 +1941,18 @@
                             </h1>
                             <p class="text-gray-400 mb-4">Trade cryptocurrency with Binance-like interface and real data.</p>
                         </div>
-                        <!-- Saldo Akun (Top Left, compact) -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                            <div class="exchange-card p-4">
-                                <p class="text-gray-400 text-sm">BossX Balance</p>
-                                <p id="exchange-bossx-balance" class="text-xl font-bold text-white">1000 BossX</p>
-                            </div>
-                            <div class="exchange-card p-4">
-                                <p class="text-gray-400 text-sm">USDT Balance</p>
-                                <p id="exchange-usdt-balance" class="text-xl font-bold text-white">1000 USDT</p>
-                            </div>
-                        </div>
                         <!-- Pair Selector and Market Data (Binance-style top bar) -->
                         <div class="exchange-card p-4 mb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                             <div>
                                 <h2 class="text-lg font-bold text-white mb-2">Trading Pairs</h2>
-                                <div class="flex flex-row gap-2 overflow-x-auto">
+                                <div class="flex flex-row flex-wrap gap-2 overflow-x-auto">
                                     <button class="pair-button active" data-pair="BossX/USDT">BossX/USDT</button>
                                     <button class="pair-button" data-pair="BTC/USDT">BTC/USDT</button>
                                     <button class="pair-button" data-pair="ETH/USDT">ETH/USDT</button>
                                     <button class="pair-button" data-pair="SOL/USDT">SOL/USDT</button>
                                 </div>
                             </div>
-                            <div class="market-data grid grid-cols-2 md:grid-cols-4 gap-4 w-full md:w-auto">
+                            <div class="market-data w-full md:w-auto">
                                 <div>
                                     <p class="text-gray-400 text-sm">Price</p>
                                     <p id="current-price" class="text-lg font-bold text-white">$0.00</p>
@@ -1878,7 +1974,7 @@
                         <!-- Main Trading Area (Binance-like Grid) -->
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4" style="height: 90vh;">
                             <!-- Center: Large Chart -->
-                            <div class="exchange-card p-4 col-span-1 lg:col-span-2">
+                            <div class="exchange-card p-4 col-span-3">
                                 <h2 class="text-lg font-bold text-white mb-4 flex items-center">
                                     <i data-lucide="trending-up" class="w-5 h-5 mr-2 text-amber-400"></i>
                                     Price Chart
@@ -1887,14 +1983,13 @@
                                     <div id="tradingview-chart" class="h-full w-full"></div>
                                 </div>
                             </div>
-                            <!-- Right: Order Book + Trade Form -->
-                            <div class="exchange-card p-4 col-span-1">
+                            <!-- Order Book Buy (Left below chart) -->
+                            <div class="exchange-card p-4 col-span-1 lg:col-span-1.5">
                                 <h2 class="text-lg font-bold text-white mb-4 flex items-center">
                                     <i data-lucide="book-open" class="w-5 h-5 mr-2 text-amber-400"></i>
-                                    Order Book
+                                    Buy Orders
                                 </h2>
-                                <div class="order-book-section h-64 overflow-y-auto mb-4">
-                                    <h3>Sell Orders</h3>
+                                <div class="order-book-section mb-4">
                                     <table class="w-full order-book">
                                         <thead>
                                             <tr>
@@ -1903,31 +1998,66 @@
                                                 <th>Total</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="sell-orders" class="sell-order"></tbody>
-                                    </table>
-                                    <div id="spread">Spread: Loading...</div>
-                                    <h3>Buy Orders</h3>
-                                    <table class="w-full order-book">
-                                        <thead>
-                                            <tr>
-                                                <th>Price(USDT)</th>
-                                                <th>Amount</th>
-                                                <th>Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="buy-orders" class="buy-order"></tbody>
+                                        <tbody id="buy-orders" class="buy-order">
+                                            <tr class="skeleton-loading"><td colspan="3" class="h-4 bg-gray-700 rounded"></td></tr>
+                                            <tr class="skeleton-loading"><td colspan="3" class="h-4 bg-gray-700 rounded"></td></tr>
+                                        </tbody>
                                     </table>
                                 </div>
+                            </div>
+                            <!-- Order Book Sell (Right below chart) -->
+                            <div class="exchange-card p-4 col-span-1 lg:col-span-1.5">
+                                <h2 class="text-lg font-bold text-white mb-4 flex items-center">
+                                    <i data-lucide="book-open" class="w-5 h-5 mr-2 text-amber-400"></i>
+                                    Sell Orders
+                                </h2>
+                                <div class="order-book-section mb-4">
+                                    <table class="w-full order-book">
+                                        <thead>
+                                            <tr>
+                                                <th>Price(USDT)</th>
+                                                <th>Amount</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="sell-orders" class="sell-order">
+                                            <tr class="skeleton-loading"><td colspan="3" class="h-4 bg-gray-700 rounded"></td></tr>
+                                            <tr class="skeleton-loading"><td colspan="3" class="h-4 bg-gray-700 rounded"></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="spread">Spread: Loading...</div>
+                            </div>
+                            <!-- Trade Section -->
+                            <div class="exchange-card p-4 col-span-3">
                                 <h2 class="text-lg font-bold text-white mb-4 flex items-center">
                                     <i data-lucide="shopping-cart" class="w-5 h-5 mr-2 text-amber-400"></i>
-                                    Trade (Demo)
+                                    Trade
                                 </h2>
-                                <div class="space-y-4">
-                                    <input id="trade-amount" type="number" placeholder="Amount" class="node-input" min="0" step="0.01" />
-                                    <input id="trade-price" type="number" placeholder="Price (Limit)" class="node-input" min="0" step="0.01" disabled />
-                                    <div class="flex space-x-4">
-                                        <button class="trade-button buy node-button flex-1" onclick="demoTrade('buy')">Buy</button>
-                                        <button class="trade-button sell node-button flex-1" onclick="demoTrade('sell')">Sell</button>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <!-- Buy Trade -->
+                                    <div class="space-y-4">
+                                        <select id="buy-order-type" class="node-input">
+                                            <option value="limit">Limit</option>
+                                            <option value="market">Market</option>
+                                        </select>
+                                        <input id="buy-amount" type="number" placeholder="Amount" class="node-input" min="0" step="0.01" />
+                                        <input id="buy-price" type="number" placeholder="Price (Limit)" class="node-input" min="0" step="0.01" />
+                                        <p class="text-sm text-gray-400">AVBL: <span id="buy-avbl">1000 USDT</span></p>
+                                        <p class="text-sm text-gray-400">Estimasi fee: 0.1 BossX</p>
+                                        <button class="trade-button buy node-button w-full" onclick="demoTrade('buy')">Buy</button>
+                                    </div>
+                                    <!-- Sell Trade -->
+                                    <div class="space-y-4">
+                                        <select id="sell-order-type" class="node-input">
+                                            <option value="limit">Limit</option>
+                                            <option value="market">Market</option>
+                                        </select>
+                                        <input id="sell-amount" type="number" placeholder="Amount" class="node-input" min="0" step="0.01" />
+                                        <input id="sell-price" type="number" placeholder="Price (Limit)" class="node-input" min="0" step="0.01" />
+                                        <p class="text-sm text-gray-400">AVBL: <span id="sell-avbl">1000 BossX</span></p>
+                                        <p class="text-sm text-gray-400">Estimasi fee: 0.1 BossX</p>
+                                        <button class="trade-button sell node-button w-full" onclick="demoTrade('sell')">Sell</button>
                                     </div>
                                 </div>
                             </div>
@@ -2147,7 +2277,7 @@
         // Function appendLog dengan warna dan variasi
         function appendLog(message) {
             const logOutput = document.getElementById('log-output');
-           
+          
             // Tambah variasi random
             if (message.includes('GPU#0')) {
                 const randomTemp = Math.floor(Math.random() * 15) + 65; // 65-79°C
@@ -2161,10 +2291,10 @@
                 const randomPower = Math.floor(Math.random() * 200) + 3200; // 3200-3400W
                 message = message.replace(/3416/, randomPower);
             }
-           
+          
             // Tambah timestamp real-time
             const fullMessage = `${getTimestamp()} ${message}`;
-           
+          
             // Buat element p baru dengan class warna
             const logEntry = document.createElement('p');
             logEntry.classList.add('log-entry');
@@ -2172,15 +2302,15 @@
                 logEntry.classList.add('auto-claim'); // Warna emas
             }
             logEntry.textContent = fullMessage;
-           
+          
             // Tambah ke output
             logOutput.appendChild(logEntry);
-           
+          
             // Batasi 50 entry terakhir (hapus yang lama jika >50)
             while (logOutput.children.length > 50) {
                 logOutput.removeChild(logOutput.firstChild);
             }
-           
+          
             // Auto scroll
             logOutput.scrollTop = logOutput.scrollHeight;
         }
@@ -2269,7 +2399,7 @@
             setTimeout(() => appendLog('[INFO] Connecting to master pool BossXPool.com:4444...'), Math.random() * 2000 + 3000); // 3-5 detik
             setTimeout(() => appendLog('[STATUS] Network sync: 100%'), Math.random() * 2000 + 5000); // 5-7 detik
             setTimeout(() => appendLog('[INFO] GPU#0: 48.3 MH/s | Temp: 68°C | Fan: 82%'), Math.random() * 2000 + 7000); // 7-9 detik
-           
+          
             // Periodic log dengan selisih detik random (1-5 detik per log baru)
             function addRandomLog() {
                 if (!isValidationRunning) return;
@@ -2279,7 +2409,7 @@
                 logInterval = setTimeout(addRandomLog, Math.floor(Math.random() * 4000) + 1000);
             }
             addRandomLog(); // Mulai loop
-           
+          
             showSuccessMessage('Validasi dimulai! Reward mengalir per detik.');
         }
         function stopValidationRunning() {
@@ -2299,7 +2429,7 @@
             // Hitung fixed reward untuk tepat 60 detik (abaikan delta ekstra jika ada delay)
             const rewardPerSecond = stakedAmount * 0.000000038580246913580247;
             const fixedReward = rewardPerSecond * 60; // Selalu fixed ini
-           
+          
             totalRewardBalance += fixedReward;
             shareCounter++;
             // Tampilkan notifikasi
@@ -2329,9 +2459,7 @@
             document.getElementById('validation-balance').textContent = currentValidationReward.toFixed(9) + ' BossX';
             document.getElementById('reward-balance').textContent = totalRewardBalance.toFixed(9) + ' BossX';
             document.getElementById('usdt-balance').textContent = usdtBalance.toFixed(2) + ' USDT';
-            // Update exchange balances
-            document.getElementById('exchange-bossx-balance').textContent = bossxBalance.toFixed(9) + ' BossX';
-            document.getElementById('exchange-usdt-balance').textContent = usdtBalance.toFixed(2) + ' USDT';
+            if (currentPage === 'exchange') updateAvbl();
         }
         function togglePower() {
             if (!isNodeActive) {
@@ -3031,10 +3159,10 @@
                     document.querySelectorAll('.pair-button').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     const pair = btn.dataset.pair;
-                    const symbol = pair === 'BossX/USDT' ? 'BTCUSDT' : pair.replace('/', '');
+                    const symbol = pair.replace('/', '');
                     currentSymbol = symbol;
                     loadChart(symbol);
-                    loadMarketData(pair);
+                    debouncedLoadMarketData(pair);
                     loadOrderBook(symbol);
                     loadRecentTrades(symbol);
                 });
@@ -3045,7 +3173,7 @@
             document.querySelector(`[data-pair="${defaultPair}"]`).classList.add('active');
             currentSymbol = defaultSymbol;
             loadChart(defaultSymbol);
-            loadMarketData(defaultPair);
+            debouncedLoadMarketData(defaultPair);
             loadOrderBook(defaultSymbol);
             loadRecentTrades(defaultSymbol);
             updateBalanceDisplays(); // Ensure balances are shown
@@ -3068,12 +3196,15 @@
                 "container_id": "tradingview-chart"
             });
         }
+        function debounce(func, delay) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), delay);
+            };
+        }
+        const debouncedLoadMarketData = debounce(loadMarketData, 300);
         function loadMarketData(pair) {
-            if (pair === 'BossX/USDT') {
-                // Dummy data for BossX
-                updateMarketData(0.001, '+5.2%', 1000000, '0.0012 / 0.0009');
-                return;
-            }
             const symbol = pair.replace('/', '');
             fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${symbol}`)
                 .then(response => response.json())
@@ -3089,11 +3220,13 @@
                     // Update color class
                     const priceChangeEl = document.getElementById('price-change');
                     priceChangeEl.className = `text-xl font-bold ${changeColor}`;
+                    localStorage.setItem('marketData', JSON.stringify(data)); // Cache
                 })
                 .catch(err => {
                     console.error('Error fetching market data:', err);
-                    // Fallback dummy data
-                    updateMarketData(0, '+0.00%', 0, '$0.00 / $0.00');
+                    const cachedData = JSON.parse(localStorage.getItem('marketData')) || {};
+                    updateMarketData(cachedData.lastPrice || 0, cachedData.priceChangePercent || '+0.00%', cachedData.quoteVolume || 0, `${cachedData.highPrice || 0} / ${cachedData.lowPrice || 0}`);
+                    showErrorMessage('Gagal load data market. Menggunakan data cache.');
                 });
         }
         function updateMarketData(price, change, volume, highlow) {
@@ -3105,21 +3238,16 @@
         // Order Book Functions
         function loadOrderBook(symbol) {
             if (ws) ws.close();
-            if (symbol === 'BTCUSDT') { // Dummy for BossX, use BTC for others
-                ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@depth@100ms`);
-                ws.onmessage = function(event) {
-                    const data = JSON.parse(event.data);
-                    updateOrderBook(data);
-                };
-                ws.onerror = function(error) {
-                    console.error('WebSocket error:', error);
-                    // Fallback to REST
-                    fetchOrderBook(symbol);
-                };
-            } else {
-                // For BossX, use dummy
-                generateDummyOrderBook();
-            }
+            ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@depth@100ms`);
+            ws.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                updateOrderBook(data);
+            };
+            ws.onerror = function(error) {
+                console.error('WebSocket error:', error);
+                showErrorMessage('Koneksi data real-time gagal. Menggunakan data cache.');
+                fetchOrderBook(symbol);
+            };
         }
         function fetchOrderBook(symbol) {
             fetch(`https://api.binance.com/api/v3/depth?symbol=${symbol}&limit=50`)
@@ -3132,88 +3260,60 @@
         let asks = []; // For spread calculation
         let bids = []; // For spread calculation
         function updateOrderBook(data) {
-            // Update global asks and bids for spread
-            asks = data.a || data.asks;
-            bids = data.b || data.bids;
-            // Enhanced with depth bars
-            const maxVolume = Math.max(...asks.map(a => parseFloat(a[1])), ...bids.map(b => parseFloat(b[1])));
-            // Sells (asks) on top, highest price first (reverse asks since they are low to high)
-            const sellOrders = document.getElementById('sell-orders');
-            sellOrders.innerHTML = '';
-            asks.slice(0, 20).reverse().forEach(ask => {
-                const price = parseFloat(ask[0]).toFixed(2);
-                const amount = parseFloat(ask[1]).toFixed(6);
-                const total = (parseFloat(ask[0]) * parseFloat(ask[1])).toFixed(2);
-                const width = (parseFloat(ask[1]) / maxVolume * 100) + '%';
-                const row = document.createElement('tr');
-                row.className = 'relative';
-                row.innerHTML = `
-                    <td class="sell-order">${price}</td>
-                    <td>${amount}</td>
-                    <td>${total}</td>
-                    <div class="depth-bar sell-depth" style="width: ${width};"></div>
-                `;
-                sellOrders.appendChild(row);
+            requestAnimationFrame(() => {
+                // Update global asks and bids for spread
+                asks = data.a || data.asks;
+                bids = data.b || data.bids;
+                // Clear skeleton
+                document.getElementById('buy-orders').innerHTML = '';
+                document.getElementById('sell-orders').innerHTML = '';
+                // Enhanced with depth bars
+                const maxVolume = Math.max(...asks.map(a => parseFloat(a[1])), ...bids.map(b => parseFloat(b[1])));
+                // Sells (asks) on top, highest price first (reverse asks since they are low to high)
+                const sellOrders = document.getElementById('sell-orders');
+                asks.slice(0, 20).reverse().forEach(ask => {
+                    const price = parseFloat(ask[0]).toFixed(2);
+                    const amount = parseFloat(ask[1]).toFixed(6);
+                    const total = (parseFloat(ask[0]) * parseFloat(ask[1])).toFixed(2);
+                    const width = (parseFloat(ask[1]) / maxVolume * 100) + '%';
+                    const row = document.createElement('tr');
+                    row.className = 'relative';
+                    row.innerHTML = `
+                        <td class="sell-order">${price}</td>
+                        <td>${amount}</td>
+                        <td>${total}</td>
+                        <div class="depth-bar sell-depth" style="width: ${width};"></div>
+                    `;
+                    sellOrders.appendChild(row);
+                });
+                // Buys (bids) below, highest first (bids are high to low)
+                const buyOrders = document.getElementById('buy-orders');
+                bids.slice(0, 20).forEach(bid => {
+                    const price = parseFloat(bid[0]).toFixed(2);
+                    const amount = parseFloat(bid[1]).toFixed(6);
+                    const total = (parseFloat(bid[0]) * parseFloat(bid[1])).toFixed(2);
+                    const width = (parseFloat(bid[1]) / maxVolume * 100) + '%';
+                    const row = document.createElement('tr');
+                    row.className = 'relative';
+                    row.innerHTML = `
+                        <td class="buy-order">${price}</td>
+                        <td>${amount}</td>
+                        <td>${total}</td>
+                        <div class="depth-bar buy-depth" style="width: ${width};"></div>
+                    `;
+                    buyOrders.appendChild(row);
+                });
+                // Update spread
+                if (asks.length > 0 && bids.length > 0) {
+                    const bestBid = parseFloat(bids[0][0]);
+                    const bestAsk = parseFloat(asks[0][0]);
+                    const spreadValue = (bestAsk - bestBid).toFixed(2);
+                    const spreadPercent = ((bestAsk - bestBid) / bestBid * 100).toFixed(2);
+                    document.getElementById('spread').textContent = `Spread: ${spreadValue} (${spreadPercent}%)`;
+                } else {
+                    document.getElementById('spread').textContent = 'Spread: Loading...';
+                }
             });
-            // Buys (bids) below, highest first (bids are high to low)
-            const buyOrders = document.getElementById('buy-orders');
-            buyOrders.innerHTML = '';
-            bids.slice(0, 20).forEach(bid => {
-                const price = parseFloat(bid[0]).toFixed(2);
-                const amount = parseFloat(bid[1]).toFixed(6);
-                const total = (parseFloat(bid[0]) * parseFloat(bid[1])).toFixed(2);
-                const width = (parseFloat(bid[1]) / maxVolume * 100) + '%';
-                const row = document.createElement('tr');
-                row.className = 'relative';
-                row.innerHTML = `
-                    <td class="buy-order">${price}</td>
-                    <td>${amount}</td>
-                    <td>${total}</td>
-                    <div class="depth-bar buy-depth" style="width: ${width};"></div>
-                `;
-                buyOrders.appendChild(row);
-            });
-            // Update spread
-            if (asks.length > 0 && bids.length > 0) {
-                const bestBid = parseFloat(bids[0][0]);
-                const bestAsk = parseFloat(asks[0][0]);
-                const spreadValue = (bestAsk - bestBid).toFixed(2);
-                const spreadPercent = ((bestAsk - bestBid) / bestBid * 100).toFixed(2);
-                document.getElementById('spread').textContent = `Spread: ${spreadValue} (${spreadPercent}%)`;
-            } else {
-                document.getElementById('spread').textContent = 'Spread: Loading...';
-            }
-        }
-        function generateDummyOrderBook() {
-            const sellOrders = document.getElementById('sell-orders');
-            sellOrders.innerHTML = '';
-            for (let i = 0; i < 20; i++) {
-                const price = (0.001 + i * 0.00001).toFixed(6);
-                const amount = (Math.random() * 100 + 1).toFixed(4);
-                const total = (parseFloat(price) * parseFloat(amount)).toFixed(6);
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="sell-order">${price}</td>
-                    <td>${amount}</td>
-                    <td>${total}</td>
-                `;
-                sellOrders.appendChild(row);
-            }
-            const buyOrders = document.getElementById('buy-orders');
-            buyOrders.innerHTML = '';
-            for (let i = 0; i < 20; i++) {
-                const price = (0.001 - i * 0.00001).toFixed(6);
-                const amount = (Math.random() * 100 + 1).toFixed(4);
-                const total = (parseFloat(price) * parseFloat(amount)).toFixed(6);
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="buy-order">${price}</td>
-                    <td>${amount}</td>
-                    <td>${total}</td>
-                `;
-                buyOrders.appendChild(row);
-            }
-            document.getElementById('spread').textContent = 'Spread: 0.00001 (1.00%)'; // Dummy spread
         }
         function loadRecentTrades(symbol) {
             const wsTrades = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@trade`);
@@ -3237,6 +3337,25 @@
         function demoTrade(type) {
             showSuccessMessage(`${type.toUpperCase()} order demo berhasil! (Tidak ada transaksi nyata)`);
         }
+        // Tambahkan logic untuk order type
+        document.addEventListener('change', function(e) {
+            if (e.target.id === 'buy-order-type') {
+                const priceInput = document.getElementById('buy-price');
+                priceInput.style.display = e.target.value === 'market' ? 'none' : 'block';
+                priceInput.title = e.target.value === 'market' ? 'Harga otomatis untuk market order' : '';
+            }
+            if (e.target.id === 'sell-order-type') {
+                const priceInput = document.getElementById('sell-price');
+                priceInput.style.display = e.target.value === 'market' ? 'none' : 'block';
+                priceInput.title = e.target.value === 'market' ? 'Harga otomatis untuk market order' : '';
+            }
+        });
+        // Update AVBL
+        function updateAvbl() {
+            document.getElementById('buy-avbl').textContent = usdtBalance.toFixed(2) + ' USDT';
+            document.getElementById('sell-avbl').textContent = bossxBalance.toFixed(9) + ' BossX';
+        }
+        updateAvbl();
         // Event Listeners
         document.addEventListener('DOMContentLoaded', function() {
             // Sidebar toggle
@@ -3508,14 +3627,14 @@
                                                         card.stats
                                                     )
                                                 ),
-                                               
+                                              
                                                 h('h3', { className: `text-xl font-bold ${card.textColor} mb-2 group-hover:text-white transition-colors duration-300` },
                                                     card.title
                                                 ),
                                                 h('p', { className: "text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300" },
                                                     card.description
                                                 ),
-                                               
+                                              
                                                 // Hover Effect Gradient
                                                 h('div', { className: `absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${card.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500` })
                                             )
@@ -3536,7 +3655,7 @@
                                         )
                                     )
                                 ),
-                               
+                              
                                 h('div', { className: "bg-gray-900/50 border border-gray-700 backdrop-blur-sm rounded-lg p-6" },
                                     h('div', { className: "flex items-center gap-4" },
                                         h('div', { className: "p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl" },
