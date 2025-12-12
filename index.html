@@ -1146,7 +1146,20 @@
                     <div id="marketplace-page" class="page-content">
                         <div class="p-6">
                             <h1 class="text-2xl font-bold text-amber-400 mb-4">Marketplace</h1>
-                            <p class="text-gray-400">Fitur Marketplace akan segera hadir... (Placeholder untuk content marketplace, seperti listing produk crypto-related atau NFT)</p>
+                            <p class="text-gray-400 mb-6">Selamat datang di Marketplace BossX. Di sini Anda bisa beli produk terkait crypto.</p>
+                            <!-- Card Produk -->
+                            <div class="exchange-card p-6 text-center relative overflow-hidden">
+                                <!-- Border Lines White -->
+                                <div class="border-line-white border-top-white"></div>
+                                <div class="border-line-white border-right-white"></div>
+                                <div class="border-line-white border-bottom-white"></div>
+                                <div class="border-line-white border-left-white"></div>
+                                <img src="https://i.ibb.co/SDCrZzJs/SDCrZzJs.jpg" alt="Produk Marketplace" class="w-full h-64 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-bold text-white mb-2">Nama Produk</h3>
+                                <p class="text-gray-300">Spesifikasi: Prosesor Intel Core i7, RAM 16GB, SSD 512GB, Layar 15.6 inch, dll. (Edit sesuai spesifikasi lengkap).</p>
+                                <p class="text-amber-400 font-bold mt-2">Harga: 0.5 BossX</p>
+                                <button class="node-button mt-4">Beli Sekarang</button>
+                            </div>
                         </div>
                     </div>
                     <!-- Dashboard Page -->
@@ -2162,7 +2175,7 @@
                     timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 hours ago
                     confirmationCount: 1
                 },
-                                {
+                {
                     id: '5',
                     amount: 500.0,
                     txHash: 'e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4',
@@ -2182,7 +2195,7 @@
                 }
             ]
         };
-        const withdrawalHistory = {
+                const withdrawalHistory = {
             USDT: [],
             BOSSX: []
         };
@@ -3892,4 +3905,3 @@
     </script>
 </body>
 </html>
-                   
