@@ -1037,6 +1037,10 @@
             </div>
             <!-- Navigation Menu -->
             <nav class="mt-4 px-2">
+                <a href="#" class="menu-item flex items-center px-2 py-2 mb-2 rounded-xl text-gray-400" data-page="marketplace">
+                    <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                    <span class="ml-2 font-medium menu-text text-sm">Marketplace</span>
+                </a>
                 <a href="#" class="menu-item active flex items-center px-2 py-2 mb-2 rounded-xl" data-page="dashboard">
                     <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
                     <span class="ml-2 font-medium menu-text text-sm">Dashboard</span>
@@ -1138,6 +1142,13 @@
             <!-- Main Content Area -->
             <main class="flex-1 overflow-auto">
                 <div id="content" class="content-container space-y-4">
+                    <!-- Marketplace Page (New) -->
+                    <div id="marketplace-page" class="page-content">
+                        <div class="p-6">
+                            <h1 class="text-2xl font-bold text-amber-400 mb-4">Marketplace</h1>
+                            <p class="text-gray-400">Fitur Marketplace akan segera hadir... (Placeholder untuk content marketplace, seperti listing produk crypto-related atau NFT)</p>
+                        </div>
+                    </div>
                     <!-- Dashboard Page -->
                     <div id="dashboard-page" class="page-content active">
                         <!-- Running Text / Ticker -->
@@ -2151,7 +2162,7 @@
                     timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 hours ago
                     confirmationCount: 1
                 },
-                {
+                                {
                     id: '5',
                     amount: 500.0,
                     txHash: 'e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4',
@@ -2243,6 +2254,8 @@
                 setTimeout(() => initializeChatRoom(), 100);
             } else if (pageId === 'team-developer') {
                 // No additional init needed
+            } else if (pageId === 'marketplace') {
+                // No additional init needed for marketplace
             }
             if (pageId !== 'exchange') {
                 // Close WebSocket if leaving exchange page
@@ -2277,7 +2290,7 @@
         // Function appendLog dengan warna dan variasi
         function appendLog(message) {
             const logOutput = document.getElementById('log-output');
-          
+         
             // Tambah variasi random
             if (message.includes('GPU#0')) {
                 const randomTemp = Math.floor(Math.random() * 15) + 65; // 65-79°C
@@ -2291,10 +2304,10 @@
                 const randomPower = Math.floor(Math.random() * 200) + 3200; // 3200-3400W
                 message = message.replace(/3416/, randomPower);
             }
-          
+         
             // Tambah timestamp real-time
             const fullMessage = `${getTimestamp()} ${message}`;
-          
+         
             // Buat element p baru dengan class warna
             const logEntry = document.createElement('p');
             logEntry.classList.add('log-entry');
@@ -2302,15 +2315,15 @@
                 logEntry.classList.add('auto-claim'); // Warna emas
             }
             logEntry.textContent = fullMessage;
-          
+         
             // Tambah ke output
             logOutput.appendChild(logEntry);
-          
+         
             // Batasi 50 entry terakhir (hapus yang lama jika >50)
             while (logOutput.children.length > 50) {
                 logOutput.removeChild(logOutput.firstChild);
             }
-          
+         
             // Auto scroll
             logOutput.scrollTop = logOutput.scrollHeight;
         }
@@ -2399,7 +2412,7 @@
             setTimeout(() => appendLog('[INFO] Connecting to master pool BossXPool.com:4444...'), Math.random() * 2000 + 3000); // 3-5 detik
             setTimeout(() => appendLog('[STATUS] Network sync: 100%'), Math.random() * 2000 + 5000); // 5-7 detik
             setTimeout(() => appendLog('[INFO] GPU#0: 48.3 MH/s | Temp: 68°C | Fan: 82%'), Math.random() * 2000 + 7000); // 7-9 detik
-          
+         
             // Periodic log dengan selisih detik random (1-5 detik per log baru)
             function addRandomLog() {
                 if (!isValidationRunning) return;
@@ -2409,7 +2422,7 @@
                 logInterval = setTimeout(addRandomLog, Math.floor(Math.random() * 4000) + 1000);
             }
             addRandomLog(); // Mulai loop
-          
+         
             showSuccessMessage('Validasi dimulai! Reward mengalir per detik.');
         }
         function stopValidationRunning() {
@@ -2429,7 +2442,7 @@
             // Hitung fixed reward untuk tepat 60 detik (abaikan delta ekstra jika ada delay)
             const rewardPerSecond = stakedAmount * 0.000000038580246913580247;
             const fixedReward = rewardPerSecond * 60; // Selalu fixed ini
-          
+         
             totalRewardBalance += fixedReward;
             shareCounter++;
             // Tampilkan notifikasi
@@ -3627,14 +3640,14 @@
                                                         card.stats
                                                     )
                                                 ),
-                                              
+                                             
                                                 h('h3', { className: `text-xl font-bold ${card.textColor} mb-2 group-hover:text-white transition-colors duration-300` },
                                                     card.title
                                                 ),
                                                 h('p', { className: "text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300" },
                                                     card.description
                                                 ),
-                                              
+                                             
                                                 // Hover Effect Gradient
                                                 h('div', { className: `absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${card.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500` })
                                             )
@@ -3655,7 +3668,7 @@
                                         )
                                     )
                                 ),
-                              
+                             
                                 h('div', { className: "bg-gray-900/50 border border-gray-700 backdrop-blur-sm rounded-lg p-6" },
                                     h('div', { className: "flex items-center gap-4" },
                                         h('div', { className: "p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl" },
@@ -3879,3 +3892,4 @@
     </script>
 </body>
 </html>
+                   
