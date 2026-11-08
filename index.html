@@ -128,8 +128,14 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .content-container { max-width: 100%; padding: 1rem; }
 .countdown-timer { font-family: 'Courier New', monospace; font-size: 1.1rem; font-weight: bold; color: #00FFC8; text-shadow: 0 0 15px rgba(0, 255, 200, 0.8), 0 0 25px rgba(0, 255, 200, 0.5); }
 .auto-claim-timer { font-family: 'Courier New', monospace; font-size: 1rem; font-weight: bold; color: #00E5FF; text-shadow: 0 0 15px rgba(0, 229, 255, 0.8), 0 0 25px rgba(0, 229, 255, 0.5); }
+@keyframes glowingBorder { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+.glowing-border::before { content: ''; position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px; background: linear-gradient(45deg, #00E5FF, #E0FFFF, #7DF9FF, #00E5FF); background-size: 300% 300%; z-index: -1; border-radius: 26px; opacity: 0.8; filter: blur(2px); animation: glowingBorder 6s linear infinite; box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); pointer-events: none; }
 @keyframes messageIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
 .message-animate { animation: messageIn 0.4s ease-out forwards; }
+.custom-scroll::-webkit-scrollbar { width: 6px; }
+.custom-scroll::-webkit-scrollbar-track { background: transparent; }
+.custom-scroll::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #00E5FF, #00B8D4); border-radius: 3px; box-shadow: 0 0 5px rgba(0, 229, 255, 0.5); }
+.custom-scroll::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #00F5FF, #00E5FF); }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 .live-indicator { animation: blink 1.5s infinite; box-shadow: 0 0 10px currentColor; }
 .log-entry { color: #00FFC8; text-shadow: 0 0 5px rgba(0, 255, 200, 0.5); }
@@ -185,6 +191,7 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .ice-glow { box-shadow: 0 0 20px rgba(0, 229, 255, 0.5), 0 0 40px rgba(0, 229, 255, 0.3), inset 0 0 15px rgba(224, 255, 255, 0.1); }
 .validation-card { display: flex; flex-direction: column; justify-content: space-between; }
 .validation-bottom-section { margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(0, 229, 255, 0.15); }
+
 /* ============================================ */
 /* BOSSX AI AGENT - FLOATING CHATBOT STYLES     */
 /* ============================================ */
@@ -247,376 +254,377 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .bossx-ai-clear-btn { background: rgba(255, 0, 110, 0.15); color: #FF006E; border: 1px solid rgba(255, 0, 110, 0.4); }
 .bossx-ai-clear-btn:hover { background: rgba(255, 0, 110, 0.25); box-shadow: 0 0 12px rgba(255, 0, 110, 0.4); }
 @media (max-width: 480px) { .bossx-ai-window { width: calc(100vw - 24px); right: 12px; bottom: 90px; height: calc(100vh - 120px); } .bossx-ai-fab { bottom: 16px; right: 16px; width: 56px; height: 56px; } }
+
 /* ============================================ */
 /* SOCIALFI STYLES (Modul Terpisah - Prefix sfi) */
 /* ============================================ */
 .sfi-subscribe-card {
-background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
-border: 2px solid rgba(0, 229, 255, 0.4);
-border-radius: 1rem;
-padding: 2rem;
-text-align: center;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.3);
+  background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
+  border: 2px solid rgba(0, 229, 255, 0.4);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.3);
 }
 .sfi-subscribe-icon {
-width: 80px;
-height: 80px;
-margin: 0 auto 1rem;
-background: linear-gradient(145deg, #00E5FF, #00B8D4);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2);
-border: 3px solid rgba(224, 255, 255, 0.6);
-animation: fabPulse 3s ease-in-out infinite;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(145deg, #00E5FF, #00B8D4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2);
+  border: 3px solid rgba(224, 255, 255, 0.6);
+  animation: fabPulse 3s ease-in-out infinite;
 }
 .sfi-status-badge {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-padding: 4px 12px;
-border-radius: 12px;
-font-size: 11px;
-font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
 }
 .sfi-status-badge.active {
-background: rgba(0, 255, 200, 0.15);
-color: #00FFC8;
-border: 1px solid rgba(0, 255, 200, 0.4);
-box-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
+  background: rgba(0, 255, 200, 0.15);
+  color: #00FFC8;
+  border: 1px solid rgba(0, 255, 200, 0.4);
+  box-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
 }
 .sfi-status-badge.inactive {
-background: rgba(255, 0, 110, 0.15);
-color: #FF006E;
-border: 1px solid rgba(255, 0, 110, 0.4);
+  background: rgba(255, 0, 110, 0.15);
+  color: #FF006E;
+  border: 1px solid rgba(255, 0, 110, 0.4);
 }
 .sfi-post-card {
-background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
-border: 2px solid rgba(0, 229, 255, 0.3);
-border-radius: 1rem;
-padding: 1.25rem;
-margin-bottom: 1rem;
-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.03);
-transition: all 0.3s ease;
-animation: msgFadeIn 0.4s ease-out;
+  background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
+  border: 2px solid rgba(0, 229, 255, 0.3);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.03);
+  transition: all 0.3s ease;
+  animation: msgFadeIn 0.4s ease-out;
 }
 .sfi-post-card:hover {
-border-color: rgba(0, 229, 255, 0.6);
-box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.3);
+  border-color: rgba(0, 229, 255, 0.6);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.3);
 }
 .sfi-post-header {
-display: flex;
-align-items: center;
-gap: 12px;
-margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 .sfi-post-avatar {
-width: 44px;
-height: 44px;
-border-radius: 50%;
-overflow: hidden;
-border: 2px solid rgba(0, 229, 255, 0.5);
-box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
-flex-shrink: 0;
-background: linear-gradient(145deg, #00E5FF, #00B8D4);
-display: flex;
-align-items: center;
-justify-content: center;
-color: #000814;
-font-weight: bold;
-font-size: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(0, 229, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+  flex-shrink: 0;
+  background: linear-gradient(145deg, #00E5FF, #00B8D4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000814;
+  font-weight: bold;
+  font-size: 16px;
 }
 .sfi-post-avatar img {
-width: 100%;
-height: 100%;
-object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .sfi-post-meta {
-flex: 1;
+  flex: 1;
 }
 .sfi-post-author {
-color: #E0FFFF;
-font-weight: 600;
-font-size: 14px;
-text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+  color: #E0FFFF;
+  font-weight: 600;
+  font-size: 14px;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
 }
 .sfi-post-role {
-color: #7DF9FF;
-font-size: 11px;
-margin-top: 2px;
+  color: #7DF9FF;
+  font-size: 11px;
+  margin-top: 2px;
 }
 .sfi-post-time {
-color: #7DF9FF;
-font-size: 11px;
-opacity: 0.7;
+  color: #7DF9FF;
+  font-size: 11px;
+  opacity: 0.7;
 }
 .sfi-post-content {
-color: #E0FFFF;
-font-size: 14px;
-line-height: 1.6;
-margin-bottom: 12px;
-word-wrap: break-word;
+  color: #E0FFFF;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  word-wrap: break-word;
 }
 .sfi-post-media {
-width: 100%;
-max-height: 400px;
-border-radius: 0.75rem;
-margin-bottom: 12px;
-border: 2px solid rgba(0, 229, 255, 0.3);
-object-fit: cover;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-height: 400px;
+  border-radius: 0.75rem;
+  margin-bottom: 12px;
+  border: 2px solid rgba(0, 229, 255, 0.3);
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 .sfi-post-media-video {
-width: 100%;
-max-height: 400px;
-border-radius: 0.75rem;
-margin-bottom: 12px;
-border: 2px solid rgba(0, 229, 255, 0.3);
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-height: 400px;
+  border-radius: 0.75rem;
+  margin-bottom: 12px;
+  border: 2px solid rgba(0, 229, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 .sfi-post-actions {
-display: flex;
-gap: 12px;
-padding-top: 12px;
-border-top: 1px solid rgba(0, 229, 255, 0.15);
+  display: flex;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 229, 255, 0.15);
 }
 .sfi-action-btn {
-display: flex;
-align-items: center;
-gap: 6px;
-padding: 6px 12px;
-background: rgba(0, 24, 69, 0.6);
-border: 1px solid rgba(0, 229, 255, 0.2);
-border-radius: 20px;
-color: #7DF9FF;
-font-size: 12px;
-cursor: pointer;
-transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(0, 24, 69, 0.6);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 20px;
+  color: #7DF9FF;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 .sfi-action-btn:hover {
-background: rgba(0, 229, 255, 0.15);
-border-color: #00E5FF;
-color: #E0FFFF;
-box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+  background: rgba(0, 229, 255, 0.15);
+  border-color: #00E5FF;
+  color: #E0FFFF;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
 }
 .sfi-action-btn.liked {
-background: rgba(255, 0, 110, 0.15);
-border-color: rgba(255, 0, 110, 0.5);
-color: #FF006E;
-box-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
+  background: rgba(255, 0, 110, 0.15);
+  border-color: rgba(255, 0, 110, 0.5);
+  color: #FF006E;
+  box-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
 }
 .sfi-comments-section {
-margin-top: 12px;
-padding-top: 12px;
-border-top: 1px solid rgba(0, 229, 255, 0.15);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 229, 255, 0.15);
 }
 .sfi-comment {
-display: flex;
-gap: 10px;
-padding: 8px 0;
-animation: msgFadeIn 0.3s ease-out;
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  animation: msgFadeIn 0.3s ease-out;
 }
 .sfi-comment-avatar {
-width: 32px;
-height: 32px;
-border-radius: 50%;
-background: linear-gradient(145deg, #7DF9FF, #00E5FF);
-color: #000814;
-display: flex;
-align-items: center;
-justify-content: center;
-font-weight: bold;
-font-size: 12px;
-flex-shrink: 0;
-border: 1px solid rgba(0, 229, 255, 0.4);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #7DF9FF, #00E5FF);
+  color: #000814;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 229, 255, 0.4);
 }
 .sfi-comment-body {
-flex: 1;
-background: rgba(0, 24, 69, 0.6);
-border: 1px solid rgba(0, 229, 255, 0.2);
-border-radius: 12px;
-padding: 8px 12px;
+  flex: 1;
+  background: rgba(0, 24, 69, 0.6);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 12px;
+  padding: 8px 12px;
 }
 .sfi-comment-author {
-color: #00E5FF;
-font-weight: 600;
-font-size: 12px;
-margin-bottom: 2px;
+  color: #00E5FF;
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 2px;
 }
 .sfi-comment-text {
-color: #E0FFFF;
-font-size: 13px;
-line-height: 1.4;
+  color: #E0FFFF;
+  font-size: 13px;
+  line-height: 1.4;
 }
 .sfi-comment-time {
-color: #7DF9FF;
-font-size: 10px;
-opacity: 0.6;
-margin-top: 4px;
+  color: #7DF9FF;
+  font-size: 10px;
+  opacity: 0.6;
+  margin-top: 4px;
 }
 .sfi-reply-btn {
-background: none;
-border: none;
-color: #7DF9FF;
-font-size: 11px;
-cursor: pointer;
-padding: 2px 6px;
-margin-left: 8px;
+  background: none;
+  border: none;
+  color: #7DF9FF;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 6px;
+  margin-left: 8px;
 }
 .sfi-reply-btn:hover {
-color: #00E5FF;
-text-decoration: underline;
+  color: #00E5FF;
+  text-decoration: underline;
 }
 .sfi-reply {
-margin-left: 42px;
-padding: 6px 0;
+  margin-left: 42px;
+  padding: 6px 0;
 }
 .sfi-reply .sfi-comment-avatar {
-width: 26px;
-height: 26px;
-font-size: 10px;
-background: linear-gradient(145deg, #00E5FF, #00B8D4);
+  width: 26px;
+  height: 26px;
+  font-size: 10px;
+  background: linear-gradient(145deg, #00E5FF, #00B8D4);
 }
 .sfi-comment-input-wrap {
-display: flex;
-gap: 8px;
-margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
 }
 .sfi-comment-input {
-flex: 1;
-padding: 8px 12px;
-background: rgba(0, 24, 69, 0.8);
-border: 1px solid rgba(0, 229, 255, 0.3);
-border-radius: 20px;
-color: #fff;
-font-size: 13px;
-outline: none;
+  flex: 1;
+  padding: 8px 12px;
+  background: rgba(0, 24, 69, 0.8);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 20px;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
 }
 .sfi-comment-input:focus {
-border-color: #00E5FF;
-box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2);
+  border-color: #00E5FF;
+  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2);
 }
 .sfi-comment-send {
-width: 34px;
-height: 34px;
-border-radius: 50%;
-background: linear-gradient(145deg, #00E5FF, #00B8D4);
-color: #000814;
-border: none;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #00E5FF, #00B8D4);
+  color: #000814;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
 }
 .sfi-comment-send:hover {
-background: linear-gradient(145deg, #00F5FF, #00E5FF);
-box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+  background: linear-gradient(145deg, #00F5FF, #00E5FF);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
 }
 .sfi-compose-card {
-background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
-border: 2px solid rgba(0, 229, 255, 0.4);
-border-radius: 1rem;
-padding: 1.25rem;
-margin-bottom: 1.5rem;
-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.2);
+  background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
+  border: 2px solid rgba(0, 229, 255, 0.4);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.2);
 }
 .sfi-compose-textarea {
-width: 100%;
-min-height: 80px;
-padding: 12px;
-background: rgba(0, 24, 69, 0.8);
-border: 2px solid rgba(0, 229, 255, 0.3);
-border-radius: 0.75rem;
-color: #fff;
-font-size: 14px;
-resize: vertical;
-outline: none;
-font-family: inherit;
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  background: rgba(0, 24, 69, 0.8);
+  border: 2px solid rgba(0, 229, 255, 0.3);
+  border-radius: 0.75rem;
+  color: #fff;
+  font-size: 14px;
+  resize: vertical;
+  outline: none;
+  font-family: inherit;
 }
 .sfi-compose-textarea:focus {
-border-color: #00E5FF;
-box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2);
+  border-color: #00E5FF;
+  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2);
 }
 .sfi-media-toggle {
-display: flex;
-gap: 8px;
-margin-top: 10px;
-flex-wrap: wrap;
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
 }
 .sfi-media-btn {
-padding: 6px 12px;
-background: rgba(0, 24, 69, 0.8);
-border: 1px solid rgba(0, 229, 255, 0.3);
-border-radius: 20px;
-color: #7DF9FF;
-font-size: 12px;
-cursor: pointer;
-transition: all 0.2s ease;
-display: flex;
-align-items: center;
-gap: 6px;
+  padding: 6px 12px;
+  background: rgba(0, 24, 69, 0.8);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 20px;
+  color: #7DF9FF;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 .sfi-media-btn:hover {
-background: rgba(0, 229, 255, 0.15);
-border-color: #00E5FF;
-color: #E0FFFF;
+  background: rgba(0, 229, 255, 0.15);
+  border-color: #00E5FF;
+  color: #E0FFFF;
 }
 .sfi-media-btn.active {
-background: rgba(0, 229, 255, 0.25);
-border-color: #00E5FF;
-color: #E0FFFF;
+  background: rgba(0, 229, 255, 0.25);
+  border-color: #00E5FF;
+  color: #E0FFFF;
 }
 .sfi-media-url-input {
-width: 100%;
-padding: 8px 12px;
-margin-top: 10px;
-background: rgba(0, 24, 69, 0.8);
-border: 1px solid rgba(0, 229, 255, 0.3);
-border-radius: 0.5rem;
-color: #fff;
-font-size: 13px;
-outline: none;
-display: none;
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 10px;
+  background: rgba(0, 24, 69, 0.8);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
+  display: none;
 }
 .sfi-media-url-input.show { display: block; }
 .sfi-media-url-input:focus {
-border-color: #00E5FF;
+  border-color: #00E5FF;
 }
 .sfi-media-preview {
-margin-top: 10px;
-max-width: 100%;
-max-height: 200px;
-border-radius: 0.5rem;
-border: 1px solid rgba(0, 229, 255, 0.3);
-display: none;
+  margin-top: 10px;
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  display: none;
 }
 .sfi-media-preview.show { display: block; }
 .sfi-stats-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-gap: 1rem;
-margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 .sfi-stat-card {
-background: linear-gradient(145deg, #001233, #001845);
-border: 2px solid rgba(0, 229, 255, 0.2);
-border-radius: 0.75rem;
-padding: 1rem;
-text-align: center;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(145deg, #001233, #001845);
+  border: 2px solid rgba(0, 229, 255, 0.2);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 .sfi-stat-value {
-font-size: 1.5rem;
-font-weight: bold;
-color: #00E5FF;
-text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00E5FF;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
 }
 .sfi-stat-label {
-font-size: 12px;
-color: #7DF9FF;
-margin-top: 4px;
+  font-size: 12px;
+  color: #7DF9FF;
+  margin-top: 4px;
 }
 </style>
 </head>
@@ -738,6 +746,7 @@ margin-top: 4px;
 </header>
 <main class="flex-1 overflow-auto">
 <div id="content" class="content-container space-y-4">
+
 <!-- DASHBOARD PAGE -->
 <div id="dashboard-page" class="page-content">
 <div class="bg-[#001233] border-2 border-cyan-400/30 rounded-xl p-3 overflow-hidden" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);">
@@ -877,6 +886,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
+
 <!-- PRIVATE KEY PAGE -->
 <div id="private-key-page" class="page-content active">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-300/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
@@ -995,6 +1005,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
+
 <!-- DEPOSIT PAGE -->
 <div id="deposit-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
@@ -1099,6 +1110,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
+
 <!-- WITHDRAWAL PAGE -->
 <div id="withdrawal-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-rose-500/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(255, 0, 110, 0.2);">
@@ -1226,6 +1238,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
+
 <!-- P2P PAGE -->
 <div id="p2p-page" class="page-content exchange-bg">
 <div class="exchange-card p-6 mb-6">
@@ -1279,6 +1292,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="p2p-history-content" class="overflow-x-auto"></div>
 </div>
 </div>
+
 <!-- ============================================ -->
 <!-- SOCIALFI PAGE (MODUL BARU)                   -->
 <!-- ============================================ -->
@@ -1296,6 +1310,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
+
 <!-- Subscription Status Card -->
 <div id="sfi-subscription-card" class="sfi-subscribe-card mb-6">
 <div class="sfi-subscribe-icon">
@@ -1306,6 +1321,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="sfi-subscription-status" class="mb-4"></div>
 <div id="sfi-subscription-action"></div>
 </div>
+
 <!-- Main Content (hanya muncul jika subscribed) -->
 <div id="sfi-main-content" style="display: none;">
 <!-- Stats Grid -->
@@ -1327,6 +1343,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div class="sfi-stat-label">Member Aktif</div>
 </div>
 </div>
+
 <!-- Compose Post -->
 <div class="sfi-compose-card">
 <div class="flex items-center gap-3 mb-3">
@@ -1354,10 +1371,12 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </button>
 </div>
 </div>
+
 <!-- Feed -->
 <div id="sfi-feed"></div>
 </div>
 </div>
+
 <!-- REFERRAL PAGE -->
 <div id="referral-page" class="page-content">
 <div class="p-6">
@@ -1382,6 +1401,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
+
 <!-- TEAM DEVELOPER PAGE -->
 <div id="team-developer-page" class="page-content">
 <div class="p-6">
@@ -1436,6 +1456,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
+
 <!-- SETTINGS PAGE -->
 <div id="settings-page" class="page-content">
 <div class="p-6">
@@ -1443,6 +1464,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <p class="text-cyan-200">Fitur Settings akan segera hadir...</p>
 </div>
 </div>
+
 <!-- EXCHANGE PAGE -->
 <div id="exchange-page" class="page-content exchange-bg">
 <div class="exchange-card p-4 mb-4">
@@ -1541,9 +1563,11 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
+
 </main>
 </div>
 </div>
+
 <!-- ============================================ -->
 <!-- BOSSX AI AGENT - FLOATING CHATBOT HTML       -->
 <!-- ============================================ -->
@@ -1551,6 +1575,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <span class="bossx-ai-fab-icon">🤖</span>
 <span id="bossx-ai-badge" class="bossx-ai-fab-badge" style="display: none;">1</span>
 </div>
+
 <div id="bossx-ai-window" class="bossx-ai-window">
 <div class="bossx-ai-header">
 <div class="bossx-ai-header-left">
@@ -1572,7 +1597,9 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </button>
 </div>
 </div>
+
 <div id="bossx-ai-body" class="bossx-ai-body"></div>
+
 <div id="bossx-ai-quick-replies" class="bossx-ai-quick-replies">
 <button class="bossx-ai-quick-btn" onclick="sendQuickReply('Apa itu BossX?')">Apa itu BossX?</button>
 <button class="bossx-ai-quick-btn" onclick="sendQuickReply('Cara deposit?')">Cara deposit?</button>
@@ -1582,6 +1609,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <button class="bossx-ai-quick-btn" onclick="sendQuickReply('Siapa team developer?')">Team?</button>
 <button class="bossx-ai-quick-btn" onclick="sendQuickReply('Apa itu SocialFi?')">SocialFi?</button>
 </div>
+
 <div class="bossx-ai-footer">
 <button class="bossx-ai-clear-btn" onclick="clearBossxAIChat()" title="Hapus chat">
 <i data-lucide="trash-2" style="width:16px;height:16px;"></i>
@@ -1592,6 +1620,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </button>
 </div>
 </div>
+
 <script>
 // ============ UTILITY FUNCTIONS ============
 function showSuccessMessage(message) {
@@ -1667,11 +1696,11 @@ document.getElementById('login-button').textContent = 'Masuk';
 }
 return false;
 }
-// PERBAIKAN: String literal dengan newline yang benar
 function showRegisterInfo() {
 alert('Fitur registrasi akan segera hadir!\nSilakan hubungi admin untuk pendaftaran.');
 return false;
 }
+
 // ============ STATE VARIABLES ============
 let currentPage = 'private-key';
 let activeTab = 'USDT';
@@ -1690,6 +1719,7 @@ let logInterval;
 let lastClaimTime = 0;
 let masaBerlaku = 40000000;
 let masaInterval;
+
 const walletAddresses = {
 USDT: { address: 'TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM&color=00E5FF' },
 BOSSX: { address: 'TTfKjrU18mi223ukVmz6FMNgBkma13kVA3', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TTfKjrU18mi223ukVmz6FMNgBkma13kVA3&color=00E5FF' }
@@ -1707,13 +1737,12 @@ USDT: [
 BOSSX: [
 { id: '4', amount: 1000.0, txHash: 'd4e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3', fromAddress: 'TAbcd456789012345678901234567890123', status: 'confirmed', timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), confirmationCount: 1 },
 { id: '5', amount: 500.0, txHash: 'e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4', fromAddress: 'TBcde567890123456789012345678901234', status: 'confirmed', timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '6', amount: 2000.0, txHash: 'f678901234567890abcdef1234567890abcdef1234a1b2c3d4e5', fromAddress: 'TCdef678901234567890123456789012345', status: 'pending', timestamp: new Date(Date.now() - 15 * 60 * 1000), confirmationCount: 0 }
+{ id: '6', amount: 2000.0, txHash: 'f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4e5', fromAddress: 'TCdef678901234567890123456789012345', status: 'pending', timestamp: new Date(Date.now() - 15 * 60 * 1000), confirmationCount: 0 }
 ]
 };
 const withdrawalHistory = { USDT: [], BOSSX: [] };
 const p2pHistory = [];
-// PERBAIKAN: Flag untuk mencegah event listener duplikat
-let eventListenersSetup = false;
+
 function initializeMainApp() {
 try {
 updateClock();
@@ -1935,7 +1964,7 @@ if (statusText) statusText.textContent = 'Stop validasi setiap jam 06.00';
 countdownDisplay.style.display = 'block';
 startCountdown();
 startValidationRunning();
-// PERBAIKAN: Tidak perlu panggil startMasaCountdown() lagi karena sudah jalan
+startMasaCountdown();
 appendLog('[INFO] Power On aktiv');
 showSuccessMessage('Validasi dimulai! Auto-claim aktif setiap 60 detik.');
 } else {
@@ -1983,13 +2012,13 @@ document.getElementById('countdown-time').textContent = `${hours.toString().padS
 updateCountdown();
 countdownInterval = setInterval(updateCountdown, 1000);
 }
-// PERBAIKAN: Cek setiap menit saja, bukan setiap detik (hemat resource)
 function checkSixAMStop() {
 const now = new Date();
-if (now.getHours() === 6 && now.getMinutes() === 0) {
+if (now.getHours() === 6 && now.getMinutes() === 0 && now.getSeconds() === 0) {
 if (isValidationRunning) forceStopValidation('otomatis pada jam 06:00');
 }
 }
+
 // ============ PRIVATE KEY FUNCTIONS ============
 const PK_STORAGE_KEY = 'bossx_private_keys';
 const PK_FEE = 1;
@@ -2215,10 +2244,29 @@ if (availEl) availEl.textContent = available;
 if (redeemedEl) redeemedEl.textContent = redeemed;
 if (badgeEl) badgeEl.textContent = keys.length;
 }
-// PERBAIKAN: Gabungkan fungsi copy untuk menghindari duplikasi
 function copyPrivateKey(code) {
-copyToClipboard(code);
+if (navigator.clipboard) {
+navigator.clipboard.writeText(code).then(() => {
 showSuccessMessage(`Access Key disalin: ${code}`);
+}).catch(() => {
+fallbackCopyPK(code);
+});
+} else {
+fallbackCopyPK(code);
+}
+}
+function fallbackCopyPK(text) {
+const textArea = document.createElement('textarea');
+textArea.value = text;
+document.body.appendChild(textArea);
+textArea.select();
+try {
+document.execCommand('copy');
+showSuccessMessage(`Access Key disalin: ${text}`);
+} catch (err) {
+showErrorMessage('Gagal menyalin. Silakan copy manual.');
+}
+document.body.removeChild(textArea);
 }
 function switchPKTab(tab) {
 const generateTab = document.getElementById('generate-tab');
@@ -2260,6 +2308,7 @@ const maxStake = Math.max(0, bossxBalance - PK_FEE);
 document.getElementById('pk-stake-amount').value = maxStake.toFixed(9);
 updatePKSummary();
 }
+
 // ============ DEPOSIT FUNCTIONS ============
 function updateDepositContent() {
 const wallet = walletAddresses[activeTab];
@@ -2332,6 +2381,7 @@ case 'failed': return 'Gagal';
 default: return 'Pending';
 }
 }
+
 // ============ WITHDRAWAL FUNCTIONS ============
 function updateWithdrawalContent() {
 const balance = activeWithdrawalTab === 'USDT' ? usdtBalance : bossxBalance;
@@ -2396,13 +2446,6 @@ const maxAmount = Math.max(0, balance - fee);
 document.getElementById('withdrawal-amount').value = maxAmount.toFixed(activeWithdrawalTab === 'USDT' ? 2 : 8);
 updateWithdrawalSummary();
 }
-// PERBAIKAN: Validasi address yang lebih baik
-function isValidWalletAddress(address) {
-// Validasi format TRC20 (dimulai dengan T, 34 karakter) atau BEP20 (0x, 42 karakter)
-const trc20Regex = /^T[a-zA-Z0-9]{33}$/;
-const bep20Regex = /^0x[a-fA-F0-9]{40}$/;
-return trc20Regex.test(address) || bep20Regex.test(address);
-}
 function submitWithdrawal() {
 const address = document.getElementById('withdrawal-address').value.trim();
 const amount = parseFloat(document.getElementById('withdrawal-amount').value) || 0;
@@ -2412,10 +2455,7 @@ const balance = activeWithdrawalTab === 'USDT' ? usdtBalance : bossxBalance;
 const fee = config.fee;
 const minAmount = config.min;
 if (!address) { showErrorMessage('Alamat wallet tujuan tidak boleh kosong!'); return; }
-if (!isValidWalletAddress(address)) { 
-showErrorMessage('Alamat wallet tidak valid! Pastikan format sesuai network.'); 
-return; 
-}
+if (address.length < 30) { showErrorMessage('Alamat wallet tidak valid!'); return; }
 if (amount < minAmount) { showErrorMessage(`Minimal withdrawal adalah ${minAmount} ${activeWithdrawalTab}!`); return; }
 if (amount > balance) { showErrorMessage('Saldo tidak mencukupi!'); return; }
 if ((amount + fee) > balance) { showErrorMessage(`Saldo tidak cukup untuk membayar fee ${fee} ${activeWithdrawalTab}!`); return; }
@@ -2486,6 +2526,7 @@ case 'failed': return 'Gagal';
 default: return 'Diproses';
 }
 }
+
 // ============ P2P FUNCTIONS ============
 function updateP2PContent() {
 updateBalanceDisplays();
@@ -2532,6 +2573,7 @@ const totalReceived = p2pHistory.filter(t => t.type === 'in').reduce((sum, t) =>
 document.getElementById('p2p-total-sent').textContent = formatAmount(totalSent) + ' BossX';
 document.getElementById('p2p-total-received').textContent = formatAmount(totalReceived) + ' BossX';
 }
+
 // ============ REFERRAL FUNCTIONS ============
 function generateReferralCode() {
 const code = 'REF-' + Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -2560,46 +2602,22 @@ showSuccessMessage('Gagal menyalin. Silakan copy manual.');
 }
 document.body.removeChild(textArea);
 }
-// PERBAIKAN: Download QR dengan Canvas untuk menghindari CORS issue
 function downloadQRCode() {
-const img = new Image();
-img.crossOrigin = 'anonymous';
-img.onload = function() {
-const canvas = document.createElement('canvas');
-canvas.width = img.width;
-canvas.height = img.height;
-const ctx = canvas.getContext('2d');
-ctx.drawImage(img, 0, 0);
-const dataURL = canvas.toDataURL('image/png');
-const link = document.createElement('a');
-link.download = `${activeTab}_QRCode.png`;
-link.href = dataURL;
-link.click();
-showSuccessMessage(`QR Code ${activeTab} berhasil didownload!`);
-};
-img.onerror = function() {
-// Fallback jika CORS gagal
 const link = document.createElement('a');
 link.download = `${activeTab}_QRCode.png`;
 link.href = walletAddresses[activeTab].qrCode;
-link.target = '_blank';
 link.click();
-showErrorMessage('Download langsung gagal. QR Code dibuka di tab baru, silakan save manual.');
-};
-img.src = walletAddresses[activeTab].qrCode;
+showSuccessMessage(`QR Code ${activeTab} berhasil didownload!`);
 }
+
 // ============ EXCHANGE FUNCTIONS ============
 let currentSymbol = 'BTCUSDT';
 let wsDepth = null;
 let wsTrades = null;
-let tradingViewWidget = null; // PERBAIKAN: Track widget untuk cleanup
 function isBossXPair(symbol) {
 return symbol.toUpperCase() === 'BOSSXUSDT';
 }
-// PERBAIKAN: Event listener untuk pair button dipasang sekali saja
-let exchangePageInitialized = false;
 function initExchangePage() {
-if (!exchangePageInitialized) {
 document.querySelectorAll('.pair-button').forEach(btn => {
 btn.onclick = function() {
 document.querySelectorAll('.pair-button').forEach(b => b.classList.remove('active'));
@@ -2615,8 +2633,6 @@ loadOrderBook(symbol);
 loadRecentTrades(symbol);
 };
 });
-exchangePageInitialized = true;
-}
 const defaultPair = 'BTC/USDT';
 const defaultSymbol = 'BTCUSDT';
 const defaultBtn = document.querySelector(`[data-pair="${defaultPair}"]`);
@@ -2631,24 +2647,15 @@ loadOrderBook(defaultSymbol);
 loadRecentTrades(defaultSymbol);
 updateBalanceDisplays();
 }
-// PERBAIKAN: Cleanup TradingView widget sebelum buat yang baru
 function loadChart(symbol) {
 const chartContainer = document.getElementById('tradingview-chart');
-// Cleanup widget lama
-if (tradingViewWidget) {
-try {
-const iframe = chartContainer.querySelector('iframe');
-if (iframe) iframe.remove();
-} catch (e) {}
-tradingViewWidget = null;
-}
 chartContainer.innerHTML = '';
 if (isBossXPair(symbol)) {
 chartContainer.innerHTML = `<div class="flex items-center justify-center h-full bg-[#001845]/70 rounded-lg border-2 border-cyan-400/30" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);"><div class="text-center p-8 max-w-md"><i data-lucide="info" class="w-16 h-16 text-cyan-400 mx-auto mb-4"></i><h3 class="text-xl font-bold text-white mb-2 frost-text">BossX - Internal Token</h3><p class="text-cyan-200 mb-3">BossX adalah token internal platform BossX.<br>Data chart real-time dari Binance tidak tersedia.</p><p class="text-cyan-400 text-sm frost-text">💡 Pilih pasangan lain untuk melihat chart real-time.</p></div></div>`;
 lucide.createIcons();
 return;
 }
-tradingViewWidget = new TradingView.widget({
+new TradingView.widget({
 "width": "100%", "height": "100%",
 "symbol": `BINANCE:${symbol}`,
 "interval": "D", "timezone": "Etc/UTC", "theme": "dark",
@@ -2750,7 +2757,7 @@ bids.slice(0, 15).forEach(bid => {
 const price = parseFloat(bid[0]);
 const amount = parseFloat(bid[1]);
 const total = price * amount;
-const width = (amount / maxVolume 100) + '%';
+const width = (amount / maxVolume * 100) + '%';
 const row = document.createElement('tr');
 row.className = 'relative';
 row.innerHTML = `<td class="buy-order">${price.toFixed(2)}</td><td>${amount.toFixed(6)}</td><td>${total.toFixed(2)}</td><div class="depth-bar buy-depth" style="width: ${width};"></div>`;
@@ -2803,11 +2810,9 @@ function updateAvbl() {
 document.getElementById('buy-avbl').textContent = usdtBalance.toFixed(2) + ' USDT';
 document.getElementById('sell-avbl').textContent = bossxBalance.toFixed(9) + ' BossX';
 }
+
 // ============ EVENT LISTENERS ============
-// PERBAIKAN: Event listener hanya dipasang sekali
 function setupEventListeners() {
-if (eventListenersSetup) return;
-eventListenersSetup = true;
 const toggleBtn = document.getElementById('toggle-sidebar');
 if (toggleBtn) {
 toggleBtn.addEventListener('click', function() {
@@ -2897,9 +2902,10 @@ if (priceInput) priceInput.style.display = e.target.value === 'market' ? 'none' 
 }
 });
 }
+
 setInterval(updateClock, 1000);
-// PERBAIKAN: Cek setiap menit, bukan setiap detik
-setInterval(checkSixAMStop, 60000);
+setInterval(checkSixAMStop, 1000);
+
 // ============================================
 // SOCIALFI MODULE (Modul Terpisah - Prefix sfi)
 // ============================================
@@ -2907,6 +2913,7 @@ const SFI_STORAGE_KEY = 'bossx_socialfi_posts';
 const SFI_SUB_KEY = 'bossx_socialfi_subscription';
 const SFI_COST = 1;
 const SFI_DURATION_DAYS = 30;
+
 // Team developer data untuk dummy posts
 const SFI_TEAM = {
 'Fery Muliawan': { role: 'CEO • BossX', avatar: 'FM', image: 'https://i.ibb.co.com/N2RF70Vs/IMG-1097-removebg-preview.png' },
@@ -2915,7 +2922,9 @@ const SFI_TEAM = {
 'Michael Johnson': { role: 'Manager', avatar: 'MJ', image: null },
 'Emily Brown': { role: 'Secretary', avatar: 'EB', image: null }
 };
+
 let sfiCurrentMedia = { type: null, url: '' };
+
 function initSocialFi() {
 // Load subscription
 let sub = null;
@@ -2923,11 +2932,13 @@ try {
 const saved = localStorage.getItem(SFI_SUB_KEY);
 if (saved) sub = JSON.parse(saved);
 } catch (e) {}
+
 // Jika belum ada subscription, buat dummy posts pertama kali
 if (!localStorage.getItem(SFI_STORAGE_KEY)) {
 seedDummyPosts();
 }
 }
+
 function seedDummyPosts() {
 const now = Date.now();
 const dummyPosts = [
@@ -3014,6 +3025,7 @@ localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(dummyPosts));
 console.error('Error seeding dummy posts:', e);
 }
 }
+
 function loadSfiPosts() {
 try {
 const data = localStorage.getItem(SFI_STORAGE_KEY);
@@ -3022,6 +3034,7 @@ return data ? JSON.parse(data) : [];
 return [];
 }
 }
+
 function saveSfiPosts(posts) {
 try {
 localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(posts));
@@ -3029,6 +3042,7 @@ localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(posts));
 showErrorMessage('Gagal menyimpan postingan!');
 }
 }
+
 function getSfiSubscription() {
 try {
 const data = localStorage.getItem(SFI_SUB_KEY);
@@ -3044,11 +3058,13 @@ return sub;
 return null;
 }
 }
+
 function renderSocialFi() {
 const sub = getSfiSubscription();
 const statusEl = document.getElementById('sfi-subscription-status');
 const actionEl = document.getElementById('sfi-subscription-action');
 const mainContent = document.getElementById('sfi-main-content');
+
 if (sub) {
 // Aktif
 const daysLeft = Math.ceil((sub.expiresAt - Date.now()) / 86400000);
@@ -3071,12 +3087,14 @@ mainContent.style.display = 'none';
 }
 lucide.createIcons();
 }
+
 function subscribeSfi() {
 if (bossxBalance < SFI_COST) {
 showErrorMessage(`Saldo tidak mencukupi! Dibutuhkan ${SFI_COST} BossX.`);
 return;
 }
 if (!confirm(`Aktifkan akses SocialFi selama ${SFI_DURATION_DAYS} hari dengan biaya ${SFI_COST} BossX?`)) return;
+
 bossxBalance -= SFI_COST;
 const sub = {
 active: true,
@@ -3086,25 +3104,31 @@ expiresAt: Date.now() + (SFI_DURATION_DAYS * 86400000)
 try {
 localStorage.setItem(SFI_SUB_KEY, JSON.stringify(sub));
 } catch (e) {}
+
 updateBalanceDisplays();
 showSuccessMessage(`SocialFi berhasil diaktifkan selama ${SFI_DURATION_DAYS} hari!`);
 renderSocialFi();
 }
+
 function renderSfiFeed() {
 const feed = document.getElementById('sfi-feed');
 const posts = loadSfiPosts().sort((a, b) => b.timestamp - a.timestamp);
+
 if (posts.length === 0) {
 feed.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="message-circle" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada postingan</h4><p class="text-cyan-300">Jadilah yang pertama membagikan sesuatu!</p></div>`;
 return;
 }
+
 feed.innerHTML = posts.map(post => renderSfiPost(post)).join('');
 lucide.createIcons();
 }
+
 function renderSfiPost(post) {
 const isLiked = post.likes.includes('Fery Muliawan');
 const likeClass = isLiked ? 'liked' : '';
 const likeIcon = isLiked ? 'heart' : 'heart';
 const likeText = post.likes.length;
+
 let mediaHtml = '';
 if (post.media) {
 if (post.mediaType === 'video') {
@@ -3113,10 +3137,13 @@ mediaHtml = `<video class="sfi-post-media-video" controls src="${escapeHtml(post
 mediaHtml = `<img class="sfi-post-media" src="${escapeHtml(post.media)}" alt="Media" onerror="this.style.display='none'" />`;
 }
 }
+
 const avatarHtml = post.avatarImage
 ? `<div class="sfi-post-avatar"><img src="${post.avatarImage}" alt="${post.author}" onerror="this.style.display='none'; this.parentNode.textContent='${post.avatar}'"></div>`
 : `<div class="sfi-post-avatar">${post.avatar}</div>`;
+
 const commentsHtml = renderSfiComments(post);
+
 return `
 <div class="sfi-post-card" data-post-id="${post.id}">
 <div class="sfi-post-header">
@@ -3155,6 +3182,7 @@ ${commentsHtml}
 </div>
 `;
 }
+
 function renderSfiComments(post) {
 if (post.comments.length === 0) {
 return '<p class="text-cyan-300 text-xs text-center py-2">Belum ada komentar. Jadilah yang pertama!</p>';
@@ -3163,6 +3191,7 @@ return post.comments.map(c => {
 const avatarHtml = c.avatarImage
 ? `<div class="sfi-comment-avatar"><img src="${c.avatarImage}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none'; this.parentNode.textContent='${c.avatar}'"></div>`
 : `<div class="sfi-comment-avatar">${c.avatar}</div>`;
+
 const repliesHtml = (c.replies || []).map(r => `
 <div class="sfi-comment sfi-reply">
 <div class="sfi-comment-avatar">${r.avatar}</div>
@@ -3173,6 +3202,7 @@ const repliesHtml = (c.replies || []).map(r => `
 </div>
 </div>
 `).join('');
+
 return `
 <div class="sfi-comment">
 ${avatarHtml}
@@ -3183,7 +3213,7 @@ ${avatarHtml}
 ${formatTimeAgo(c.timestamp)}
 <button class="sfi-reply-btn" onclick="showSfiReplyInput('${post.id}', '${c.id}')">Balas</button>
 </div>
-<div id="sfi-reply-input-${post.id}-${c.id}" class="sfi-comment-input-wrap" style="display:none; margin-top:8px;">
+<div id="sfi-reply-input-${post.id}-${c.id}" style="display:none;" class="sfi-comment-input-wrap" style="margin-top:8px;">
 <input type="text" class="sfi-comment-input" placeholder="Balas komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiReply('${post.id}','${c.id}')" />
 <button class="sfi-comment-send" onclick="submitSfiReply('${post.id}','${c.id}')">
 <i data-lucide="send" class="w-3 h-3"></i>
@@ -3195,10 +3225,12 @@ ${repliesHtml}
 `;
 }).join('');
 }
+
 function toggleSfiLike(postId) {
 const posts = loadSfiPosts();
 const post = posts.find(p => p.id === postId);
 if (!post) return;
+
 const user = 'Fery Muliawan';
 const idx = post.likes.indexOf(user);
 if (idx > -1) {
@@ -3210,19 +3242,23 @@ saveSfiPosts(posts);
 renderSfiFeed();
 updateSfiStats();
 }
+
 function toggleSfiComments(postId) {
 const section = document.getElementById(`sfi-comments-${postId}`);
 if (section) {
 section.style.display = section.style.display === 'none' ? 'block' : 'none';
 }
 }
+
 function submitSfiComment(postId) {
 const input = document.getElementById(`sfi-comment-input-${postId}`);
 const text = input.value.trim();
 if (!text) return;
+
 const posts = loadSfiPosts();
 const post = posts.find(p => p.id === postId);
 if (!post) return;
+
 post.comments.push({
 id: 'c' + Date.now(),
 author: 'Fery Muliawan',
@@ -3232,6 +3268,7 @@ text: text,
 timestamp: Date.now(),
 replies: []
 });
+
 saveSfiPosts(posts);
 input.value = '';
 renderSfiFeed();
@@ -3243,22 +3280,26 @@ if (section) section.style.display = 'block';
 }, 50);
 showSuccessMessage('Komentar berhasil ditambahkan!');
 }
+
 function showSfiReplyInput(postId, commentId) {
 const el = document.getElementById(`sfi-reply-input-${postId}-${commentId}`);
 if (el) {
 el.style.display = el.style.display === 'none' ? 'flex' : 'none';
 }
 }
+
 function submitSfiReply(postId, commentId) {
 const wrap = document.getElementById(`sfi-reply-input-${postId}-${commentId}`);
 const input = wrap.querySelector('input');
 const text = input.value.trim();
 if (!text) return;
+
 const posts = loadSfiPosts();
 const post = posts.find(p => p.id === postId);
 if (!post) return;
 const comment = post.comments.find(c => c.id === commentId);
 if (!comment) return;
+
 if (!comment.replies) comment.replies = [];
 comment.replies.push({
 id: 'r' + Date.now(),
@@ -3267,6 +3308,7 @@ avatar: 'FM',
 text: text,
 timestamp: Date.now()
 });
+
 saveSfiPosts(posts);
 renderSfiFeed();
 updateSfiStats();
@@ -3276,14 +3318,17 @@ if (section) section.style.display = 'block';
 }, 50);
 showSuccessMessage('Balasan berhasil ditambahkan!');
 }
+
 function shareSfiPost(postId) {
 showSuccessMessage('Link postingan disalin ke clipboard!');
 }
+
 function toggleSfiMedia(type) {
 const btnImage = document.getElementById('sfi-btn-image');
 const btnVideo = document.getElementById('sfi-btn-video');
 const urlInput = document.getElementById('sfi-media-url');
 const preview = document.getElementById('sfi-media-preview');
+
 if (sfiCurrentMedia.type === type) {
 // Toggle off
 sfiCurrentMedia = { type: null, url: '' };
@@ -3294,6 +3339,7 @@ urlInput.value = '';
 preview.classList.remove('show');
 return;
 }
+
 sfiCurrentMedia.type = type;
 sfiCurrentMedia.url = '';
 btnImage.classList.toggle('active', type === 'image');
@@ -3305,18 +3351,22 @@ urlInput.placeholder = type === 'image'
 preview.classList.remove('show');
 urlInput.focus();
 }
+
 function submitSfiPost() {
 const textarea = document.getElementById('sfi-compose-text');
 const content = textarea.value.trim();
 const mediaUrl = document.getElementById('sfi-media-url').value.trim();
+
 if (!content && !mediaUrl) {
 showErrorMessage('Tulis sesuatu atau tambahkan media!');
 return;
 }
+
 if (content.length > 500) {
 showErrorMessage('Postingan maksimal 500 karakter!');
 return;
 }
+
 // Validasi URL media
 if (mediaUrl && sfiCurrentMedia.type) {
 try {
@@ -3326,6 +3376,7 @@ showErrorMessage('URL media tidak valid!');
 return;
 }
 }
+
 const posts = loadSfiPosts();
 const newPost = {
 id: 'post-' + Date.now(),
@@ -3340,8 +3391,10 @@ timestamp: Date.now(),
 likes: [],
 comments: []
 };
+
 posts.unshift(newPost);
 saveSfiPosts(posts);
+
 // Reset form
 textarea.value = '';
 document.getElementById('sfi-char-count').textContent = '0';
@@ -3351,10 +3404,12 @@ document.getElementById('sfi-media-preview').classList.remove('show');
 document.getElementById('sfi-btn-image').classList.remove('active');
 document.getElementById('sfi-btn-video').classList.remove('active');
 sfiCurrentMedia = { type: null, url: '' };
+
 renderSfiFeed();
 updateSfiStats();
 showSuccessMessage('Postingan berhasil dipublikasikan!');
 }
+
 function updateSfiStats() {
 const posts = loadSfiPosts();
 const totalPosts = posts.length;
@@ -3364,6 +3419,7 @@ const c = p.comments.length;
 const r = p.comments.reduce((s, cm) => s + (cm.replies ? cm.replies.length : 0), 0);
 return sum + c + r;
 }, 0);
+
 const el1 = document.getElementById('sfi-stat-posts');
 const el2 = document.getElementById('sfi-stat-likes');
 const el3 = document.getElementById('sfi-stat-comments');
@@ -3371,12 +3427,14 @@ if (el1) el1.textContent = totalPosts;
 if (el2) el2.textContent = totalLikes;
 if (el3) el3.textContent = totalComments;
 }
+
 function escapeHtml(text) {
 if (!text) return '';
 const div = document.createElement('div');
 div.textContent = text;
 return div.innerHTML;
 }
+
 // ============================================
 // BOSSX AI AGENT - KNOWLEDGE BASE & LOGIC
 // ============================================
@@ -3437,13 +3495,17 @@ question: 'Apa itu SocialFi BossX?',
 answer: '<strong>SocialFi BossX</strong> adalah platform sosial eksklusif untuk holder token BossX. Mirip dengan Binance Square, tetapi khusus untuk komunitas BossX.<br><br><strong>✨ Fitur:</strong><br>• Posting teks, gambar, dan video<br>• Like & komentar pada postingan<br>• Balas komentar user lain<br>• Feed komunitas yang aktif<br><br><strong>💎 Akses:</strong><br>• Biaya: <strong>1 BossX / 30 hari</strong><br>• User aktif bisa menikmati semua fitur<br>• Utilitas token BossX yang nyata<br><br><strong>📍 Lokasi:</strong> Menu "SocialFi" di sidebar'
 }
 ];
+
 const BOSSX_AI_FALLBACK = 'Maaf, informasi yang Anda tanyakan <strong>tidak tersedia di whitepaper BossX</strong>. Saya hanya dapat menjawab pertanyaan seputar:<br><br>• Tentang BossX & Masternode<br>• Access Key & Validasi<br>• Deposit & Withdrawal<br>• Reward & Claim<br>• P2P & Referral<br>• SocialFi<br>• Team Developer<br><br>Silakan coba pertanyaan lain atau hubungi tim support untuk bantuan lebih lanjut.';
+
 const BOSSX_AI_WELCOME = '🧊 Halo! Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX. Saya siap menjawab pertanyaan seputar whitepaper BossX.<br><br>Silakan ketik pertanyaan Anda atau pilih <strong>quick reply</strong> di bawah untuk memulai!';
+
 let bossxAIHistory = [];
 let bossxAIIsOpen = false;
 let bossxAIIsMinimized = false;
 let bossxAIIsInitialized = false;
 let bossxAIWelcomeShown = false;
+
 function initBossxAI() {
 if (bossxAIIsInitialized) return;
 bossxAIIsInitialized = true;
@@ -3584,26 +3646,22 @@ function hideBossxAITyping() {
 const typing = document.getElementById('bossx-ai-typing-indicator');
 if (typing) typing.remove();
 }
-// PERBAIKAN: AudioContext dibuat sekali saja untuk menghindari memory leak
-let bossxAudioCtx = null;
 function playBossxAISound() {
 try {
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 if (!AudioContext) return;
-if (!bossxAudioCtx) {
-bossxAudioCtx = new AudioContext();
-}
-const osc = bossxAudioCtx.createOscillator();
-const gain = bossxAudioCtx.createGain();
+const ctx = new AudioContext();
+const osc = ctx.createOscillator();
+const gain = ctx.createGain();
 osc.connect(gain);
-gain.connect(bossxAudioCtx.destination);
+gain.connect(ctx.destination);
 osc.type = 'sine';
-osc.frequency.setValueAtTime(880, bossxAudioCtx.currentTime);
-osc.frequency.exponentialRampToValueAtTime(1320, bossxAudioCtx.currentTime + 0.08);
-gain.gain.setValueAtTime(0.15, bossxAudioCtx.currentTime);
-gain.gain.exponentialRampToValueAtTime(0.01, bossxAudioCtx.currentTime + 0.2);
-osc.start(bossxAudioCtx.currentTime);
-osc.stop(bossxAudioCtx.currentTime + 0.2);
+osc.frequency.setValueAtTime(880, ctx.currentTime);
+osc.frequency.exponentialRampToValueAtTime(1320, ctx.currentTime + 0.08);
+gain.gain.setValueAtTime(0.15, ctx.currentTime);
+gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+osc.start(ctx.currentTime);
+osc.stop(ctx.currentTime + 0.2);
 } catch (e) {
 console.error('Audio error:', e);
 }
@@ -3670,6 +3728,7 @@ event.preventDefault();
 sendBossxAIMessage();
 }
 }
+
 console.log('🚀 Script dimulai');
 checkAuth();
 lucide.createIcons();
