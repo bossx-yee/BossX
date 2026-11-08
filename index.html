@@ -3,30 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BossX - Crypto Exchange Platform | Validator Masternode System</title>
+<title>BossX - Masternode Platform | Validator Masternode System</title>
+<meta name="theme-color" content="#000814">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BossX">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="BossX">
+<meta name="msapplication-TileColor" content="#000814">
+<meta name="msapplication-tap-highlight" content="no">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMEU1RkYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMEI4RDQiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjI1NiIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjI1NiIgeT0iMzIwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwMDgxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Qlg8L3RleHQ+PC9zdmc+">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <script src="https://s3.tradingview.com/tv.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; }
-body { background: #000814; color: #ffffff; overflow-x: hidden; }
-:root {
---glacier-primary: #00E5FF;
---glacier-bright: #00F5FF;
---glacier-electric: #7DF9FF;
---glacier-ice: #E0FFFF;
---glacier-frost: #B0E0E6;
---glacier-arctic: #00B8D4;
---glacier-deep: #0097A7;
---glacier-bg: #000814;
---glacier-card: #001233;
---glacier-elevated: #001845;
---glacier-border: #023E8A;
---glacier-success: #00FFC8;
---glacier-error: #FF006E;
---glacier-warning: #FFBE0B;
-}
+body { background: #000814; color: #ffffff; overflow-x: hidden; transition: background 0.4s ease, color 0.4s ease; }
+:root { --glacier-primary: #00E5FF; --glacier-bright: #00F5FF; --glacier-electric: #7DF9FF; --glacier-ice: #E0FFFF; --glacier-frost: #B0E0E6; --glacier-arctic: #00B8D4; --glacier-deep: #0097A7; --glacier-bg: #000814; --glacier-card: #001233; --glacier-elevated: #001845; --glacier-border: #023E8A; --glacier-success: #00FFC8; --glacier-error: #FF006E; --glacier-warning: #FFBE0B; }
+
+/* ============================================ */
+/* 🌙 LIGHT MODE STYLES */
+/* ============================================ */
+body.light-mode { background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 50%, #ECFEFF 100%); color: #001233; }
+body.light-mode .sidebar { background: linear-gradient(180deg, #FFFFFF 0%, #E0F2FE 100%); border-right-color: rgba(0, 229, 255, 0.3); }
+body.light-mode .menu-item { color: #001233; }
+body.light-mode .menu-item:hover { background: linear-gradient(90deg, rgba(0, 229, 255, 0.1), transparent); }
+body.light-mode .menu-item.active { background: linear-gradient(90deg, rgba(0, 229, 255, 0.2), rgba(125, 249, 255, 0.1)); color: #00B8D4; }
+body.light-mode .stat-card, body.light-mode .exchange-card, body.light-mode .sfi-post-card, body.light-mode .sfi-compose-card, body.light-mode .sfi-stat-card, body.light-mode .sfi-subscribe-card { background: linear-gradient(145deg, #FFFFFF, #F0F9FF); border-color: rgba(0, 229, 255, 0.3); color: #001233; }
+body.light-mode .stat-card:hover, body.light-mode .exchange-card:hover { border-color: rgba(0, 229, 255, 0.6); }
+body.light-mode .login-card { background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(224, 242, 254, 0.95)); border-color: rgba(0, 229, 255, 0.5); }
+body.light-mode .login-input, body.light-mode .node-input, body.light-mode .bossx-ai-input, body.light-mode .sfi-compose-textarea, body.light-mode .sfi-comment-input, body.light-mode .sfi-media-url-input { background: rgba(255, 255, 255, 0.9); border-color: rgba(0, 229, 255, 0.4); color: #001233; }
+body.light-mode .login-input::placeholder, body.light-mode .node-input::placeholder, body.light-mode .bossx-ai-input::placeholder { color: #00B8D4; opacity: 0.6; }
+body.light-mode .bossx-ai-window { background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(224, 242, 254, 0.98)); border-color: rgba(0, 229, 255, 0.5); }
+body.light-mode .bossx-ai-header { background: linear-gradient(145deg, rgba(240, 249, 255, 0.9), rgba(224, 242, 254, 0.9)); }
+body.light-mode .bossx-ai-header-info h3 { color: #001233; }
+body.light-mode .bossx-ai-header-info p { color: #00B8D4; }
+body.light-mode .bossx-ai-msg.bot .bossx-ai-msg-content { background: rgba(224, 242, 254, 0.8); border-color: rgba(0, 229, 255, 0.3); color: #001233; }
+body.light-mode .bossx-ai-msg.user .bossx-ai-msg-content { background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #FFFFFF; }
+body.light-mode .bossx-ai-footer { background: rgba(240, 249, 255, 0.6); }
+body.light-mode .bossx-ai-thinking-stage { color: #001233; }
+body.light-mode .bossx-ai-context-badge { background: rgba(0, 229, 255, 0.1); color: #00B8D4; }
+body.light-mode .bossx-ai-context-badge.active { background: rgba(0, 255, 200, 0.15); color: #00D4A8; }
+body.light-mode .bossx-ai-context-badge.inactive { background: rgba(255, 0, 110, 0.1); color: #D4005A; }
+body.light-mode .bossx-ai-header-btn { background: rgba(224, 242, 254, 0.8); color: #00B8D4; }
+body.light-mode .bossx-ai-header-btn:hover { background: rgba(0, 229, 255, 0.2); color: #001233; }
+body.light-mode .bossx-ai-clear-btn { background: rgba(255, 0, 110, 0.1); color: #D4005A; }
+body.light-mode header { background: linear-gradient(to right, #FFFFFF, #E0F2FE, #FFFFFF) !important; }
+body.light-mode #time, body.light-mode .frost-text { color: #00B8D4 !important; text-shadow: 0 0 10px rgba(0, 229, 255, 0.3) !important; }
+body.light-mode #date { color: #001233 !important; }
+body.light-mode .text-white { color: #001233 !important; }
+body.light-mode .text-cyan-200, body.light-mode .text-cyan-300, body.light-mode .text-cyan-400 { color: #00B8D4 !important; }
+body.light-mode .text-cyan-100 { color: #001233 !important; }
+body.light-mode .bg-\[\#001233\], body.light-mode .bg-\[\#001845\]\/70, body.light-mode .bg-\[\#001845\] { background: rgba(255, 255, 255, 0.8) !important; }
+body.light-mode .bg-\[\#000814\] { background: #F0F9FF !important; }
+body.light-mode .border-cyan-400\/30, body.light-mode .border-cyan-400\/20 { border-color: rgba(0, 229, 255, 0.3) !important; }
+body.light-mode .pwa-install-banner { background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(224, 242, 254, 0.98)); }
+body.light-mode .pwa-install-title { color: #001233; }
+body.light-mode .pwa-install-desc { color: #00B8D4; }
+body.light-mode .sfi-comment-body { background: rgba(224, 242, 254, 0.6); color: #001233; }
+body.light-mode .sfi-comment-author { color: #00B8D4; }
+body.light-mode .sfi-comment-text { color: #001233; }
+body.light-mode .sfi-post-author { color: #001233; }
+body.light-mode .sfi-post-content { color: #001233; }
+body.light-mode .sfi-action-btn { background: rgba(224, 242, 254, 0.6); color: #00B8D4; }
+body.light-mode .sfi-action-btn:hover { background: rgba(0, 229, 255, 0.15); color: #001233; }
+body.light-mode .sfi-action-btn.liked { background: rgba(255, 0, 110, 0.1); color: #D4005A; }
+body.light-mode .sfi-status-badge.active { background: rgba(0, 255, 200, 0.15); color: #00D4A8; }
+body.light-mode .sfi-status-badge.inactive { background: rgba(255, 0, 110, 0.1); color: #D4005A; }
+body.light-mode .log-entry { color: #00B8D4; }
+body.light-mode .log-entry.auto-claim { color: #00D4A8; }
+body.light-mode .log-entry.pk-success { color: #00B8D4; }
+body.light-mode .log-entry.pk-error { color: #D4005A; }
+body.light-mode .pk-key-row-available { background: rgba(0, 255, 200, 0.1); }
+body.light-mode .pk-key-row-redeemed { background: rgba(0, 229, 255, 0.1); }
+body.light-mode .network-option { background: rgba(255, 255, 255, 0.7); color: #001233; }
+body.light-mode .network-option:hover, body.light-mode .network-option.selected { background: rgba(0, 229, 255, 0.15); }
+body.light-mode .tab-button:not(.active) { background: rgba(255, 255, 255, 0.7); color: #001233; }
+body.light-mode .tab-button.active { color: #FFFFFF !important; }
+body.light-mode .bg-cyan-400\/10, body.light-mode .bg-cyan-400\/15 { background: rgba(0, 229, 255, 0.1) !important; }
+body.light-mode .bg-emerald-400\/15, body.light-mode .bg-emerald-400\/20 { background: rgba(0, 255, 200, 0.1) !important; }
+body.light-mode .bg-rose-500\/10, body.light-mode .bg-rose-500\/5 { background: rgba(255, 0, 110, 0.05) !important; }
+body.light-mode .login-page { background: radial-gradient(ellipse at center, #E0F2FE 0%, #F0F9FF 50%, #FFFFFF 100%); }
+body.light-mode .login-title { background: linear-gradient(145deg, #001233, #00B8D4, #00E5FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+body.light-mode .login-subtitle, body.light-mode .login-footer, body.light-mode .login-divider { color: #001233; }
+body.light-mode .login-tab-btn { color: #00B8D4; }
+body.light-mode .login-tab-btn:hover { background: rgba(0, 229, 255, 0.1); color: #001233; }
+body.light-mode .login-tab-btn.active { background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #FFFFFF; }
+body.light-mode .login-info-box { background: rgba(0, 229, 255, 0.08); color: #001233; }
+body.light-mode .google-btn { background: #FFFFFF; color: #001233; }
+body.light-mode .google-btn-text span:last-child { color: #001233; }
+body.light-mode .exchange-bg { background: radial-gradient(ellipse at center, #E0F2FE 0%, #F0F9FF 50%, #FFFFFF 100%); }
+body.light-mode #running-text { background: linear-gradient(90deg, #00B8D4, #00E5FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+body.light-mode .countdown-timer { color: #00D4A8; }
+body.light-mode .auto-claim-timer { color: #00B8D4; }
+body.light-mode .order-book th { background: rgba(0, 229, 255, 0.1); color: #00B8D4; }
+body.light-mode .order-book td { border-bottom-color: rgba(0, 229, 255, 0.1); color: #001233; }
+body.light-mode .history-table th { background: rgba(0, 229, 255, 0.1); color: #00B8D4; }
+body.light-mode .history-table td { border-bottom-color: rgba(0, 229, 255, 0.1); color: #001233; }
+
+/* Toggle Button Styles */
+.theme-toggle-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 229, 255, 0.15); border: 2px solid rgba(0, 229, 255, 0.4); color: #00E5FF; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
+.theme-toggle-btn:hover { background: rgba(0, 229, 255, 0.25); border-color: #00E5FF; color: #E0FFFF; transform: rotate(180deg) scale(1.1); box-shadow: 0 0 25px rgba(0, 229, 255, 0.5); }
+body.light-mode .theme-toggle-btn { background: rgba(0, 184, 212, 0.15); border-color: rgba(0, 184, 212, 0.4); color: #00B8D4; box-shadow: 0 0 15px rgba(0, 184, 212, 0.3); }
+body.light-mode .theme-toggle-btn:hover { background: rgba(0, 184, 212, 0.25); border-color: #00B8D4; color: #001233; box-shadow: 0 0 25px rgba(0, 184, 212, 0.5); }
+.theme-toggle-btn svg { width: 20px; height: 20px; transition: transform 0.5s ease; }
+
+/* Smooth transition for all elements */
+body, body *, .stat-card, .exchange-card, .sidebar, header, .login-card, .bossx-ai-window, .pwa-install-banner { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important; }
+
 .login-page { min-height: 100vh; background: radial-gradient(ellipse at center, #001845 0%, #000814 50%, #000000 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
 .login-page::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0, 229, 255, 0.2) 0%, rgba(125, 249, 255, 0.1) 30%, transparent 70%); animation: rotate 30s linear infinite; }
 .login-page::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 30%, rgba(0, 245, 255, 0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(125, 249, 255, 0.1) 0%, transparent 40%); pointer-events: none; }
@@ -49,13 +135,32 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .login-footer { text-align: center; margin-top: 2rem; color: #7DF9FF; font-size: 0.875rem; }
 .login-footer a { color: #00E5FF; text-decoration: none; font-weight: 600; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
 .login-footer a:hover { text-decoration: underline; color: #E0FFFF; }
+.login-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: rgba(0, 24, 69, 0.6); padding: 0.4rem; border-radius: 0.75rem; border: 1px solid rgba(0, 229, 255, 0.2); }
+.login-tab-btn { flex: 1; padding: 0.6rem 0.5rem; background: transparent; border: none; color: #7DF9FF; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 0.5rem; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
+.login-tab-btn:hover { background: rgba(0, 229, 255, 0.1); color: #E0FFFF; }
+.login-tab-btn.active { background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #000814; box-shadow: 0 0 15px rgba(0, 229, 255, 0.5); }
+.login-tab-btn svg { width: 16px; height: 16px; }
+.login-form-wrapper { display: none; animation: fadeIn 0.4s ease-out; }
+.login-form-wrapper.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.google-btn { width: 100%; padding: 0.875rem 1rem; background: #ffffff; border: 2px solid rgba(0, 229, 255, 0.3); border-radius: 0.75rem; color: #000814; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.75rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); margin-top: 1rem; }
+.google-btn:hover { background: #F8F9FA; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2), 0 0 25px rgba(0, 229, 255, 0.4); border-color: #00E5FF; }
+.google-btn svg { width: 20px; height: 20px; }
+.google-btn-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2; }
+.google-btn-text span:first-child { font-size: 0.75rem; color: #5F6368; }
+.google-btn-text span:last-child { font-weight: 700; color: #000814; }
+.login-divider { display: flex; align-items: center; gap: 0.75rem; margin: 1.25rem 0; color: #7DF9FF; font-size: 0.8rem; }
+.login-divider::before, .login-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.4), transparent); }
+.login-info-box { background: rgba(0, 229, 255, 0.08); border: 1px solid rgba(0, 229, 255, 0.25); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 1rem; font-size: 0.8rem; color: #B0E0E6; display: flex; gap: 0.5rem; align-items: flex-start; }
+.login-info-box svg { width: 16px; height: 16px; flex-shrink: 0; color: #00E5FF; margin-top: 1px; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .gradient-bg { background: linear-gradient(to bottom, #001233, #000814); }
 .gradient-border { border: 2px solid rgba(0, 229, 255, 0.3); box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.05); }
 .hover-scale { transition: transform 0.2s ease-in-out; }
 .hover-scale:hover { transform: scale(1.02); }
 .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
-.sidebar { transition: width 0.3s ease-in-out; width: 14rem; min-width: 14rem; background: linear-gradient(180deg, #001233 0%, #000814 100%); border-right: 2px solid rgba(0, 229, 255, 0.2); box-shadow: inset -10px 0 30px rgba(0, 229, 255, 0.05); }
+.sidebar { transition: width 0.3s ease-in-out, background 0.4s ease; width: 14rem; min-width: 14rem; background: linear-gradient(180deg, #001233 0%, #000814 100%); border-right: 2px solid rgba(0, 229, 255, 0.2); box-shadow: inset -10px 0 30px rgba(0, 229, 255, 0.05); }
 .sidebar.collapsed { width: 4rem; min-width: 4rem; }
 .menu-item { transition: all 0.2s ease-in-out; border: 1px solid transparent; }
 .menu-item:hover { background: linear-gradient(90deg, rgba(0, 229, 255, 0.15), transparent); border-color: rgba(0, 229, 255, 0.3); transform: translateX(4px); box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); }
@@ -191,13 +296,9 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .ice-glow { box-shadow: 0 0 20px rgba(0, 229, 255, 0.5), 0 0 40px rgba(0, 229, 255, 0.3), inset 0 0 15px rgba(224, 255, 255, 0.1); }
 .validation-card { display: flex; flex-direction: column; justify-content: space-between; }
 .validation-bottom-section { margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(0, 229, 255, 0.15); }
-
-/* ============================================ */
-/* BOSSX AI AGENT - FLOATING CHATBOT STYLES     */
-/* ============================================ */
-.bossx-ai-fab { position: fixed; bottom: 24px; right: 24px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(145deg, #00E5FF, #00B8D4); border: 3px solid rgba(224, 255, 255, 0.6); cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0, 229, 255, 0.7), 0 0 60px rgba(0, 229, 255, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.2); z-index: 9999; transition: all 0.3s ease; animation: fabPulse 3s ease-in-out infinite; }
+.bossx-ai-fab { position: fixed; bottom: 24px; right: 24px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(145deg, #00E5FF, #00B8D4); border: 3px solid rgba(224, 255, 255, 0.6); cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0, 229, 255, 0.7), 0 0 60px rgba(0, 229, 255, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.2); z-index: 9999; transition: all 0.3s ease; animation: fabPulse 3s ease-in-out infinite; }
+.bossx-ai-fab.visible { display: flex; }
 .bossx-ai-fab:hover { transform: scale(1.08) rotate(8deg); box-shadow: 0 0 40px rgba(0, 229, 255, 0.9), 0 0 80px rgba(0, 229, 255, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.3); }
-.bossx-ai-fab.minimized { animation: fabPulse 3s ease-in-out infinite; }
 @keyframes fabPulse { 0%, 100% { box-shadow: 0 0 30px rgba(0, 229, 255, 0.7), 0 0 60px rgba(0, 229, 255, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.2); } 50% { box-shadow: 0 0 40px rgba(0, 229, 255, 0.9), 0 0 80px rgba(0, 229, 255, 0.6), inset 0 0 25px rgba(255, 255, 255, 0.3); } }
 .bossx-ai-fab-icon { font-size: 28px; color: #000814; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)); }
 .bossx-ai-fab-badge { position: absolute; top: -4px; right: -4px; background: linear-gradient(145deg, #FF006E, #D4005A); color: #fff; font-size: 11px; font-weight: bold; padding: 3px 7px; border-radius: 10px; border: 2px solid #000814; box-shadow: 0 0 15px rgba(255, 0, 110, 0.6); animation: badgeBounce 2s ease-in-out infinite; }
@@ -240,9 +341,14 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .bossx-ai-typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .bossx-ai-typing-dot:nth-child(3) { animation-delay: 0.4s; }
 @keyframes typingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-8px); opacity: 1; } }
-.bossx-ai-quick-replies { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px 16px; flex-shrink: 0; }
-.bossx-ai-quick-btn { padding: 7px 12px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.4); border-radius: 16px; color: #7DF9FF; font-size: 12px; cursor: pointer; transition: all 0.2s ease; white-space: nowrap; }
-.bossx-ai-quick-btn:hover { background: rgba(0, 229, 255, 0.2); border-color: #00E5FF; color: #E0FFFF; box-shadow: 0 0 12px rgba(0, 229, 255, 0.4); transform: translateY(-1px); }
+/* 🧠 DEEP THINKING STYLES */
+.bossx-ai-thinking-stage { display: flex; align-items: center; gap: 10px; color: #E0FFFF; font-size: 13.5px; font-weight: 500; min-height: 20px; transition: opacity 0.3s ease, transform 0.3s ease; }
+.bossx-ai-thinking-stage.fade-out { opacity: 0; transform: translateX(-5px); }
+.bossx-ai-thinking-stage.fade-in { opacity: 1; transform: translateX(0); }
+.bossx-ai-thinking-spinner { width: 16px; height: 16px; border: 2px solid rgba(0,229,255,0.2); border-top-color: #00E5FF; border-radius: 50%; animation: spin 0.8s linear infinite; flex-shrink: 0; box-shadow: 0 0 8px rgba(0,229,255,0.5); }
+.bossx-ai-context-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); border-radius: 20px; font-size: 11px; color: #7DF9FF; margin-top: 8px; }
+.bossx-ai-context-badge.active { background: rgba(0,255,200,0.1); border-color: rgba(0,255,200,0.4); color: #00FFC8; }
+.bossx-ai-context-badge.inactive { background: rgba(255,0,110,0.1); border-color: rgba(255,0,110,0.3); color: #FF006E; }
 .bossx-ai-footer { border-top: 2px solid rgba(0, 229, 255, 0.3); padding: 12px; display: flex; gap: 8px; align-items: center; background: rgba(0, 8, 20, 0.6); flex-shrink: 0; }
 .bossx-ai-input { flex: 1; padding: 10px 14px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; color: #fff; font-size: 13.5px; outline: none; transition: all 0.2s ease; }
 .bossx-ai-input:focus { border-color: #00E5FF; box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2), 0 0 15px rgba(0, 229, 255, 0.3); }
@@ -254,378 +360,73 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 .bossx-ai-clear-btn { background: rgba(255, 0, 110, 0.15); color: #FF006E; border: 1px solid rgba(255, 0, 110, 0.4); }
 .bossx-ai-clear-btn:hover { background: rgba(255, 0, 110, 0.25); box-shadow: 0 0 12px rgba(255, 0, 110, 0.4); }
 @media (max-width: 480px) { .bossx-ai-window { width: calc(100vw - 24px); right: 12px; bottom: 90px; height: calc(100vh - 120px); } .bossx-ai-fab { bottom: 16px; right: 16px; width: 56px; height: 56px; } }
-
-/* ============================================ */
-/* SOCIALFI STYLES (Modul Terpisah - Prefix sfi) */
-/* ============================================ */
-.sfi-subscribe-card {
-  background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
-  border: 2px solid rgba(0, 229, 255, 0.4);
-  border-radius: 1rem;
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.3);
-}
-.sfi-subscribe-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 1rem;
-  background: linear-gradient(145deg, #00E5FF, #00B8D4);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2);
-  border: 3px solid rgba(224, 255, 255, 0.6);
-  animation: fabPulse 3s ease-in-out infinite;
-}
-.sfi-status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: bold;
-}
-.sfi-status-badge.active {
-  background: rgba(0, 255, 200, 0.15);
-  color: #00FFC8;
-  border: 1px solid rgba(0, 255, 200, 0.4);
-  box-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
-}
-.sfi-status-badge.inactive {
-  background: rgba(255, 0, 110, 0.15);
-  color: #FF006E;
-  border: 1px solid rgba(255, 0, 110, 0.4);
-}
-.sfi-post-card {
-  background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
-  border: 2px solid rgba(0, 229, 255, 0.3);
-  border-radius: 1rem;
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.03);
-  transition: all 0.3s ease;
-  animation: msgFadeIn 0.4s ease-out;
-}
-.sfi-post-card:hover {
-  border-color: rgba(0, 229, 255, 0.6);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.3);
-}
-.sfi-post-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.sfi-post-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(0, 229, 255, 0.5);
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
-  flex-shrink: 0;
-  background: linear-gradient(145deg, #00E5FF, #00B8D4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000814;
-  font-weight: bold;
-  font-size: 16px;
-}
-.sfi-post-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.sfi-post-meta {
-  flex: 1;
-}
-.sfi-post-author {
-  color: #E0FFFF;
-  font-weight: 600;
-  font-size: 14px;
-  text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
-}
-.sfi-post-role {
-  color: #7DF9FF;
-  font-size: 11px;
-  margin-top: 2px;
-}
-.sfi-post-time {
-  color: #7DF9FF;
-  font-size: 11px;
-  opacity: 0.7;
-}
-.sfi-post-content {
-  color: #E0FFFF;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 12px;
-  word-wrap: break-word;
-}
-.sfi-post-media {
-  width: 100%;
-  max-height: 400px;
-  border-radius: 0.75rem;
-  margin-bottom: 12px;
-  border: 2px solid rgba(0, 229, 255, 0.3);
-  object-fit: cover;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-.sfi-post-media-video {
-  width: 100%;
-  max-height: 400px;
-  border-radius: 0.75rem;
-  margin-bottom: 12px;
-  border: 2px solid rgba(0, 229, 255, 0.3);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-.sfi-post-actions {
-  display: flex;
-  gap: 12px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(0, 229, 255, 0.15);
-}
-.sfi-action-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  background: rgba(0, 24, 69, 0.6);
-  border: 1px solid rgba(0, 229, 255, 0.2);
-  border-radius: 20px;
-  color: #7DF9FF;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.sfi-action-btn:hover {
-  background: rgba(0, 229, 255, 0.15);
-  border-color: #00E5FF;
-  color: #E0FFFF;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
-}
-.sfi-action-btn.liked {
-  background: rgba(255, 0, 110, 0.15);
-  border-color: rgba(255, 0, 110, 0.5);
-  color: #FF006E;
-  box-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
-}
-.sfi-comments-section {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(0, 229, 255, 0.15);
-}
-.sfi-comment {
-  display: flex;
-  gap: 10px;
-  padding: 8px 0;
-  animation: msgFadeIn 0.3s ease-out;
-}
-.sfi-comment-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #7DF9FF, #00E5FF);
-  color: #000814;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 12px;
-  flex-shrink: 0;
-  border: 1px solid rgba(0, 229, 255, 0.4);
-}
-.sfi-comment-body {
-  flex: 1;
-  background: rgba(0, 24, 69, 0.6);
-  border: 1px solid rgba(0, 229, 255, 0.2);
-  border-radius: 12px;
-  padding: 8px 12px;
-}
-.sfi-comment-author {
-  color: #00E5FF;
-  font-weight: 600;
-  font-size: 12px;
-  margin-bottom: 2px;
-}
-.sfi-comment-text {
-  color: #E0FFFF;
-  font-size: 13px;
-  line-height: 1.4;
-}
-.sfi-comment-time {
-  color: #7DF9FF;
-  font-size: 10px;
-  opacity: 0.6;
-  margin-top: 4px;
-}
-.sfi-reply-btn {
-  background: none;
-  border: none;
-  color: #7DF9FF;
-  font-size: 11px;
-  cursor: pointer;
-  padding: 2px 6px;
-  margin-left: 8px;
-}
-.sfi-reply-btn:hover {
-  color: #00E5FF;
-  text-decoration: underline;
-}
-.sfi-reply {
-  margin-left: 42px;
-  padding: 6px 0;
-}
-.sfi-reply .sfi-comment-avatar {
-  width: 26px;
-  height: 26px;
-  font-size: 10px;
-  background: linear-gradient(145deg, #00E5FF, #00B8D4);
-}
-.sfi-comment-input-wrap {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-}
-.sfi-comment-input {
-  flex: 1;
-  padding: 8px 12px;
-  background: rgba(0, 24, 69, 0.8);
-  border: 1px solid rgba(0, 229, 255, 0.3);
-  border-radius: 20px;
-  color: #fff;
-  font-size: 13px;
-  outline: none;
-}
-.sfi-comment-input:focus {
-  border-color: #00E5FF;
-  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2);
-}
-.sfi-comment-send {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #00E5FF, #00B8D4);
-  color: #000814;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
-}
-.sfi-comment-send:hover {
-  background: linear-gradient(145deg, #00F5FF, #00E5FF);
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
-}
-.sfi-compose-card {
-  background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95));
-  border: 2px solid rgba(0, 229, 255, 0.4);
-  border-radius: 1rem;
-  padding: 1.25rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.2);
-}
-.sfi-compose-textarea {
-  width: 100%;
-  min-height: 80px;
-  padding: 12px;
-  background: rgba(0, 24, 69, 0.8);
-  border: 2px solid rgba(0, 229, 255, 0.3);
-  border-radius: 0.75rem;
-  color: #fff;
-  font-size: 14px;
-  resize: vertical;
-  outline: none;
-  font-family: inherit;
-}
-.sfi-compose-textarea:focus {
-  border-color: #00E5FF;
-  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2);
-}
-.sfi-media-toggle {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-.sfi-media-btn {
-  padding: 6px 12px;
-  background: rgba(0, 24, 69, 0.8);
-  border: 1px solid rgba(0, 229, 255, 0.3);
-  border-radius: 20px;
-  color: #7DF9FF;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.sfi-media-btn:hover {
-  background: rgba(0, 229, 255, 0.15);
-  border-color: #00E5FF;
-  color: #E0FFFF;
-}
-.sfi-media-btn.active {
-  background: rgba(0, 229, 255, 0.25);
-  border-color: #00E5FF;
-  color: #E0FFFF;
-}
-.sfi-media-url-input {
-  width: 100%;
-  padding: 8px 12px;
-  margin-top: 10px;
-  background: rgba(0, 24, 69, 0.8);
-  border: 1px solid rgba(0, 229, 255, 0.3);
-  border-radius: 0.5rem;
-  color: #fff;
-  font-size: 13px;
-  outline: none;
-  display: none;
-}
+.sfi-subscribe-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.4); border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.3); }
+.sfi-subscribe-icon { width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(145deg, #00E5FF, #00B8D4); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2); border: 3px solid rgba(224, 255, 255, 0.6); animation: fabPulse 3s ease-in-out infinite; }
+.sfi-status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+.sfi-status-badge.active { background: rgba(0, 255, 200, 0.15); color: #00FFC8; border: 1px solid rgba(0, 255, 200, 0.4); box-shadow: 0 0 10px rgba(0, 255, 200, 0.3); }
+.sfi-status-badge.inactive { background: rgba(255, 0, 110, 0.15); color: #FF006E; border: 1px solid rgba(255, 0, 110, 0.4); }
+.sfi-post-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.3); border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.03); transition: all 0.3s ease; animation: msgFadeIn 0.4s ease-out; }
+.sfi-post-card:hover { border-color: rgba(0, 229, 255, 0.6); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.3); }
+.sfi-post-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.sfi-post-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(0, 229, 255, 0.5); box-shadow: 0 0 10px rgba(0, 229, 255, 0.4); flex-shrink: 0; background: linear-gradient(145deg, #00E5FF, #00B8D4); display: flex; align-items: center; justify-content: center; color: #000814; font-weight: bold; font-size: 16px; }
+.sfi-post-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.sfi-post-meta { flex: 1; }
+.sfi-post-author { color: #E0FFFF; font-weight: 600; font-size: 14px; text-shadow: 0 0 8px rgba(0, 229, 255, 0.5); }
+.sfi-post-role { color: #7DF9FF; font-size: 11px; margin-top: 2px; }
+.sfi-post-time { color: #7DF9FF; font-size: 11px; opacity: 0.7; }
+.sfi-post-content { color: #E0FFFF; font-size: 14px; line-height: 1.6; margin-bottom: 12px; word-wrap: break-word; }
+.sfi-post-media { width: 100%; max-height: 400px; border-radius: 0.75rem; margin-bottom: 12px; border: 2px solid rgba(0, 229, 255, 0.3); object-fit: cover; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
+.sfi-post-media-video { width: 100%; max-height: 400px; border-radius: 0.75rem; margin-bottom: 12px; border: 2px solid rgba(0, 229, 255, 0.3); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
+.sfi-post-actions { display: flex; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(0, 229, 255, 0.15); }
+.sfi-action-btn { display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(0, 24, 69, 0.6); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 20px; color: #7DF9FF; font-size: 12px; cursor: pointer; transition: all 0.2s ease; }
+.sfi-action-btn:hover { background: rgba(0, 229, 255, 0.15); border-color: #00E5FF; color: #E0FFFF; box-shadow: 0 0 10px rgba(0, 229, 255, 0.3); }
+.sfi-action-btn.liked { background: rgba(255, 0, 110, 0.15); border-color: rgba(255, 0, 110, 0.5); color: #FF006E; box-shadow: 0 0 10px rgba(255, 0, 110, 0.3); }
+.sfi-comments-section { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0, 229, 255, 0.15); }
+.sfi-comment { display: flex; gap: 10px; padding: 8px 0; animation: msgFadeIn 0.3s ease-out; }
+.sfi-comment-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(145deg, #7DF9FF, #00E5FF); color: #000814; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; flex-shrink: 0; border: 1px solid rgba(0, 229, 255, 0.4); }
+.sfi-comment-body { flex: 1; background: rgba(0, 24, 69, 0.6); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 12px; padding: 8px 12px; }
+.sfi-comment-author { color: #00E5FF; font-weight: 600; font-size: 12px; margin-bottom: 2px; }
+.sfi-comment-text { color: #E0FFFF; font-size: 13px; line-height: 1.4; }
+.sfi-comment-time { color: #7DF9FF; font-size: 10px; opacity: 0.6; margin-top: 4px; }
+.sfi-reply-btn { background: none; border: none; color: #7DF9FF; font-size: 11px; cursor: pointer; padding: 2px 6px; margin-left: 8px; }
+.sfi-reply-btn:hover { color: #00E5FF; text-decoration: underline; }
+.sfi-reply { margin-left: 42px; padding: 6px 0; }
+.sfi-reply .sfi-comment-avatar { width: 26px; height: 26px; font-size: 10px; background: linear-gradient(145deg, #00E5FF, #00B8D4); }
+.sfi-comment-input-wrap { display: flex; gap: 8px; margin-top: 10px; }
+.sfi-comment-input { flex: 1; padding: 8px 12px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; color: #fff; font-size: 13px; outline: none; }
+.sfi-comment-input:focus { border-color: #00E5FF; box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2); }
+.sfi-comment-send { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #000814; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0, 229, 255, 0.4); }
+.sfi-comment-send:hover { background: linear-gradient(145deg, #00F5FF, #00E5FF); box-shadow: 0 0 15px rgba(0, 229, 255, 0.6); }
+.sfi-compose-card { background: linear-gradient(145deg, rgba(0, 18, 51, 0.95), rgba(0, 24, 69, 0.95)); border: 2px solid rgba(0, 229, 255, 0.4); border-radius: 1rem; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.2); }
+.sfi-compose-textarea { width: 100%; min-height: 80px; padding: 12px; background: rgba(0, 24, 69, 0.8); border: 2px solid rgba(0, 229, 255, 0.3); border-radius: 0.75rem; color: #fff; font-size: 14px; resize: vertical; outline: none; font-family: inherit; }
+.sfi-compose-textarea:focus { border-color: #00E5FF; box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2); }
+.sfi-media-toggle { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.sfi-media-btn { padding: 6px 12px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; color: #7DF9FF; font-size: 12px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; }
+.sfi-media-btn:hover { background: rgba(0, 229, 255, 0.15); border-color: #00E5FF; color: #E0FFFF; }
+.sfi-media-btn.active { background: rgba(0, 229, 255, 0.25); border-color: #00E5FF; color: #E0FFFF; }
+.sfi-media-url-input { width: 100%; padding: 8px 12px; margin-top: 10px; background: rgba(0, 24, 69, 0.8); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 0.5rem; color: #fff; font-size: 13px; outline: none; display: none; }
 .sfi-media-url-input.show { display: block; }
-.sfi-media-url-input:focus {
-  border-color: #00E5FF;
-}
-.sfi-media-preview {
-  margin-top: 10px;
-  max-width: 100%;
-  max-height: 200px;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(0, 229, 255, 0.3);
-  display: none;
-}
+.sfi-media-url-input:focus { border-color: #00E5FF; }
+.sfi-media-preview { margin-top: 10px; max-width: 100%; max-height: 200px; border-radius: 0.5rem; border: 1px solid rgba(0, 229, 255, 0.3); display: none; }
 .sfi-media-preview.show { display: block; }
-.sfi-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-.sfi-stat-card {
-  background: linear-gradient(145deg, #001233, #001845);
-  border: 2px solid rgba(0, 229, 255, 0.2);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-.sfi-stat-value {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #00E5FF;
-  text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
-}
-.sfi-stat-label {
-  font-size: 12px;
-  color: #7DF9FF;
-  margin-top: 4px;
-}
+.sfi-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.sfi-stat-card { background: linear-gradient(145deg, #001233, #001845); border: 2px solid rgba(0, 229, 255, 0.2); border-radius: 0.75rem; padding: 1rem; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
+.sfi-stat-value { font-size: 1.5rem; font-weight: bold; color: #00E5FF; text-shadow: 0 0 10px rgba(0, 229, 255, 0.6); }
+.sfi-stat-label { font-size: 12px; color: #7DF9FF; margin-top: 4px; }
+.pwa-install-banner { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(150%); background: linear-gradient(145deg, rgba(0, 18, 51, 0.98), rgba(0, 24, 69, 0.98)); border: 2px solid rgba(0, 229, 255, 0.5); border-radius: 1rem; padding: 1rem 1.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 229, 255, 0.4); backdrop-filter: blur(20px); z-index: 9997; display: none; align-items: center; gap: 1rem; max-width: 90vw; animation: pwaSlideUp 0.5s ease-out forwards; }
+.pwa-install-banner.show { display: flex; transform: translateX(-50%) translateY(0); }
+@keyframes pwaSlideUp { from { transform: translateX(-50%) translateY(150%); opacity: 0; } to { transform: translateX(-50%) translateY(0); opacity: 1; } }
+.pwa-install-icon { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(145deg, #00E5FF, #00B8D4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 20px rgba(0, 229, 255, 0.6); border: 2px solid rgba(224, 255, 255, 0.6); }
+.pwa-install-icon svg { width: 28px; height: 28px; color: #000814; }
+.pwa-install-content { flex: 1; min-width: 0; }
+.pwa-install-title { color: #E0FFFF; font-size: 14px; font-weight: bold; margin: 0 0 4px 0; text-shadow: 0 0 10px rgba(0, 229, 255, 0.6); }
+.pwa-install-desc { color: #7DF9FF; font-size: 12px; margin: 0; line-height: 1.4; }
+.pwa-install-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.pwa-install-btn { padding: 8px 16px; background: linear-gradient(145deg, #00E5FF, #00B8D4); color: #000814; border: none; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; box-shadow: 0 0 15px rgba(0, 229, 255, 0.5); transition: all 0.2s ease; white-space: nowrap; }
+.pwa-install-btn:hover { background: linear-gradient(145deg, #00F5FF, #00E5FF); box-shadow: 0 0 25px rgba(0, 229, 255, 0.8); transform: translateY(-1px); }
+.pwa-install-close { width: 28px; height: 28px; background: rgba(255, 0, 110, 0.15); border: 1px solid rgba(255, 0, 110, 0.4); border-radius: 50%; color: #FF006E; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; flex-shrink: 0; }
+.pwa-install-close:hover { background: rgba(255, 0, 110, 0.25); box-shadow: 0 0 12px rgba(255, 0, 110, 0.4); }
+@media (max-width: 480px) { .pwa-install-banner { bottom: 80px; padding: 0.75rem 1rem; gap: 0.75rem; } .pwa-install-icon { width: 40px; height: 40px; } .pwa-install-icon svg { width: 24px; height: 24px; } .pwa-install-title { font-size: 13px; } .pwa-install-desc { font-size: 11px; } .pwa-install-btn { padding: 6px 12px; font-size: 12px; } }
 </style>
 </head>
 <body>
@@ -637,12 +438,56 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 </div>
 <h1 class="login-title">BossX Masternode</h1>
 <p class="login-subtitle">Masuk ke akun Validator Masternode Anda</p>
+<div class="login-tabs">
+<button type="button" class="login-tab-btn active" onclick="switchLoginTab('username')">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+Username
+</button>
+<button type="button" class="login-tab-btn" onclick="switchLoginTab('email')">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+Email
+</button>
+<button type="button" class="login-tab-btn" onclick="switchLoginTab('gmail')">
+<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+Gmail
+</button>
+</div>
 <div id="login-error" class="login-error">Username atau password salah!</div>
+<div id="login-form-username" class="login-form-wrapper active">
 <form id="login-form" onsubmit="return handleLogin(event)">
 <input type="text" id="login-username" class="login-input" placeholder="Username" required autocomplete="username" />
 <input type="password" id="login-password" class="login-input" placeholder="Password" required autocomplete="current-password" />
 <button type="submit" id="login-button" class="login-button">Masuk</button>
 </form>
+</div>
+<div id="login-form-email" class="login-form-wrapper">
+<form id="login-form-email-form" onsubmit="return handleEmailLogin(event)">
+<input type="email" id="login-email" class="login-input" placeholder="Email Anda" required autocomplete="email" />
+<input type="password" id="login-email-password" class="login-input" placeholder="Password" required autocomplete="current-password" />
+<button type="submit" id="login-email-button" class="login-button">Masuk dengan Email</button>
+</form>
+<div class="login-info-box">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+<span>Masuk pakai email & password BossX Anda</span>
+</div>
+</div>
+<div id="login-form-gmail" class="login-form-wrapper">
+<div class="login-info-box">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+<span>Lanjutkan dengan akun Google Anda secara aman & cepat</span>
+</div>
+<button type="button" id="login-gmail-button" class="google-btn" onclick="handleGmailLogin()">
+<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+<div class="google-btn-text">
+<span>Continue with</span>
+<span>Google</span>
+</div>
+</button>
+<p style="text-align: center; margin-top: 1rem; font-size: 0.75rem; color: #7DF9FF; opacity: 0.8;">
+Dengan melanjutkan, Anda menyetujui <a href="#" style="color: #00E5FF;">Syarat & Ketentuan</a> BossX
+</p>
+</div>
+<div class="login-divider">atau</div>
 <div class="login-footer">
 <p>Belum punya akun? <a href="#" onclick="showRegisterInfo(); return false;">Daftar sekarang</a></p>
 </div>
@@ -659,7 +504,7 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 </div>
 <div id="logo-text">
 <h1 class="text-lg font-bold frost-text">BossX</h1>
-<p class="text-xs text-cyan-200">Crypto Exchange</p>
+<p class="text-xs text-cyan-200">Masternode Platform</p>
 </div>
 </div>
 <button id="toggle-sidebar" class="text-cyan-200 hover:text-cyan-400 hover:bg-cyan-400/10 p-1 rounded">
@@ -732,6 +577,9 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 <i data-lucide="bell" class="w-4 h-4"></i>
 <span class="absolute -top-1 -right-1 bg-rose-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
 </button>
+<button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+<i data-lucide="moon" id="theme-icon"></i>
+</button>
 <div class="flex items-center space-x-2 px-2 py-1 bg-[#001845]/70 rounded-lg border-2 border-cyan-400/30 hover:border-cyan-400/60 transition-colors cursor-pointer">
 <div class="profile-picture">
 <img src="https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg" alt="Fery Muliawan" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'background: linear-gradient(145deg, #00E5FF, #00B8D4); color: white; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75rem; border-radius: 50%;\'>FM</div>'" />
@@ -746,8 +594,6 @@ body { background: #000814; color: #ffffff; overflow-x: hidden; }
 </header>
 <main class="flex-1 overflow-auto">
 <div id="content" class="content-container space-y-4">
-
-<!-- DASHBOARD PAGE -->
 <div id="dashboard-page" class="page-content">
 <div class="bg-[#001233] border-2 border-cyan-400/30 rounded-xl p-3 overflow-hidden" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);">
 <div class="relative">
@@ -796,7 +642,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 <div id="countdown-display" class="countdown-timer" style="display: none;">
 <span class="text-xs text-cyan-300 block mb-1" style="text-shadow: none;">Countdown to 06:00</span>
-<span id="countdown-time">00 - 00 - 00</span>
+<span id="countdown-time">00:00:00</span>
 </div>
 </div>
 </div>
@@ -886,8 +732,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
-<!-- PRIVATE KEY PAGE -->
 <div id="private-key-page" class="page-content active">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-300/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
 <div class="flex items-center justify-between">
@@ -1004,9 +848,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-</div>
-
-<!-- DEPOSIT PAGE -->
 <div id="deposit-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
 <div class="flex items-center justify-between">
@@ -1091,27 +932,25 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
 <div class="flex items-center justify-between mb-4"><h4 class="text-cyan-200">Total Deposit</h4><i data-lucide="trending-up" class="text-emerald-400 w-5 h-5"></i></div>
-<div id="total-deposits" class="text-2xl font-bold text-white">2</div>
+<div id="total-deposits" class="text-2xl font-bold text-white">0</div>
 <p class="text-sm text-emerald-400 mt-1">Transaksi berhasil</p>
 </div>
 <div class="stat-card p-6">
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
 <div class="flex items-center justify-between mb-4"><h4 class="text-cyan-200">Total Amount</h4><i data-lucide="wallet" class="text-cyan-400 w-5 h-5"></i></div>
-<div id="total-amount" class="text-2xl font-bold text-white">351.25</div>
+<div id="total-amount" class="text-2xl font-bold text-white">0.00</div>
 <p id="amount-currency" class="text-sm text-cyan-400 mt-1">USDT</p>
 </div>
 <div class="stat-card p-6">
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
 <div class="flex items-center justify-between mb-4"><h4 class="text-cyan-200">Pending</h4><i data-lucide="loader" class="text-cyan-300 w-5 h-5"></i></div>
-<div id="pending-deposits" class="text-2xl font-bold text-white">1</div>
+<div id="pending-deposits" class="text-2xl font-bold text-white">0</div>
 <p class="text-sm text-cyan-300 mt-1">Menunggu konfirmasi</p>
 </div>
 </div>
 </div>
-
-<!-- WITHDRAWAL PAGE -->
 <div id="withdrawal-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-rose-500/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(255, 0, 110, 0.2);">
 <div class="flex items-center justify-between">
@@ -1238,8 +1077,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
-<!-- P2P PAGE -->
 <div id="p2p-page" class="page-content exchange-bg">
 <div class="exchange-card p-6 mb-6">
 <h1 class="text-3xl font-bold text-cyan-400 mb-4 flex items-center frost-text">
@@ -1292,10 +1129,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="p2p-history-content" class="overflow-x-auto"></div>
 </div>
 </div>
-
-<!-- ============================================ -->
-<!-- SOCIALFI PAGE (MODUL BARU)                   -->
-<!-- ============================================ -->
 <div id="socialfi-page" class="page-content">
 <div class="bg-gradient-to-r from-[#001233] via-[#000814] to-[#001233] border-2 border-cyan-400/30 rounded-xl p-6 mb-6" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);">
 <div class="flex items-center justify-between flex-wrap gap-4">
@@ -1310,8 +1143,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
-<!-- Subscription Status Card -->
 <div id="sfi-subscription-card" class="sfi-subscribe-card mb-6">
 <div class="sfi-subscribe-icon">
 <i data-lucide="crown" class="w-10 h-10 text-[#000814]"></i>
@@ -1321,30 +1152,13 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <div id="sfi-subscription-status" class="mb-4"></div>
 <div id="sfi-subscription-action"></div>
 </div>
-
-<!-- Main Content (hanya muncul jika subscribed) -->
 <div id="sfi-main-content" style="display: none;">
-<!-- Stats Grid -->
 <div class="sfi-stats-grid">
-<div class="sfi-stat-card">
-<div class="sfi-stat-value" id="sfi-stat-posts">0</div>
-<div class="sfi-stat-label">Total Postingan</div>
+<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-posts">0</div><div class="sfi-stat-label">Total Postingan</div></div>
+<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-likes">0</div><div class="sfi-stat-label">Total Likes</div></div>
+<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-comments">0</div><div class="sfi-stat-label">Total Komentar</div></div>
+<div class="sfi-stat-card"><div class="sfi-stat-value" id="sfi-stat-members">1,247</div><div class="sfi-stat-label">Member Aktif</div></div>
 </div>
-<div class="sfi-stat-card">
-<div class="sfi-stat-value" id="sfi-stat-likes">0</div>
-<div class="sfi-stat-label">Total Likes</div>
-</div>
-<div class="sfi-stat-card">
-<div class="sfi-stat-value" id="sfi-stat-comments">0</div>
-<div class="sfi-stat-label">Total Komentar</div>
-</div>
-<div class="sfi-stat-card">
-<div class="sfi-stat-value" id="sfi-stat-members">1,247</div>
-<div class="sfi-stat-label">Member Aktif</div>
-</div>
-</div>
-
-<!-- Compose Post -->
 <div class="sfi-compose-card">
 <div class="flex items-center gap-3 mb-3">
 <div class="sfi-post-avatar">FM</div>
@@ -1355,29 +1169,19 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 <textarea id="sfi-compose-text" class="sfi-compose-textarea" placeholder="Apa yang sedang Anda pikirkan, Bos? Bagikan dengan komunitas BossX..." maxlength="500"></textarea>
 <div class="sfi-media-toggle">
-<button class="sfi-media-btn" onclick="toggleSfiMedia('image')" id="sfi-btn-image">
-<i data-lucide="image" class="w-4 h-4"></i> Gambar
-</button>
-<button class="sfi-media-btn" onclick="toggleSfiMedia('video')" id="sfi-btn-video">
-<i data-lucide="video" class="w-4 h-4"></i> Video
-</button>
+<button class="sfi-media-btn" onclick="toggleSfiMedia('image')" id="sfi-btn-image"><i data-lucide="image" class="w-4 h-4"></i> Gambar</button>
+<button class="sfi-media-btn" onclick="toggleSfiMedia('video')" id="sfi-btn-video"><i data-lucide="video" class="w-4 h-4"></i> Video</button>
 </div>
 <input type="text" id="sfi-media-url" class="sfi-media-url-input" placeholder="Paste URL gambar/video di sini (contoh: https://...)" />
 <img id="sfi-media-preview" class="sfi-media-preview" alt="Preview" />
 <div class="flex justify-between items-center mt-3">
 <span class="text-xs text-cyan-300"><span id="sfi-char-count">0</span>/500</span>
-<button class="node-button" style="width: auto; padding: 0.5rem 1.5rem;" onclick="submitSfiPost()">
-<i data-lucide="send" class="w-4 h-4 inline mr-1"></i>Posting
-</button>
+<button class="node-button" style="width: auto; padding: 0.5rem 1.5rem;" onclick="submitSfiPost()"><i data-lucide="send" class="w-4 h-4 inline mr-1"></i>Posting</button>
 </div>
 </div>
-
-<!-- Feed -->
 <div id="sfi-feed"></div>
 </div>
 </div>
-
-<!-- REFERRAL PAGE -->
 <div id="referral-page" class="page-content">
 <div class="p-6">
 <h1 class="text-2xl font-bold text-cyan-400 mb-4 frost-text">Referral</h1>
@@ -1385,9 +1189,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <h3 class="text-xl font-bold text-white mb-4">Kode Referral Anda</h3>
 <div class="flex items-center space-x-2 mb-4">
 <input id="referral-code" type="text" class="node-input flex-1" readonly value="REF-XXXXXX" />
-<button onclick="copyReferralCode()" class="copy-button flex items-center px-3 py-2 bg-gradient-to-r from-cyan-400 to-cyan-300 text-[#000814] rounded-lg font-semibold" style="box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);">
-<i data-lucide="copy" class="mr-1 w-4 h-4"></i>Copy
-</button>
+<button onclick="copyReferralCode()" class="copy-button flex items-center px-3 py-2 bg-gradient-to-r from-cyan-400 to-cyan-300 text-[#000814] rounded-lg font-semibold" style="box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);"><i data-lucide="copy" class="mr-1 w-4 h-4"></i>Copy</button>
 </div>
 <button onclick="generateReferralCode()" class="node-button mb-4">Generate Kode Baru</button>
 <p class="text-cyan-200">Bagikan kode referral Anda untuk mendapatkan reward.</p>
@@ -1401,12 +1203,10 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
-<!-- TEAM DEVELOPER PAGE -->
 <div id="team-developer-page" class="page-content">
 <div class="p-6">
 <h1 class="text-3xl font-bold text-cyan-400 mb-6 frost-text">Team Developer</h1>
-<p class="text-cyan-200 mb-8">Temui tim di balik BossX Crypto Exchange Platform.</p>
+<p class="text-cyan-200 mb-8">Temui tim di balik BossX Masternode Platform.</p>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 <div class="exchange-card p-6 text-center relative overflow-hidden">
 <div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
@@ -1416,15 +1216,6 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <h3 class="text-xl font-bold text-white mb-2">Fery Muliawan</h3>
 <p class="text-cyan-400 mb-4 frost-text">CEO (Chief Executive Officer)</p>
 <p class="text-cyan-100">Pendiri dan visioner BossX.</p>
-</div>
-<div class="exchange-card p-6 text-center relative overflow-hidden">
-<div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
-<div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-cyan-400" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);">
-<img src="https://i.ibb.co.com/xKDSrKYw/Picsart-25-10-03-12-44-06-927.png" alt="CFO" class="w-full h-full object-cover">
-</div>
-<h3 class="text-xl font-bold text-white mb-2">Mr.Ramadhan</h3>
-<p class="text-cyan-400 mb-4 frost-text">CFO Chief Financial Officer</p>
-<p class="text-cyan-100">Mengawasi operasi harian.</p>
 </div>
 <div class="exchange-card p-6 text-center relative overflow-hidden">
 <div class="border-line-white border-top-white"></div><div class="border-line-white border-right-white"></div><div class="border-line-white border-bottom-white"></div><div class="border-line-white border-left-white"></div>
@@ -1456,16 +1247,12 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
-<!-- SETTINGS PAGE -->
 <div id="settings-page" class="page-content">
 <div class="p-6">
 <h1 class="text-2xl font-bold text-cyan-400 mb-4 frost-text">Settings</h1>
 <p class="text-cyan-200">Fitur Settings akan segera hadir...</p>
 </div>
 </div>
-
-<!-- EXCHANGE PAGE -->
 <div id="exchange-page" class="page-content exchange-bg">
 <div class="exchange-card p-4 mb-4">
 <h1 class="text-3xl font-bold text-cyan-400 mb-2 flex items-center frost-text">
@@ -1492,57 +1279,39 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4" style="height: 90vh;">
 <div class="exchange-card p-4 col-span-3">
-<h2 class="text-lg font-bold text-white mb-4 flex items-center">
-<i data-lucide="trending-up" class="w-5 h-5 mr-2 text-cyan-400"></i>Price Chart
-</h2>
-<div id="chart-container" class="h-full w-full">
-<div id="tradingview-chart" class="h-full w-full"></div>
-</div>
+<h2 class="text-lg font-bold text-white mb-4 flex items-center"><i data-lucide="trending-up" class="w-5 h-5 mr-2 text-cyan-400"></i>Price Chart</h2>
+<div id="chart-container" class="h-full w-full"><div id="tradingview-chart" class="h-full w-full"></div></div>
 </div>
 <div class="exchange-card p-4 col-span-1">
-<h2 class="text-lg font-bold text-white mb-4 flex items-center">
-<i data-lucide="book-open" class="w-5 h-5 mr-2 text-emerald-400"></i>Buy Orders
-</h2>
+<h2 class="text-lg font-bold text-white mb-4 flex items-center"><i data-lucide="book-open" class="w-5 h-5 mr-2 text-emerald-400"></i>Buy Orders</h2>
 <div class="order-book-section mb-4">
 <table class="w-full order-book">
 <thead><tr><th>Price(USDT)</th><th>Amount</th><th>Total</th></tr></thead>
-<tbody id="buy-orders" class="buy-order">
-<tr class="skeleton-loading"><td colspan="3" class="h-4 bg-cyan-400/10 rounded"></td></tr>
-</tbody>
+<tbody id="buy-orders" class="buy-order"><tr class="skeleton-loading"><td colspan="3" class="h-4 bg-cyan-400/10 rounded"></td></tr></tbody>
 </table>
 </div>
 </div>
 <div class="exchange-card p-4 col-span-1">
-<h2 class="text-lg font-bold text-white mb-4 flex items-center">
-<i data-lucide="activity" class="w-5 h-5 mr-2 text-cyan-400"></i>Recent Trades
-</h2>
+<h2 class="text-lg font-bold text-white mb-4 flex items-center"><i data-lucide="activity" class="w-5 h-5 mr-2 text-cyan-400"></i>Recent Trades</h2>
 <div id="spread" class="text-center py-2 mb-3 bg-[#001845]/70 rounded-lg text-cyan-400 font-semibold">Spread: Loading...</div>
 <div class="order-book-section">
 <table class="w-full order-book">
 <thead><tr><th>Price</th><th>Amount</th><th>Time</th></tr></thead>
-<tbody id="recent-trades">
-<tr class="skeleton-loading"><td colspan="3" class="h-4 bg-cyan-400/10 rounded"></td></tr>
-</tbody>
+<tbody id="recent-trades"><tr class="skeleton-loading"><td colspan="3" class="h-4 bg-cyan-400/10 rounded"></td></tr></tbody>
 </table>
 </div>
 </div>
 <div class="exchange-card p-4 col-span-1">
-<h2 class="text-lg font-bold text-white mb-4 flex items-center">
-<i data-lucide="book-open" class="w-5 h-5 mr-2 text-rose-400"></i>Sell Orders
-</h2>
+<h2 class="text-lg font-bold text-white mb-4 flex items-center"><i data-lucide="book-open" class="w-5 h-5 mr-2 text-rose-400"></i>Sell Orders</h2>
 <div class="order-book-section mb-4">
 <table class="w-full order-book">
 <thead><tr><th>Price(USDT)</th><th>Amount</th><th>Total</th></tr></thead>
-<tbody id="sell-orders" class="sell-order">
-<tr class="skeleton-loading"><td colspan="3" class="h-4 bg-rose-400/10 rounded"></td></tr>
-</tbody>
+<tbody id="sell-orders" class="sell-order"><tr class="skeleton-loading"><td colspan="3" class="h-4 bg-rose-400/10 rounded"></td></tr></tbody>
 </table>
 </div>
 </div>
 <div class="exchange-card p-4 col-span-3">
-<h2 class="text-lg font-bold text-white mb-4 flex items-center">
-<i data-lucide="shopping-cart" class="w-5 h-5 mr-2 text-cyan-400"></i>Trade
-</h2>
+<h2 class="text-lg font-bold text-white mb-4 flex items-center"><i data-lucide="shopping-cart" class="w-5 h-5 mr-2 text-cyan-400"></i>Trade</h2>
 <div class="grid grid-cols-2 gap-4">
 <div class="space-y-4">
 <select id="buy-order-type" class="node-input"><option value="limit">Limit</option><option value="market">Market</option></select>
@@ -1563,19 +1332,13 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 </div>
-
 </main>
 </div>
 </div>
-
-<!-- ============================================ -->
-<!-- BOSSX AI AGENT - FLOATING CHATBOT HTML       -->
-<!-- ============================================ -->
 <div id="bossx-ai-fab" class="bossx-ai-fab" onclick="toggleBossxAI()" title="BossX AI AGENT">
 <span class="bossx-ai-fab-icon">🤖</span>
 <span id="bossx-ai-badge" class="bossx-ai-fab-badge" style="display: none;">1</span>
 </div>
-
 <div id="bossx-ai-window" class="bossx-ai-window">
 <div class="bossx-ai-header">
 <div class="bossx-ai-header-left">
@@ -1589,40 +1352,40 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </div>
 </div>
 <div class="bossx-ai-header-actions">
-<button class="bossx-ai-header-btn" onclick="minimizeBossxAI()" title="Minimize">
-<i data-lucide="minus" style="width:14px;height:14px;"></i>
-</button>
-<button class="bossx-ai-header-btn" onclick="closeBossxAI()" title="Tutup">
-<i data-lucide="x" style="width:14px;height:14px;"></i>
-</button>
+<button class="bossx-ai-header-btn" onclick="minimizeBossxAI()" title="Minimize"><i data-lucide="minus" style="width:14px;height:14px;"></i></button>
+<button class="bossx-ai-header-btn" onclick="closeBossxAI()" title="Tutup"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
 </div>
 </div>
-
 <div id="bossx-ai-body" class="bossx-ai-body"></div>
-
-<div id="bossx-ai-quick-replies" class="bossx-ai-quick-replies">
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Apa itu BossX?')">Apa itu BossX?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Cara deposit?')">Cara deposit?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Apa itu Access Key?')">Access Key?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Bagaimana reward bekerja?')">Reward?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Cara withdrawal?')">Withdrawal?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Siapa team developer?')">Team?</button>
-<button class="bossx-ai-quick-btn" onclick="sendQuickReply('Apa itu SocialFi?')">SocialFi?</button>
-</div>
-
 <div class="bossx-ai-footer">
-<button class="bossx-ai-clear-btn" onclick="clearBossxAIChat()" title="Hapus chat">
-<i data-lucide="trash-2" style="width:16px;height:16px;"></i>
-</button>
+<button class="bossx-ai-clear-btn" onclick="clearBossxAIChat()" title="Hapus chat"><i data-lucide="trash-2" style="width:16px;height:16px;"></i></button>
 <input id="bossx-ai-input" type="text" class="bossx-ai-input" placeholder="Tanyakan seputar BossX..." onkeypress="handleBossxAIKey(event)" />
-<button id="bossx-ai-send" class="bossx-ai-send-btn" onclick="sendBossxAIMessage()" title="Kirim">
-<i data-lucide="send" style="width:16px;height:16px;"></i>
+<button id="bossx-ai-send" class="bossx-ai-send-btn" onclick="sendBossxAIMessage()" title="Kirim"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
+</div>
+</div>
+<div id="pwa-install-banner" class="pwa-install-banner">
+<div class="pwa-install-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+<polyline points="7 10 12 15 17 10"/>
+<line x1="12" y1="15" x2="12" y2="3"/>
+</svg>
+</div>
+<div class="pwa-install-content">
+<p class="pwa-install-title">Install BossX App 🧊</p>
+<p class="pwa-install-desc">Pasang di HP untuk akses cepat & pengalaman seperti aplikasi native</p>
+</div>
+<div class="pwa-install-actions">
+<button id="pwa-install-btn" class="pwa-install-btn">Install</button>
+<button id="pwa-install-close" class="pwa-install-close" title="Tutup">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px;">
+<line x1="18" y1="6" x2="6" y2="18"/>
+<line x1="6" y1="6" x2="18" y2="18"/>
+</svg>
 </button>
 </div>
 </div>
-
 <script>
-// ============ UTILITY FUNCTIONS ============
 function showSuccessMessage(message) {
 const existingMessage = document.querySelector('.success-message');
 if (existingMessage) existingMessage.remove();
@@ -1650,11 +1413,55 @@ else showLoginPage();
 function showLoginPage() {
 document.getElementById('login-page').style.display = 'flex';
 document.getElementById('main-app').style.display = 'none';
+hideBossxAIFab();
 }
 function showMainApp() {
 document.getElementById('login-page').style.display = 'none';
 document.getElementById('main-app').style.display = 'flex';
+showBossxAIFab();
 initializeMainApp();
+}
+function switchLoginTab(tab) {
+document.querySelectorAll('.login-tab-btn').forEach(btn => btn.classList.remove('active'));
+document.querySelectorAll('.login-form-wrapper').forEach(form => form.classList.remove('active'));
+document.getElementById('login-error').classList.remove('show');
+if (tab === 'username') {
+document.querySelectorAll('.login-tab-btn')[0].classList.add('active');
+document.getElementById('login-form-username').classList.add('active');
+} else if (tab === 'email') {
+document.querySelectorAll('.login-tab-btn')[1].classList.add('active');
+document.getElementById('login-form-email').classList.add('active');
+} else if (tab === 'gmail') {
+document.querySelectorAll('.login-tab-btn')[2].classList.add('active');
+document.getElementById('login-form-gmail').classList.add('active');
+}
+}
+function handleEmailLogin(event) {
+event.preventDefault();
+const button = document.getElementById('login-email-button');
+const errorDiv = document.getElementById('login-error');
+button.disabled = true;
+button.textContent = 'Memverifikasi...';
+setTimeout(() => {
+errorDiv.textContent = '⚠️ Fitur login email akan segera hadir! Silakan gunakan login Username untuk saat ini.';
+errorDiv.classList.add('show');
+button.disabled = false;
+button.textContent = 'Masuk dengan Email';
+}, 800);
+return false;
+}
+function handleGmailLogin() {
+const button = document.getElementById('login-gmail-button');
+const errorDiv = document.getElementById('login-error');
+errorDiv.classList.remove('show');
+button.disabled = true;
+button.innerHTML = '<svg style="animation: spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="#000814" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg><div class="google-btn-text"><span>Connecting to</span><span>Google...</span></div>';
+setTimeout(() => {
+button.disabled = false;
+button.innerHTML = '<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><div class="google-btn-text"><span>Continue with</span><span>Google</span></div>';
+errorDiv.textContent = '⚠️ Fitur login Google akan segera hadir! Silakan gunakan login Username untuk saat ini.';
+errorDiv.classList.add('show');
+}, 1500);
 }
 function handleLogin(event) {
 event.preventDefault();
@@ -1692,6 +1499,7 @@ document.getElementById('login-form').reset();
 document.getElementById('login-error').classList.remove('show');
 document.getElementById('login-button').disabled = false;
 document.getElementById('login-button').textContent = 'Masuk';
+switchLoginTab('username');
 }, 500);
 }
 return false;
@@ -1700,8 +1508,6 @@ function showRegisterInfo() {
 alert('Fitur registrasi akan segera hadir!\nSilakan hubungi admin untuk pendaftaran.');
 return false;
 }
-
-// ============ STATE VARIABLES ============
 let currentPage = 'private-key';
 let activeTab = 'USDT';
 let activeWithdrawalTab = 'USDT';
@@ -1719,7 +1525,8 @@ let logInterval;
 let lastClaimTime = 0;
 let masaBerlaku = 40000000;
 let masaInterval;
-
+let validationStartTime = null;
+const VALIDATION_STORAGE_KEY = 'bossx_validation_state';
 const walletAddresses = {
 USDT: { address: 'TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TQ3HBNdVFmTFvz9wz3AR2Siss7MRN1fuRM&color=00E5FF' },
 BOSSX: { address: 'TTfKjrU18mi223ukVmz6FMNgBkma13kVA3', qrCode: 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TTfKjrU18mi223ukVmz6FMNgBkma13kVA3&color=00E5FF' }
@@ -1728,24 +1535,106 @@ const withdrawalConfig = {
 USDT: { networks: { TRC20: { fee: 1, min: 10 }, BEP20: { fee: 1, min: 10 } } },
 BOSSX: { networks: { TRC20: { fee: 0.1, min: 1 } } }
 };
-const depositHistory = {
-USDT: [
-{ id: '1', amount: 100.50, txHash: 'a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234', fromAddress: 'TXyza123456789012345678901234567890', status: 'confirmed', timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '2', amount: 250.75, txHash: 'b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234a1', fromAddress: 'TYzab234567890123456789012345678901', status: 'confirmed', timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '3', amount: 50.00, txHash: 'c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2', fromAddress: 'TZabc345678901234567890123456789012', status: 'pending', timestamp: new Date(Date.now() - 30 * 60 * 1000), confirmationCount: 0 }
-],
-BOSSX: [
-{ id: '4', amount: 1000.0, txHash: 'd4e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3', fromAddress: 'TAbcd456789012345678901234567890123', status: 'confirmed', timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '5', amount: 500.0, txHash: 'e5f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4', fromAddress: 'TBcde567890123456789012345678901234', status: 'confirmed', timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), confirmationCount: 1 },
-{ id: '6', amount: 2000.0, txHash: 'f6789012345678901234567890abcdef1234567890abcdef1234a1b2c3d4e5', fromAddress: 'TCdef678901234567890123456789012345', status: 'pending', timestamp: new Date(Date.now() - 15 * 60 * 1000), confirmationCount: 0 }
-]
-};
+const depositHistory = { USDT: [], BOSSX: [] };
 const withdrawalHistory = { USDT: [], BOSSX: [] };
 const p2pHistory = [];
-
+function saveValidationState() {
+try {
+const state = {
+isValidationRunning: isValidationRunning,
+stakedAmount: stakedAmount,
+validationStartTime: validationStartTime,
+totalRewardBalance: totalRewardBalance,
+shareCounter: shareCounter,
+masaBerlaku: masaBerlaku,
+bossxBalance: bossxBalance,
+usdtBalance: usdtBalance,
+isNodeActive: isNodeActive,
+savedAt: Date.now()
+};
+localStorage.setItem(VALIDATION_STORAGE_KEY, JSON.stringify(state));
+} catch (e) {
+console.error('Error saving validation state:', e);
+}
+}
+function loadValidationState() {
+try {
+const saved = localStorage.getItem(VALIDATION_STORAGE_KEY);
+if (!saved) return false;
+const state = JSON.parse(saved);
+isValidationRunning = state.isValidationRunning || false;
+stakedAmount = state.stakedAmount || 0;
+validationStartTime = state.validationStartTime || null;
+totalRewardBalance = state.totalRewardBalance || 0;
+shareCounter = state.shareCounter || 0;
+masaBerlaku = state.masaBerlaku !== undefined ? state.masaBerlaku : 40000000;
+bossxBalance = state.bossxBalance !== undefined ? state.bossxBalance : 1000;
+usdtBalance = state.usdtBalance !== undefined ? state.usdtBalance : 1000;
+isNodeActive = state.isNodeActive || false;
+return true;
+} catch (e) {
+console.error('Error loading validation state:', e);
+return false;
+}
+}
+function resumeValidation() {
+if (!isValidationRunning || !validationStartTime) return;
+const now = Date.now();
+const rewardPerSecond = stakedAmount * 0.000000038580246913580247;
+const startTime = new Date(validationStartTime);
+const nowDate = new Date(now);
+const todaySixAM = new Date(nowDate);
+todaySixAM.setHours(6, 0, 0, 0);
+if (startTime < todaySixAM && nowDate >= todaySixAM) {
+const secondsUntilSixAM = (todaySixAM.getTime() - validationStartTime) / 1000;
+if (secondsUntilSixAM >= 60) {
+const fullCycles = Math.floor(secondsUntilSixAM / 60);
+const fullReward = rewardPerSecond * 60 * fullCycles;
+totalRewardBalance += fullReward;
+shareCounter += fullCycles;
+appendLog('[INFO] Resume: ' + fullCycles + ' auto claim terhitung sampai 06:00');
+}
+isValidationRunning = false;
+validationStartTime = null;
+const powerBtn = document.getElementById('power-btn');
+const statusText = document.getElementById('validation-status');
+const countdownDisplay = document.getElementById('countdown-display');
+if (powerBtn) { powerBtn.classList.remove('on'); powerBtn.classList.add('off'); }
+if (statusText) { statusText.textContent = 'Dihentikan otomatis jam 06:00 - Klik ON untuk lanjut'; statusText.style.display = 'block'; }
+if (countdownDisplay) countdownDisplay.style.display = 'none';
+appendLog('[STATUS] Validasi dihentikan otomatis pada jam 06:00 (saat resume)');
+saveValidationState();
+updateBalanceDisplays();
+return;
+}
+const elapsedSeconds = (now - validationStartTime) / 1000;
+currentValidationReward = rewardPerSecond * (elapsedSeconds % 60);
+const fullCycles = Math.floor(elapsedSeconds / 60);
+if (fullCycles > shareCounter) {
+const missedCycles = fullCycles - shareCounter;
+const missedReward = rewardPerSecond * 60 * missedCycles;
+totalRewardBalance += missedReward;
+shareCounter = fullCycles;
+appendLog('[INFO] Resume: ' + missedCycles + ' auto claim terlewat ditambahkan ke pending reward');
+}
+const powerBtn = document.getElementById('power-btn');
+const statusText = document.getElementById('validation-status');
+const countdownDisplay = document.getElementById('countdown-display');
+if (powerBtn) { powerBtn.classList.remove('off'); powerBtn.classList.add('on'); }
+if (statusText) { statusText.textContent = 'Auto-stop setiap jam 06:00'; statusText.style.display = 'block'; }
+if (countdownDisplay) countdownDisplay.style.display = 'block';
+startCountdown();
+startValidationRunning();
+startMasaCountdown();
+appendLog('[INFO] Validasi diresume dari ' + formatDate(startTime));
+saveValidationState();
+updateBalanceDisplays();
+}
 function initializeMainApp() {
 try {
 updateClock();
+loadValidationState();
+resumeValidation();
 updateBalanceDisplays();
 updateDepositContent();
 updateWithdrawalContent();
@@ -1755,10 +1644,11 @@ updatePrivateKeysList();
 updatePKSummary();
 initSocialFi();
 lucide.createIcons();
-startMasaCountdown();
+if (!isValidationRunning) startMasaCountdown();
 setupEventListeners();
 initBossxAI();
-setTimeout(() => showSuccessMessage('Selamat datang di BossX Crypto Exchange Platform!'), 500);
+loadThemePreference();
+setTimeout(() => showSuccessMessage('Selamat datang di BossX Masternode Platform!'), 500);
 } catch (err) {
 console.error('Error di initializeMainApp:', err);
 }
@@ -1774,7 +1664,7 @@ if (dateEl) dateEl.textContent = now.toLocaleDateString('id-ID', dateOptions);
 }
 function getTimestamp() {
 const now = new Date();
-return `[${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}]`;
+return '[' + now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0') + ':' + String(now.getSeconds()).padStart(2,'0') + ']';
 }
 function formatDate(date) {
 return date.toLocaleString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
@@ -1788,9 +1678,9 @@ const minutes = Math.floor(diff / 60000);
 const hours = Math.floor(diff / 3600000);
 const days = Math.floor(diff / 86400000);
 if (minutes < 1) return 'Baru saja';
-if (minutes < 60) return `${minutes} menit lalu`;
-if (hours < 24) return `${hours} jam lalu`;
-if (days < 7) return `${days} hari lalu`;
+if (minutes < 60) return minutes + ' menit lalu';
+if (hours < 24) return hours + ' jam lalu';
+if (days < 7) return days + ' hari lalu';
 return new Date(timestamp).toLocaleDateString('id-ID');
 }
 function showPage(pageId) {
@@ -1801,7 +1691,7 @@ document.querySelectorAll('.menu-item').forEach(item => {
 item.classList.remove('active');
 item.classList.add('text-cyan-200');
 });
-const activeMenuItem = document.querySelector(`[data-page="${pageId}"]`);
+const activeMenuItem = document.querySelector('[data-page="' + pageId + '"]');
 if (activeMenuItem) {
 activeMenuItem.classList.add('active');
 activeMenuItem.classList.remove('text-cyan-200');
@@ -1832,27 +1722,28 @@ const logTemplates = [
 'Authorized worker: miner_002.worker1',
 'Cooling system active'
 ];
-function appendLog(message, logType = 'normal') {
+function appendLog(message, logType) {
+logType = logType || 'normal';
 const logOutput = document.getElementById('log-output');
 if (!logOutput) return;
-if (message.includes('GPU#0')) {
+if (message.indexOf('GPU#0') !== -1) {
 const randomTemp = Math.floor(Math.random() * 15) + 65;
 const randomHash = (Math.random() * 3 + 47).toFixed(1);
 const randomFan = Math.floor(Math.random() * 10) + 80;
 message = message.replace(/48\.4/, randomHash).replace(/78|79/, randomTemp).replace(/89|90/, randomFan);
-} else if (message.includes('latency spike')) {
+} else if (message.indexOf('latency spike') !== -1) {
 const randomLatency = Math.floor(Math.random() * 50) + 100;
 message = message.replace(/112/, randomLatency);
-} else if (message.includes('Power consumption')) {
+} else if (message.indexOf('Power consumption') !== -1) {
 const randomPower = Math.floor(Math.random() * 200) + 3200;
 message = message.replace(/3416/, randomPower);
 }
-const fullMessage = `${getTimestamp()} ${message}`;
+const fullMessage = getTimestamp() + ' ' + message;
 const logEntry = document.createElement('p');
 logEntry.classList.add('log-entry');
 if (logType === 'pk-success') logEntry.classList.add('pk-success');
 else if (logType === 'pk-error') logEntry.classList.add('pk-error');
-else if (message.includes('auto claim') || message.includes('Accepted Share')) logEntry.classList.add('auto-claim');
+else if (message.indexOf('auto claim') !== -1 || message.indexOf('Accepted Share') !== -1) logEntry.classList.add('auto-claim');
 logEntry.textContent = fullMessage;
 logOutput.appendChild(logEntry);
 while (logOutput.children.length > 100) logOutput.removeChild(logOutput.firstChild);
@@ -1875,7 +1766,7 @@ showErrorMessage('Kontrak validasi berakhir! Aktivasi ulang diperlukan.');
 }
 function startMasaCountdown() {
 if (masaInterval) clearInterval(masaInterval);
-masaInterval = setInterval(() => {
+masaInterval = setInterval(function() {
 if (isValidationRunning && masaBerlaku > 0) {
 masaBerlaku--;
 updateMasaBerlaku();
@@ -1887,7 +1778,7 @@ function startValidationRunning() {
 if (!isNodeActive) { showErrorMessage('Aktivasi node terlebih dahulu!'); return; }
 const rewardPerSecond = stakedAmount * 0.000000038580246913580247;
 lastClaimTime = Date.now() / 1000;
-validationInterval = setInterval(() => {
+validationInterval = setInterval(function() {
 if (!isValidationRunning) return;
 const currentTime = Date.now() / 1000;
 const timeDelta = currentTime - lastClaimTime;
@@ -1897,10 +1788,10 @@ const remaining = 60 - Math.floor(timeDelta % 60);
 document.getElementById('auto-claim-timer').textContent = remaining;
 if (timeDelta >= 60) performAutoClaim();
 }, 1000);
-setTimeout(() => appendLog('[STATUS] Connected successfully to masternode Validasi Running'), Math.random() * 2000 + 1000);
-setTimeout(() => appendLog('[INFO] Connecting to master pool BossXPool.com:4444...'), Math.random() * 2000 + 3000);
-setTimeout(() => appendLog('[STATUS] Network sync: 100%'), Math.random() * 2000 + 5000);
-setTimeout(() => appendLog('[INFO] GPU#0: 48.3 MH/s | Temp: 68°C | Fan: 82%'), Math.random() * 2000 + 7000);
+setTimeout(function() { appendLog('[STATUS] Connected successfully to masternode Validasi Running'); }, Math.random() * 2000 + 1000);
+setTimeout(function() { appendLog('[INFO] Connecting to master pool BossXPool.com:4444...'); }, Math.random() * 2000 + 3000);
+setTimeout(function() { appendLog('[STATUS] Network sync: 100%'); }, Math.random() * 2000 + 5000);
+setTimeout(function() { appendLog('[INFO] GPU#0: 48.3 MH/s | Temp: 68°C | Fan: 82%'); }, Math.random() * 2000 + 7000);
 function addRandomLog() {
 if (!isValidationRunning) return;
 const randomIndex = Math.floor(Math.random() * logTemplates.length);
@@ -1921,11 +1812,12 @@ const rewardPerSecond = stakedAmount * 0.000000038580246913580247;
 const fixedReward = rewardPerSecond * 60;
 totalRewardBalance += fixedReward;
 shareCounter++;
-showSuccessMessage(`Auto Claim: +${fixedReward.toFixed(9)} BossX (Pending)`);
+showSuccessMessage('Auto Claim: +' + fixedReward.toFixed(9) + ' BossX (Pending)');
 appendLog('[SUCCESS] Auto claim Accepted Share #' + shareCounter.toString().padStart(2, '0') + ' (Diff: 12000) - Reward: ' + fixedReward.toFixed(9) + ' BossX (Pending)');
 lastClaimTime = Date.now() / 1000;
 currentValidationReward = 0;
 updateBalanceDisplays();
+saveValidationState();
 }
 function claimToWallet() {
 if (totalRewardBalance <= 0) {
@@ -1936,8 +1828,9 @@ const claimAmount = totalRewardBalance;
 bossxBalance += claimAmount;
 totalRewardBalance = 0;
 updateBalanceDisplays();
-showSuccessMessage(`Berhasil claim ${claimAmount.toFixed(9)} BossX ke Wallet!`);
-appendLog(`[SUCCESS] Claimed ${claimAmount.toFixed(9)} BossX to wallet (tanpa minimal)`, 'pk-success');
+showSuccessMessage('Berhasil claim ' + claimAmount.toFixed(9) + ' BossX ke Wallet!');
+appendLog('[SUCCESS] Claimed ' + claimAmount.toFixed(9) + ' BossX to wallet (tanpa minimal)', 'pk-success');
+saveValidationState();
 }
 function updateBalanceDisplays() {
 const el1 = document.getElementById('bossx-balance');
@@ -1952,49 +1845,50 @@ if (currentPage === 'exchange') updateAvbl();
 if (currentPage === 'private-key') updatePKSummary();
 }
 function togglePower() {
-if (!isNodeActive) { showErrorMessage('Aktivasi node terlebih dahulu!'); return; }
+if (!isNodeActive) {
+showErrorMessage('Aktivasi node terlebih dahulu!');
+return;
+}
 const powerBtn = document.getElementById('power-btn');
 const statusText = document.getElementById('validation-status');
 const countdownDisplay = document.getElementById('countdown-display');
-isValidationRunning = !isValidationRunning;
 if (isValidationRunning) {
+showErrorMessage('⚠️ Validasi tidak dapat dihentikan manual! Sistem akan auto-stop pada jam 06:00.');
+appendLog('[WARNING] Attempt to manual stop rejected - Auto-stop only at 06:00');
+return;
+}
+isValidationRunning = true;
+validationStartTime = Date.now();
 powerBtn.classList.remove('off');
 powerBtn.classList.add('on');
-if (statusText) statusText.textContent = 'Stop validasi setiap jam 06.00';
+if (statusText) statusText.textContent = 'Auto-stop setiap jam 06:00';
 countdownDisplay.style.display = 'block';
 startCountdown();
 startValidationRunning();
 startMasaCountdown();
-appendLog('[INFO] Power On aktiv');
-showSuccessMessage('Validasi dimulai! Auto-claim aktif setiap 60 detik.');
-} else {
-powerBtn.classList.remove('on');
-powerBtn.classList.add('off');
-if (statusText) statusText.textContent = 'Belum berjalan';
-countdownDisplay.style.display = 'none';
-if (countdownInterval) clearInterval(countdownInterval);
-stopValidationRunning();
-if (masaInterval) clearInterval(masaInterval);
-appendLog('[INFO] Validasi dihentikan manual');
-showSuccessMessage('Validasi dihentikan manual.');
-}
+appendLog('[INFO] Power ON - Validasi dimulai (auto-stop 06:00)');
+showSuccessMessage('Validasi dimulai! Auto-claim aktif setiap 60 detik. Auto-stop jam 06:00.');
+saveValidationState();
 lucide.createIcons();
 }
-function forceStopValidation(reason = 'otomatis pada jam 06:00') {
+function forceStopValidation(reason) {
+reason = reason || 'otomatis pada jam 06:00';
 if (!isValidationRunning) return;
 isValidationRunning = false;
+validationStartTime = null;
 const powerBtn = document.getElementById('power-btn');
 const statusText = document.getElementById('validation-status');
 const countdownDisplay = document.getElementById('countdown-display');
 powerBtn.classList.remove('on');
 powerBtn.classList.add('off');
-if (statusText) statusText.textContent = 'Belum berjalan';
+if (statusText) statusText.textContent = 'Dihentikan otomatis jam 06:00 - Klik ON untuk lanjut';
 countdownDisplay.style.display = 'none';
 if (countdownInterval) clearInterval(countdownInterval);
 stopValidationRunning();
 if (masaInterval) clearInterval(masaInterval);
-appendLog(`[STATUS] Validasi dihentikan ${reason}`);
-showSuccessMessage(`Validasi dihentikan ${reason}. Silakan aktifkan kembali untuk melanjutkan.`);
+appendLog('[STATUS] Validasi dihentikan ' + reason);
+showSuccessMessage('Validasi dihentikan ' + reason + '. Silakan aktifkan kembali untuk melanjutkan.');
+saveValidationState();
 lucide.createIcons();
 }
 function startCountdown() {
@@ -2007,19 +1901,22 @@ const diff = target.getTime() - now.getTime();
 const hours = Math.floor(diff / (1000 * 60 * 60));
 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-document.getElementById('countdown-time').textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+document.getElementById('countdown-time').textContent =
+hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+if (diff <= 0 && isValidationRunning) {
+forceStopValidation('otomatis pada jam 06:00');
+return;
+}
 }
 updateCountdown();
 countdownInterval = setInterval(updateCountdown, 1000);
 }
 function checkSixAMStop() {
 const now = new Date();
-if (now.getHours() === 6 && now.getMinutes() === 0 && now.getSeconds() === 0) {
+if (now.getHours() === 6 && now.getMinutes() === 0 && now.getSeconds() < 5) {
 if (isValidationRunning) forceStopValidation('otomatis pada jam 06:00');
 }
 }
-
-// ============ PRIVATE KEY FUNCTIONS ============
 const PK_STORAGE_KEY = 'bossx_private_keys';
 const PK_FEE = 1;
 const PK_MIN_STAKE = 10;
@@ -2053,14 +1950,14 @@ function generatePrivateKey() {
 const stakeInput = document.getElementById('pk-stake-amount');
 const stakeAmount = parseFloat(stakeInput.value) || 0;
 if (stakeAmount < PK_MIN_STAKE) {
-showErrorMessage(`Minimal stake adalah ${PK_MIN_STAKE} BossX!`);
-appendLog(`[ERROR] Generate failed: Stake minimal ${PK_MIN_STAKE} BossX (input: ${stakeAmount})`, 'pk-error');
+showErrorMessage('Minimal stake adalah ' + PK_MIN_STAKE + ' BossX!');
+appendLog('[ERROR] Generate failed: Stake minimal ' + PK_MIN_STAKE + ' BossX (input: ' + stakeAmount + ')', 'pk-error');
 return;
 }
 const totalRequired = stakeAmount + PK_FEE;
 if (bossxBalance < totalRequired) {
-showErrorMessage(`Saldo tidak mencukupi! Dibutuhkan ${totalRequired} BossX (stake + fee)`);
-appendLog(`[ERROR] Generate failed: Saldo tidak cukup (${bossxBalance.toFixed(9)} BossX < ${totalRequired} BossX)`, 'pk-error');
+showErrorMessage('Saldo tidak mencukupi! Dibutuhkan ' + totalRequired + ' BossX (stake + fee)');
+appendLog('[ERROR] Generate failed: Saldo tidak cukup (' + bossxBalance.toFixed(9) + ' BossX < ' + totalRequired + ' BossX)', 'pk-error');
 return;
 }
 const existingKeys = loadPrivateKeys();
@@ -2073,7 +1970,7 @@ if (attempts > 100) {
 showErrorMessage('Gagal generate kode unik. Coba lagi.');
 return;
 }
-} while (existingKeys.some(k => k.code === newCode));
+} while (existingKeys.some(function(k) { return k.code === newCode; }));
 bossxBalance -= totalRequired;
 const newKey = {
 id: Date.now().toString() + '-' + Math.random().toString(36).substr(2, 9),
@@ -2086,14 +1983,15 @@ redeemedAt: null
 };
 existingKeys.unshift(newKey);
 savePrivateKeys(existingKeys);
-appendLog(`[SUCCESS] Access Key generated: ${newCode} | Stake: ${stakeAmount} BossX | Fee: ${PK_FEE} BossX | Total: ${totalRequired} BossX`, 'pk-success');
+appendLog('[SUCCESS] Access Key generated: ' + newCode + ' | Stake: ' + stakeAmount + ' BossX | Fee: ' + PK_FEE + ' BossX | Total: ' + totalRequired + ' BossX', 'pk-success');
 updateBalanceDisplays();
 updatePKStatistics();
 stakeInput.value = '';
 updatePKSummary();
-showSuccessMessage(`Access Key berhasil digenerate! Kode: ${newCode}`);
+showSuccessMessage('Access Key berhasil digenerate! Kode: ' + newCode);
 switchPKTab('mykeys');
 updatePrivateKeysList(newKey.id);
+saveValidationState();
 }
 function redeemPrivateKey() {
 const redeemInput = document.getElementById('redeem-input');
@@ -2104,26 +2002,26 @@ appendLog('[ERROR] Redeem failed: Kode kosong', 'pk-error');
 return;
 }
 if (code.length !== PK_CODE_LENGTH) {
-showErrorMessage(`Access Key tidak valid! Harus ${PK_CODE_LENGTH} karakter (saat ini: ${code.length})`);
-appendLog(`[ERROR] Redeem failed: Format invalid (${code.length}/${PK_CODE_LENGTH} karakter)`, 'pk-error');
+showErrorMessage('Access Key tidak valid! Harus ' + PK_CODE_LENGTH + ' karakter (saat ini: ' + code.length + ')');
+appendLog('[ERROR] Redeem failed: Format invalid (' + code.length + '/' + PK_CODE_LENGTH + ' karakter)', 'pk-error');
 return;
 }
 const keys = loadPrivateKeys();
-const keyIndex = keys.findIndex(k => k.code === code);
+const keyIndex = keys.findIndex(function(k) { return k.code === code; });
 if (keyIndex === -1) {
 showErrorMessage('Access Key tidak ditemukan! Pastikan kode benar.');
-appendLog(`[ERROR] Redeem failed: Kode tidak ditemukan (${code})`, 'pk-error');
+appendLog('[ERROR] Redeem failed: Kode tidak ditemukan (' + code + ')', 'pk-error');
 return;
 }
 const key = keys[keyIndex];
 if (key.status === 'REDEEMED') {
 showErrorMessage('Access Key sudah digunakan! Gunakan key yang lain.');
-appendLog(`[ERROR] Redeem failed: Key sudah diredeem (${code})`, 'pk-error');
+appendLog('[ERROR] Redeem failed: Key sudah diredeem (' + code + ')', 'pk-error');
 return;
 }
 if (isNodeActive) {
 showErrorMessage('Node sudah aktif! Nonaktifkan node terlebih dahulu.');
-appendLog(`[ERROR] Redeem failed: Node sudah aktif`, 'pk-error');
+appendLog('[ERROR] Redeem failed: Node sudah aktif', 'pk-error');
 return;
 }
 key.status = 'REDEEMED';
@@ -2142,99 +2040,43 @@ document.getElementById('node-status').textContent = 'Aktif';
 document.getElementById('node-status').style.color = '#00FFC8';
 currentValidationReward = 0;
 totalRewardBalance = 0;
-appendLog(`[SUCCESS] Access Key redeemed: ${code} | Node activated with ${key.stake} BossX stake`, 'pk-success');
-appendLog(`[INFO] Reward rate: ${(key.stake * 0.000000038580246913580247).toFixed(12)} BossX/detik`);
+appendLog('[SUCCESS] Access Key redeemed: ' + code + ' | Node activated with ' + key.stake + ' BossX stake', 'pk-success');
+appendLog('[INFO] Reward rate: ' + (key.stake * 0.000000038580246913580247).toFixed(12) + ' BossX/detik');
 updateBalanceDisplays();
 updatePKStatistics();
 lucide.createIcons();
-showSuccessMessage(`Node berhasil diaktifkan dengan stake ${key.stake} BossX! Tekan Power ON untuk mulai validasi.`);
+showSuccessMessage('Node berhasil diaktifkan dengan stake ' + key.stake + ' BossX! Tekan Power ON untuk mulai validasi.');
 redeemInputEl.value = '';
+saveValidationState();
 }
-function updatePrivateKeysList(highlightId = null) {
+function updatePrivateKeysList(highlightId) {
 const keys = loadPrivateKeys();
 const listContainer = document.getElementById('private-keys-list');
 if (!listContainer) return;
 if (keys.length === 0) {
-listContainer.innerHTML = `
-<div class="text-center py-12">
-<div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);">
-<i data-lucide="key" class="text-cyan-300 w-6 h-6"></i>
-</div>
-<h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada Access Key</h4>
-<p class="text-cyan-300">Generate Access Key pertama Anda di tab "Generate"</p>
-</div>
-`;
+listContainer.innerHTML = '<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="key" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada Access Key</h4><p class="text-cyan-300">Generate Access Key pertama Anda di tab "Generate"</p></div>';
 } else {
-let tableHTML = `
-<div class="overflow-x-auto">
-<table class="w-full">
-<thead>
-<tr class="border-b-2 border-cyan-400/30">
-<th class="text-left p-3 text-cyan-300 font-semibold">Access Key</th>
-<th class="text-left p-3 text-cyan-300 font-semibold">Stake</th>
-<th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th>
-<th class="text-left p-3 text-cyan-300 font-semibold">Status</th>
-<th class="text-left p-3 text-cyan-300 font-semibold">Aksi</th>
-</tr>
-</thead>
-<tbody>
-`;
-keys.forEach(key => {
+let tableHTML = '<div class="overflow-x-auto"><table class="w-full"><thead><tr class="border-b-2 border-cyan-400/30"><th class="text-left p-3 text-cyan-300 font-semibold">Access Key</th><th class="text-left p-3 text-cyan-300 font-semibold">Stake</th><th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th><th class="text-left p-3 text-cyan-300 font-semibold">Status</th><th class="text-left p-3 text-cyan-300 font-semibold">Aksi</th></tr></thead><tbody>';
+keys.forEach(function(key) {
 const isHighlighted = key.id === highlightId;
 const highlightClass = isHighlighted ? 'pk-highlight-new' : '';
 const rowClass = key.status === 'AVAILABLE' ? 'pk-key-row-available' : 'pk-key-row-redeemed';
-const statusIcon = key.status === 'AVAILABLE'
-? '<i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i>'
-: '<i data-lucide="check-check" class="text-cyan-300 w-4 h-4"></i>';
+const statusIcon = key.status === 'AVAILABLE' ? '<i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i>' : '<i data-lucide="check-check" class="text-cyan-300 w-4 h-4"></i>';
 const statusColor = key.status === 'AVAILABLE' ? 'text-emerald-400' : 'text-cyan-300';
 const statusText = key.status === 'AVAILABLE' ? 'AVAILABLE' : 'REDEEMED';
-const createdDate = new Date(key.createdAt).toLocaleString('id-ID', {
-year: 'numeric', month: 'short', day: 'numeric',
-hour: '2-digit', minute: '2-digit'
+const createdDate = new Date(key.createdAt).toLocaleString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+const actionButton = key.status === 'AVAILABLE' ? '<button onclick="copyPrivateKey(\'' + key.code + '\')" class="flex items-center px-3 py-1 bg-cyan-300 hover:bg-cyan-400 text-[#000814] rounded text-xs font-semibold transition-colors" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);"><i data-lucide="copy" class="w-3 h-3 mr-1"></i>Copy</button>' : '<span class="text-cyan-300 text-xs">-</span>';
+tableHTML += '<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors ' + rowClass + ' ' + highlightClass + '"><td class="p-3"><div class="font-mono text-sm text-cyan-300 break-all tracking-wider frost-text">' + key.code + '</div></td><td class="p-3"><div class="font-semibold text-white">' + key.stake.toFixed(2) + ' BossX</div><div class="text-xs text-cyan-300">Fee: ' + key.fee + ' BossX</div></td><td class="p-3"><div class="flex items-center text-white text-sm"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>' + createdDate + '</div></td><td class="p-3"><div class="flex items-center ' + statusColor + '">' + statusIcon + '<span class="ml-2 capitalize font-semibold text-sm">' + statusText + '</span></div></td><td class="p-3">' + actionButton + '</td></tr>';
 });
-const actionButton = key.status === 'AVAILABLE'
-? `<button onclick="copyPrivateKey('${key.code}')" class="flex items-center px-3 py-1 bg-cyan-300 hover:bg-cyan-400 text-[#000814] rounded text-xs font-semibold transition-colors" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">
-<i data-lucide="copy" class="w-3 h-3 mr-1"></i>Copy
-</button>`
-: `<span class="text-cyan-300 text-xs">-</span>`;
-tableHTML += `
-<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors ${rowClass} ${highlightClass}">
-<td class="p-3">
-<div class="font-mono text-sm text-cyan-300 break-all tracking-wider frost-text">
-${key.code}
-</div>
-</td>
-<td class="p-3">
-<div class="font-semibold text-white">${key.stake.toFixed(2)} BossX</div>
-<div class="text-xs text-cyan-300">Fee: ${key.fee} BossX</div>
-</td>
-<td class="p-3">
-<div class="flex items-center text-white text-sm">
-<i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>
-${createdDate}
-</div>
-</td>
-<td class="p-3">
-<div class="flex items-center ${statusColor}">
-${statusIcon}
-<span class="ml-2 capitalize font-semibold text-sm">${statusText}</span>
-</div>
-</td>
-<td class="p-3">
-${actionButton}
-</td>
-</tr>
-`;
-});
-tableHTML += `</tbody></table></div>`;
+tableHTML += '</tbody></table></div>';
 listContainer.innerHTML = tableHTML;
 }
 lucide.createIcons();
 }
 function updatePKStatistics() {
 const keys = loadPrivateKeys();
-const available = keys.filter(k => k.status === 'AVAILABLE').length;
-const redeemed = keys.filter(k => k.status === 'REDEEMED').length;
+const available = keys.filter(function(k) { return k.status === 'AVAILABLE'; }).length;
+const redeemed = keys.filter(function(k) { return k.status === 'REDEEMED'; }).length;
 const totalEl = document.getElementById('pk-total-keys');
 const availEl = document.getElementById('pk-available-keys');
 const redeemedEl = document.getElementById('pk-redeemed-keys');
@@ -2246,9 +2088,9 @@ if (badgeEl) badgeEl.textContent = keys.length;
 }
 function copyPrivateKey(code) {
 if (navigator.clipboard) {
-navigator.clipboard.writeText(code).then(() => {
-showSuccessMessage(`Access Key disalin: ${code}`);
-}).catch(() => {
+navigator.clipboard.writeText(code).then(function() {
+showSuccessMessage('Access Key disalin: ' + code);
+}).catch(function() {
 fallbackCopyPK(code);
 });
 } else {
@@ -2262,7 +2104,7 @@ document.body.appendChild(textArea);
 textArea.select();
 try {
 document.execCommand('copy');
-showSuccessMessage(`Access Key disalin: ${text}`);
+showSuccessMessage('Access Key disalin: ' + text);
 } catch (err) {
 showErrorMessage('Gagal menyalin. Silakan copy manual.');
 }
@@ -2298,18 +2140,16 @@ const stakeEl = document.getElementById('pk-summary-stake');
 const feeEl = document.getElementById('pk-summary-fee');
 const totalEl = document.getElementById('pk-summary-total');
 const balanceEl = document.getElementById('pk-summary-balance');
-if (stakeEl) stakeEl.textContent = `${stakeAmount.toFixed(2)} BossX`;
-if (feeEl) feeEl.textContent = `${fee.toFixed(2)} BossX`;
-if (totalEl) totalEl.textContent = `${total.toFixed(2)} BossX`;
-if (balanceEl) balanceEl.textContent = `${bossxBalance.toFixed(9)} BossX`;
+if (stakeEl) stakeEl.textContent = stakeAmount.toFixed(2) + ' BossX';
+if (feeEl) feeEl.textContent = fee.toFixed(2) + ' BossX';
+if (totalEl) totalEl.textContent = total.toFixed(2) + ' BossX';
+if (balanceEl) balanceEl.textContent = bossxBalance.toFixed(9) + ' BossX';
 }
 function setMaxPKStake() {
 const maxStake = Math.max(0, bossxBalance - PK_FEE);
 document.getElementById('pk-stake-amount').value = maxStake.toFixed(9);
 updatePKSummary();
 }
-
-// ============ DEPOSIT FUNCTIONS ============
 function updateDepositContent() {
 const wallet = walletAddresses[activeTab];
 document.getElementById('qr-currency').textContent = activeTab;
@@ -2317,8 +2157,8 @@ document.getElementById('wallet-currency').textContent = activeTab;
 document.getElementById('history-currency').textContent = activeTab;
 document.getElementById('qr-code-image').src = wallet.qrCode;
 document.getElementById('wallet-address').textContent = wallet.address;
-document.getElementById('warning-currency').textContent = `• Hanya kirim ${activeTab} ke alamat ini`;
-document.getElementById('min-deposit').textContent = `• Minimal deposit: ${activeTab === 'USDT' ? '10 USDT' : '1 BOSSX'}`;
+document.getElementById('warning-currency').textContent = '• Hanya kirim ' + activeTab + ' ke alamat ini';
+document.getElementById('min-deposit').textContent = '• Minimal deposit: ' + (activeTab === 'USDT' ? '10 USDT' : '1 BOSSX');
 document.getElementById('amount-currency').textContent = activeTab;
 const usdtTab = document.getElementById('usdt-tab');
 const bossxTab = document.getElementById('bossx-tab');
@@ -2337,25 +2177,25 @@ const history = depositHistory[activeTab] || [];
 const historyContent = document.getElementById('history-content');
 if (!historyContent) return;
 if (history.length === 0) {
-historyContent.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="calendar" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada history deposit</h4><p class="text-cyan-300">History deposit ${activeTab} Anda akan muncul di sini</p></div>`;
+historyContent.innerHTML = '<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="calendar" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada history deposit</h4><p class="text-cyan-300">History deposit ' + activeTab + ' Anda akan muncul di sini</p></div>';
 } else {
-let tableHTML = `<div class="overflow-x-auto"><table class="w-full"><thead><tr class="border-b-2 border-cyan-400/30"><th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th><th class="text-left p-3 text-cyan-300 font-semibold">Jumlah</th><th class="text-left p-3 text-cyan-300 font-semibold">TX Hash</th><th class="text-left p-3 text-cyan-300 font-semibold">Status</th><th class="text-left p-3 text-cyan-300 font-semibold">Konfirmasi</th></tr></thead><tbody>`;
-history.forEach(deposit => {
+let tableHTML = '<div class="overflow-x-auto"><table class="w-full"><thead><tr class="border-b-2 border-cyan-400/30"><th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th><th class="text-left p-3 text-cyan-300 font-semibold">Jumlah</th><th class="text-left p-3 text-cyan-300 font-semibold">TX Hash</th><th class="text-left p-3 text-cyan-300 font-semibold">Status</th><th class="text-left p-3 text-cyan-300 font-semibold">Konfirmasi</th></tr></thead><tbody>';
+history.forEach(function(deposit) {
 const statusIcon = getStatusIcon(deposit.status);
 const statusColor = getStatusColor(deposit.status);
 const statusText = getStatusText(deposit.status);
-tableHTML += `<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors"><td class="p-3"><div class="flex items-center text-white"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>${formatDate(deposit.timestamp)}</div></td><td class="p-3"><div class="font-semibold text-cyan-400 frost-text">${formatAmount(deposit.amount)} ${activeTab}</div></td><td class="p-3"><div class="font-mono text-sm text-cyan-100 max-w-32 truncate">${deposit.txHash}</div></td><td class="p-3"><div class="flex items-center ${statusColor}">${statusIcon}<span class="ml-2 capitalize font-semibold">${statusText}</span></div></td><td class="p-3"><div class="text-cyan-100">${deposit.confirmationCount}/1</div></td></tr>`;
+tableHTML += '<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors"><td class="p-3"><div class="flex items-center text-white"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>' + formatDate(deposit.timestamp) + '</div></td><td class="p-3"><div class="font-semibold text-cyan-400 frost-text">' + formatAmount(deposit.amount) + ' ' + activeTab + '</div></td><td class="p-3"><div class="font-mono text-sm text-cyan-100 max-w-32 truncate">' + deposit.txHash + '</div></td><td class="p-3"><div class="flex items-center ' + statusColor + '">' + statusIcon + '<span class="ml-2 capitalize font-semibold">' + statusText + '</span></div></td><td class="p-3"><div class="text-cyan-100">' + deposit.confirmationCount + '/1</div></td></tr>';
 });
-tableHTML += `</tbody></table></div>`;
+tableHTML += '</tbody></table></div>';
 historyContent.innerHTML = tableHTML;
 }
 lucide.createIcons();
 }
 function updateDepositStatistics() {
 const history = depositHistory[activeTab] || [];
-const confirmedDeposits = history.filter(d => d.status === 'confirmed');
-const pendingDeposits = history.filter(d => d.status === 'pending');
-const totalAmount = confirmedDeposits.reduce((sum, d) => sum + d.amount, 0);
+const confirmedDeposits = history.filter(function(d) { return d.status === 'confirmed'; });
+const pendingDeposits = history.filter(function(d) { return d.status === 'pending'; });
+const totalAmount = confirmedDeposits.reduce(function(sum, d) { return sum + d.amount; }, 0);
 document.getElementById('total-deposits').textContent = confirmedDeposits.length;
 document.getElementById('total-amount').textContent = formatAmount(totalAmount);
 document.getElementById('pending-deposits').textContent = pendingDeposits.length;
@@ -2381,23 +2221,21 @@ case 'failed': return 'Gagal';
 default: return 'Pending';
 }
 }
-
-// ============ WITHDRAWAL FUNCTIONS ============
 function updateWithdrawalContent() {
 const balance = activeWithdrawalTab === 'USDT' ? usdtBalance : bossxBalance;
-document.getElementById('withdrawal-balance').textContent = `${formatAmount(balance)} ${activeWithdrawalTab}`;
+document.getElementById('withdrawal-balance').textContent = formatAmount(balance) + ' ' + activeWithdrawalTab;
 document.getElementById('withdrawal-currency').textContent = activeWithdrawalTab;
 document.getElementById('withdrawal-history-currency').textContent = activeWithdrawalTab;
 document.getElementById('withdrawal-amount-currency').textContent = activeWithdrawalTab;
 const networkSelection = document.getElementById('network-selection');
 if (activeWithdrawalTab === 'USDT') {
 networkSelection.style.display = 'block';
-networkSelection.innerHTML = `<label class="text-sm text-cyan-200">Pilih Network:</label><div class="grid grid-cols-2 gap-3"><label class="network-option selected"><input type="radio" name="withdrawal-network" value="TRC20" checked><div class="flex items-center justify-between"><span class="font-semibold text-white">TRC20</span><span class="text-xs text-cyan-200">TRON</span></div><div class="text-xs text-cyan-300 mt-1">Fee: 1 USDT</div></label><label class="network-option"><input type="radio" name="withdrawal-network" value="BEP20"><div class="flex items-center justify-between"><span class="font-semibold text-white">BEP20</span><span class="text-xs text-cyan-200">BSC</span></div><div class="text-xs text-cyan-300 mt-1">Fee: 1 USDT</div></label></div>`;
+networkSelection.innerHTML = '<label class="text-sm text-cyan-200">Pilih Network:</label><div class="grid grid-cols-2 gap-3"><label class="network-option selected"><input type="radio" name="withdrawal-network" value="TRC20" checked><div class="flex items-center justify-between"><span class="font-semibold text-white">TRC20</span><span class="text-xs text-cyan-200">TRON</span></div><div class="text-xs text-cyan-300 mt-1">Fee: 1 USDT</div></label><label class="network-option"><input type="radio" name="withdrawal-network" value="BEP20"><div class="flex items-center justify-between"><span class="font-semibold text-white">BEP20</span><span class="text-xs text-cyan-200">BSC</span></div><div class="text-xs text-cyan-300 mt-1">Fee: 1 USDT</div></label></div>';
 document.getElementById('withdrawal-min').textContent = '• Minimal withdrawal: 10 USDT';
 document.getElementById('withdrawal-fee').textContent = '• Fee withdrawal: 1 USDT';
 } else {
 networkSelection.style.display = 'block';
-networkSelection.innerHTML = `<label class="text-sm text-cyan-200">Network:</label><div class="grid grid-cols-1 gap-3"><label class="network-option selected"><input type="radio" name="withdrawal-network" value="TRC20" checked><div class="flex items-center justify-between"><span class="font-semibold text-white">TRC20</span><span class="text-xs text-cyan-200">TRON</span></div><div class="text-xs text-cyan-300 mt-1">Fee: 0.1 BOSSX</div></label></div>`;
+networkSelection.innerHTML = '<label class="text-sm text-cyan-200">Network:</label><div class="grid grid-cols-1 gap-3"><label class="network-option selected"><input type="radio" name="withdrawal-network" value="TRC20" checked><div class="flex items-center justify-between"><span class="font-semibold text-white">TRC20</span><span class="text-xs text-cyan-200">TRON</span></div><div class="text-xs text-cyan-300 mt-1">Fee: 0.1 BOSSX</div></label></div>';
 document.getElementById('withdrawal-min').textContent = '• Minimal withdrawal: 1 BOSSX';
 document.getElementById('withdrawal-fee').textContent = '• Fee withdrawal: 0.1 BOSSX';
 }
@@ -2416,9 +2254,9 @@ updateWithdrawalHistory();
 updateWithdrawalStatistics();
 }
 function setupNetworkSelection() {
-document.querySelectorAll('.network-option').forEach(option => {
+document.querySelectorAll('.network-option').forEach(function(option) {
 option.addEventListener('click', function() {
-document.querySelectorAll('.network-option').forEach(opt => opt.classList.remove('selected'));
+document.querySelectorAll('.network-option').forEach(function(opt) { opt.classList.remove('selected'); });
 this.classList.add('selected');
 const radio = this.querySelector('input[type="radio"]');
 radio.checked = true;
@@ -2428,19 +2266,21 @@ updateWithdrawalSummary();
 }
 function updateWithdrawalSummary() {
 const amount = parseFloat(document.getElementById('withdrawal-amount').value) || 0;
-const selectedNetwork = document.querySelector('input[name="withdrawal-network"]:checked')?.value || 'TRC20';
-const config = withdrawalConfig[activeWithdrawalTab].networks[selectedNetwork];
+const selectedNetwork = document.querySelector('input[name="withdrawal-network"]:checked');
+const networkValue = selectedNetwork ? selectedNetwork.value : 'TRC20';
+const config = withdrawalConfig[activeWithdrawalTab].networks[networkValue];
 const fee = config.fee;
 const received = Math.max(0, amount - fee);
-document.getElementById('summary-network').textContent = selectedNetwork;
-document.getElementById('summary-amount').textContent = `${formatAmount(amount)} ${activeWithdrawalTab}`;
-document.getElementById('summary-fee').textContent = `${formatAmount(fee)} ${activeWithdrawalTab}`;
-document.getElementById('summary-received').textContent = `${formatAmount(received)} ${activeWithdrawalTab}`;
+document.getElementById('summary-network').textContent = networkValue;
+document.getElementById('summary-amount').textContent = formatAmount(amount) + ' ' + activeWithdrawalTab;
+document.getElementById('summary-fee').textContent = formatAmount(fee) + ' ' + activeWithdrawalTab;
+document.getElementById('summary-received').textContent = formatAmount(received) + ' ' + activeWithdrawalTab;
 }
 function setMaxWithdrawal() {
 const balance = activeWithdrawalTab === 'USDT' ? usdtBalance : bossxBalance;
-const selectedNetwork = document.querySelector('input[name="withdrawal-network"]:checked')?.value || 'TRC20';
-const config = withdrawalConfig[activeWithdrawalTab].networks[selectedNetwork];
+const selectedNetwork = document.querySelector('input[name="withdrawal-network"]:checked');
+const networkValue = selectedNetwork ? selectedNetwork.value : 'TRC20';
+const config = withdrawalConfig[activeWithdrawalTab].networks[networkValue];
 const fee = config.fee;
 const maxAmount = Math.max(0, balance - fee);
 document.getElementById('withdrawal-amount').value = maxAmount.toFixed(activeWithdrawalTab === 'USDT' ? 2 : 8);
@@ -2449,27 +2289,28 @@ updateWithdrawalSummary();
 function submitWithdrawal() {
 const address = document.getElementById('withdrawal-address').value.trim();
 const amount = parseFloat(document.getElementById('withdrawal-amount').value) || 0;
-const selectedNetwork = document.querySelector('input[name="withdrawal-network"]:checked')?.value || 'TRC20';
-const config = withdrawalConfig[activeWithdrawalTab].networks[selectedNetwork];
+const selectedNetwork = document.querySelector('input[name="withdrawal-network"]:checked');
+const networkValue = selectedNetwork ? selectedNetwork.value : 'TRC20';
+const config = withdrawalConfig[activeWithdrawalTab].networks[networkValue];
 const balance = activeWithdrawalTab === 'USDT' ? usdtBalance : bossxBalance;
 const fee = config.fee;
 const minAmount = config.min;
 if (!address) { showErrorMessage('Alamat wallet tujuan tidak boleh kosong!'); return; }
 if (address.length < 30) { showErrorMessage('Alamat wallet tidak valid!'); return; }
-if (amount < minAmount) { showErrorMessage(`Minimal withdrawal adalah ${minAmount} ${activeWithdrawalTab}!`); return; }
+if (amount < minAmount) { showErrorMessage('Minimal withdrawal adalah ' + minAmount + ' ' + activeWithdrawalTab + '!'); return; }
 if (amount > balance) { showErrorMessage('Saldo tidak mencukupi!'); return; }
-if ((amount + fee) > balance) { showErrorMessage(`Saldo tidak cukup untuk membayar fee ${fee} ${activeWithdrawalTab}!`); return; }
-const received = amount - fee;
+if ((amount + fee) > balance) { showErrorMessage('Saldo tidak cukup untuk membayar fee ' + fee + ' ' + activeWithdrawalTab + '!'); return; }
 if (activeWithdrawalTab === 'USDT') usdtBalance -= amount;
 else bossxBalance -= amount;
-const newWithdrawal = { id: Date.now().toString(), amount, fee, received, address, network: selectedNetwork, status: 'processing', timestamp: new Date(), txHash: generateFakeTxHash() };
+const newWithdrawal = { id: Date.now().toString(), amount: amount, fee: fee, received: amount - fee, address: address, network: networkValue, status: 'processing', timestamp: new Date(), txHash: generateFakeTxHash() };
 if (!withdrawalHistory[activeWithdrawalTab]) withdrawalHistory[activeWithdrawalTab] = [];
 withdrawalHistory[activeWithdrawalTab].unshift(newWithdrawal);
 document.getElementById('withdrawal-address').value = '';
 document.getElementById('withdrawal-amount').value = '';
 updateBalanceDisplays();
 updateWithdrawalContent();
-showSuccessMessage(`Withdrawal ${amount} ${activeWithdrawalTab} berhasil disubmit!`);
+showSuccessMessage('Withdrawal ' + amount + ' ' + activeWithdrawalTab + ' berhasil disubmit!');
+saveValidationState();
 }
 function generateFakeTxHash() {
 const chars = '0123456789abcdef';
@@ -2482,25 +2323,25 @@ const history = withdrawalHistory[activeWithdrawalTab] || [];
 const historyContent = document.getElementById('withdrawal-history-content');
 if (!historyContent) return;
 if (history.length === 0) {
-historyContent.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);"><i data-lucide="calendar" class="text-rose-400 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada history withdrawal</h4><p class="text-cyan-300">History withdrawal ${activeWithdrawalTab} Anda akan muncul di sini</p></div>`;
+historyContent.innerHTML = '<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);"><i data-lucide="calendar" class="text-rose-400 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada history withdrawal</h4><p class="text-cyan-300">History withdrawal ' + activeWithdrawalTab + ' Anda akan muncul di sini</p></div>';
 } else {
-let tableHTML = `<div class="overflow-x-auto"><table class="w-full"><thead><tr class="border-b-2 border-rose-500/30"><th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th><th class="text-left p-3 text-cyan-300 font-semibold">Jumlah</th><th class="text-left p-3 text-cyan-300 font-semibold">Network</th><th class="text-left p-3 text-cyan-300 font-semibold">Alamat</th><th class="text-left p-3 text-cyan-300 font-semibold">Status</th></tr></thead><tbody>`;
-history.forEach(withdrawal => {
+let tableHTML = '<div class="overflow-x-auto"><table class="w-full"><thead><tr class="border-b-2 border-rose-500/30"><th class="text-left p-3 text-cyan-300 font-semibold">Tanggal</th><th class="text-left p-3 text-cyan-300 font-semibold">Jumlah</th><th class="text-left p-3 text-cyan-300 font-semibold">Network</th><th class="text-left p-3 text-cyan-300 font-semibold">Alamat</th><th class="text-left p-3 text-cyan-300 font-semibold">Status</th></tr></thead><tbody>';
+history.forEach(function(withdrawal) {
 const statusIcon = getWithdrawalStatusIcon(withdrawal.status);
 const statusColor = getWithdrawalStatusColor(withdrawal.status);
 const statusText = getWithdrawalStatusText(withdrawal.status);
-tableHTML += `<tr class="border-b border-rose-500/10 hover:bg-rose-500/5 transition-colors"><td class="p-3"><div class="flex items-center text-white"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>${formatDate(withdrawal.timestamp)}</div></td><td class="p-3"><div class="font-semibold text-rose-400">${formatAmount(withdrawal.amount)} ${activeWithdrawalTab}</div><div class="text-xs text-cyan-200">Fee: ${formatAmount(withdrawal.fee)} ${activeWithdrawalTab}</div></td><td class="p-3"><div class="text-white font-mono text-sm">${withdrawal.network}</div></td><td class="p-3"><div class="font-mono text-sm text-cyan-100 max-w-32 truncate">${withdrawal.address}</div></td><td class="p-3"><div class="flex items-center ${statusColor}">${statusIcon}<span class="ml-2 capitalize font-semibold">${statusText}</span></div></td></tr>`;
+tableHTML += '<tr class="border-b border-rose-500/10 hover:bg-rose-500/5 transition-colors"><td class="p-3"><div class="flex items-center text-white"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>' + formatDate(withdrawal.timestamp) + '</div></td><td class="p-3"><div class="font-semibold text-rose-400">' + formatAmount(withdrawal.amount) + ' ' + activeWithdrawalTab + '</div><div class="text-xs text-cyan-200">Fee: ' + formatAmount(withdrawal.fee) + ' ' + activeWithdrawalTab + '</div></td><td class="p-3"><div class="text-white font-mono text-sm">' + withdrawal.network + '</div></td><td class="p-3"><div class="font-mono text-sm text-cyan-100 max-w-32 truncate">' + withdrawal.address + '</div></td><td class="p-3"><div class="flex items-center ' + statusColor + '">' + statusIcon + '<span class="ml-2 capitalize font-semibold">' + statusText + '</span></div></td></tr>';
 });
-tableHTML += `</tbody></table></div>`;
+tableHTML += '</tbody></table></div>';
 historyContent.innerHTML = tableHTML;
 }
 lucide.createIcons();
 }
 function updateWithdrawalStatistics() {
 const history = withdrawalHistory[activeWithdrawalTab] || [];
-const completedWithdrawals = history.filter(w => w.status === 'completed');
-const processingWithdrawals = history.filter(w => w.status === 'processing');
-const totalAmount = completedWithdrawals.reduce((sum, w) => sum + w.amount, 0);
+const completedWithdrawals = history.filter(function(w) { return w.status === 'completed'; });
+const processingWithdrawals = history.filter(function(w) { return w.status === 'processing'; });
+const totalAmount = completedWithdrawals.reduce(function(sum, w) { return sum + w.amount; }, 0);
 document.getElementById('total-withdrawals').textContent = completedWithdrawals.length;
 document.getElementById('total-withdrawal-amount').textContent = formatAmount(totalAmount);
 document.getElementById('processing-withdrawals').textContent = processingWithdrawals.length;
@@ -2526,8 +2367,6 @@ case 'failed': return 'Gagal';
 default: return 'Diproses';
 }
 }
-
-// ============ P2P FUNCTIONS ============
 function updateP2PContent() {
 updateBalanceDisplays();
 updateP2PStatistics();
@@ -2536,16 +2375,17 @@ updateP2PHistory();
 function submitP2PTransfer() {
 const username = document.getElementById('p2p-username').value.trim();
 const amount = parseFloat(document.getElementById('p2p-amount').value) || 0;
-if (!username || !username.startsWith('@')) { showErrorMessage('Username harus diawali dengan @ dan tidak boleh kosong!'); return; }
+if (!username || username.indexOf('@') !== 0) { showErrorMessage('Username harus diawali dengan @ dan tidak boleh kosong!'); return; }
 if (amount < 1) { showErrorMessage('Minimal transfer 1 BossX!'); return; }
 if (amount > bossxBalance) { showErrorMessage('Saldo BossX tidak mencukupi!'); return; }
 bossxBalance -= amount;
-p2pHistory.unshift({ id: Date.now().toString(), type: 'out', username, amount, timestamp: new Date(), status: 'completed' });
+p2pHistory.unshift({ id: Date.now().toString(), type: 'out', username: username, amount: amount, timestamp: new Date(), status: 'completed' });
 document.getElementById('p2p-username').value = '';
 document.getElementById('p2p-amount').value = '';
 updateBalanceDisplays();
 updateP2PContent();
-showSuccessMessage(`Transfer ${amount.toFixed(9)} BossX ke ${username} berhasil!`);
+showSuccessMessage('Transfer ' + amount.toFixed(9) + ' BossX ke ' + username + ' berhasil!');
+saveValidationState();
 }
 function setMaxP2P() {
 document.getElementById('p2p-amount').value = bossxBalance.toFixed(9);
@@ -2554,27 +2394,25 @@ function updateP2PHistory() {
 const historyContent = document.getElementById('p2p-history-content');
 if (!historyContent) return;
 if (p2pHistory.length === 0) {
-historyContent.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="calendar" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada history transfer</h4><p class="text-cyan-300">History transfer P2P Anda akan muncul di sini</p></div>`;
+historyContent.innerHTML = '<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="calendar" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada history transfer</h4><p class="text-cyan-300">History transfer P2P Anda akan muncul di sini</p></div>';
 } else {
-let tableHTML = `<table class="w-full history-table text-sm"><thead><tr><th class="text-left">Tanggal</th><th class="text-left">Tipe</th><th class="text-left">Username</th><th class="text-left">Jumlah</th><th class="text-left">Status</th></tr></thead><tbody>`;
-p2pHistory.forEach(transfer => {
+let tableHTML = '<table class="w-full history-table text-sm"><thead><tr><th class="text-left">Tanggal</th><th class="text-left">Tipe</th><th class="text-left">Username</th><th class="text-left">Jumlah</th><th class="text-left">Status</th></tr></thead><tbody>';
+p2pHistory.forEach(function(transfer) {
 const typeText = transfer.type === 'out' ? 'Keluar' : 'Masuk';
 const typeColor = transfer.type === 'out' ? 'text-rose-400' : 'text-emerald-400';
-tableHTML += `<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors"><td class="p-3"><div class="flex items-center text-white"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>${formatDate(transfer.timestamp)}</div></td><td class="p-3 ${typeColor} font-semibold">${typeText}</td><td class="p-3 text-white">${transfer.username}</td><td class="p-3 ${typeColor}">${formatAmount(transfer.amount)} BossX</td><td class="p-3 flex items-center text-emerald-400"><i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i><span class="ml-2">Selesai</span></td></tr>`;
+tableHTML += '<tr class="border-b border-cyan-400/10 hover:bg-cyan-400/5 transition-colors"><td class="p-3"><div class="flex items-center text-white"><i data-lucide="clock" class="mr-2 text-cyan-200 w-4 h-4"></i>' + formatDate(transfer.timestamp) + '</div></td><td class="p-3 ' + typeColor + ' font-semibold">' + typeText + '</td><td class="p-3 text-white">' + transfer.username + '</td><td class="p-3 ' + typeColor + '">' + formatAmount(transfer.amount) + ' BossX</td><td class="p-3 flex items-center text-emerald-400"><i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i><span class="ml-2">Selesai</span></td></tr>';
 });
-tableHTML += `</tbody></table>`;
+tableHTML += '</tbody></table>';
 historyContent.innerHTML = tableHTML;
 }
 lucide.createIcons();
 }
 function updateP2PStatistics() {
-const totalSent = p2pHistory.filter(t => t.type === 'out').reduce((sum, t) => sum + t.amount, 0);
-const totalReceived = p2pHistory.filter(t => t.type === 'in').reduce((sum, t) => sum + t.amount, 0);
+const totalSent = p2pHistory.filter(function(t) { return t.type === 'out'; }).reduce(function(sum, t) { return sum + t.amount; }, 0);
+const totalReceived = p2pHistory.filter(function(t) { return t.type === 'in'; }).reduce(function(sum, t) { return sum + t.amount; }, 0);
 document.getElementById('p2p-total-sent').textContent = formatAmount(totalSent) + ' BossX';
 document.getElementById('p2p-total-received').textContent = formatAmount(totalReceived) + ' BossX';
 }
-
-// ============ REFERRAL FUNCTIONS ============
 function generateReferralCode() {
 const code = 'REF-' + Math.random().toString(36).substring(2, 8).toUpperCase();
 document.getElementById('referral-code').value = code;
@@ -2586,7 +2424,7 @@ copyToClipboard(code);
 }
 function copyToClipboard(text) {
 if (navigator.clipboard) {
-navigator.clipboard.writeText(text).then(() => showSuccessMessage('Berhasil disalin ke clipboard!')).catch(() => fallbackCopy(text));
+navigator.clipboard.writeText(text).then(function() { showSuccessMessage('Berhasil disalin ke clipboard!'); }).catch(function() { fallbackCopy(text); });
 } else fallbackCopy(text);
 }
 function fallbackCopy(text) {
@@ -2604,13 +2442,11 @@ document.body.removeChild(textArea);
 }
 function downloadQRCode() {
 const link = document.createElement('a');
-link.download = `${activeTab}_QRCode.png`;
+link.download = activeTab + '_QRCode.png';
 link.href = walletAddresses[activeTab].qrCode;
 link.click();
-showSuccessMessage(`QR Code ${activeTab} berhasil didownload!`);
+showSuccessMessage('QR Code ' + activeTab + ' berhasil didownload!');
 }
-
-// ============ EXCHANGE FUNCTIONS ============
 let currentSymbol = 'BTCUSDT';
 let wsDepth = null;
 let wsTrades = null;
@@ -2618,9 +2454,9 @@ function isBossXPair(symbol) {
 return symbol.toUpperCase() === 'BOSSXUSDT';
 }
 function initExchangePage() {
-document.querySelectorAll('.pair-button').forEach(btn => {
+document.querySelectorAll('.pair-button').forEach(function(btn) {
 btn.onclick = function() {
-document.querySelectorAll('.pair-button').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('.pair-button').forEach(function(b) { b.classList.remove('active'); });
 this.classList.add('active');
 const pair = this.dataset.pair;
 const symbol = pair.replace('/', '').toUpperCase();
@@ -2635,9 +2471,9 @@ loadRecentTrades(symbol);
 });
 const defaultPair = 'BTC/USDT';
 const defaultSymbol = 'BTCUSDT';
-const defaultBtn = document.querySelector(`[data-pair="${defaultPair}"]`);
+const defaultBtn = document.querySelector('[data-pair="' + defaultPair + '"]');
 if (defaultBtn) {
-document.querySelectorAll('.pair-button').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('.pair-button').forEach(function(b) { b.classList.remove('active'); });
 defaultBtn.classList.add('active');
 }
 currentSymbol = defaultSymbol;
@@ -2651,13 +2487,13 @@ function loadChart(symbol) {
 const chartContainer = document.getElementById('tradingview-chart');
 chartContainer.innerHTML = '';
 if (isBossXPair(symbol)) {
-chartContainer.innerHTML = `<div class="flex items-center justify-center h-full bg-[#001845]/70 rounded-lg border-2 border-cyan-400/30" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);"><div class="text-center p-8 max-w-md"><i data-lucide="info" class="w-16 h-16 text-cyan-400 mx-auto mb-4"></i><h3 class="text-xl font-bold text-white mb-2 frost-text">BossX - Internal Token</h3><p class="text-cyan-200 mb-3">BossX adalah token internal platform BossX.<br>Data chart real-time dari Binance tidak tersedia.</p><p class="text-cyan-400 text-sm frost-text">💡 Pilih pasangan lain untuk melihat chart real-time.</p></div></div>`;
+chartContainer.innerHTML = '<div class="flex items-center justify-center h-full bg-[#001845]/70 rounded-lg border-2 border-cyan-400/30" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);"><div class="text-center p-8 max-w-md"><i data-lucide="info" class="w-16 h-16 text-cyan-400 mx-auto mb-4"></i><h3 class="text-xl font-bold text-white mb-2 frost-text">BossX - Internal Token</h3><p class="text-cyan-200 mb-3">BossX adalah token internal platform BossX.<br>Data chart real-time dari Binance tidak tersedia.</p><p class="text-cyan-400 text-sm frost-text">💡 Pilih pasangan lain untuk melihat chart real-time.</p></div></div>';
 lucide.createIcons();
 return;
 }
 new TradingView.widget({
 "width": "100%", "height": "100%",
-"symbol": `BINANCE:${symbol}`,
+"symbol": 'BINANCE:' + symbol,
 "interval": "D", "timezone": "Etc/UTC", "theme": "dark",
 "style": "1", "locale": "en", "toolbar_bg": "#001233",
 "enable_publishing": false, "allow_symbol_change": true,
@@ -2666,9 +2502,10 @@ new TradingView.widget({
 }
 function debounce(func, delay) {
 let timeout;
-return function(...args) {
+return function() {
+const args = arguments;
 clearTimeout(timeout);
-timeout = setTimeout(() => func.apply(this, args), delay);
+timeout = setTimeout(function() { func.apply(null, args); }, delay);
 };
 }
 const debouncedLoadMarketData = debounce(loadMarketData, 300);
@@ -2682,27 +2519,27 @@ document.getElementById('volume').textContent = '—';
 document.getElementById('high-low').textContent = '— / —';
 return;
 }
-fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${symbol}`)
-.then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
-.then(data => {
-const changePercent = data.priceChangePercent > 0 ? `+${parseFloat(data.priceChangePercent).toFixed(2)}%` : `${parseFloat(data.priceChangePercent).toFixed(2)}%`;
+fetch('https://api.binance.com/api/v3/ticker/24hr?symbol=' + symbol)
+.then(function(response) { if (!response.ok) throw new Error('HTTP ' + response.status); return response.json(); })
+.then(function(data) {
+const changePercent = data.priceChangePercent > 0 ? '+' + parseFloat(data.priceChangePercent).toFixed(2) + '%' : parseFloat(data.priceChangePercent).toFixed(2) + '%';
 const changeColor = data.priceChangePercent > 0 ? 'text-emerald-400' : 'text-rose-400';
-document.getElementById('current-price').textContent = `$${parseFloat(data.lastPrice).toLocaleString()}`;
+document.getElementById('current-price').textContent = '$' + parseFloat(data.lastPrice).toLocaleString();
 document.getElementById('price-change').textContent = changePercent;
-document.getElementById('price-change').className = `text-lg font-bold ${changeColor}`;
-document.getElementById('volume').textContent = `$${parseFloat(data.quoteVolume).toLocaleString()}`;
-document.getElementById('high-low').textContent = `${parseFloat(data.highPrice).toFixed(2)} / ${parseFloat(data.lowPrice).toFixed(2)}`;
-try { localStorage.setItem(`marketData_${symbol}`, JSON.stringify(data)); } catch (e) {}
+document.getElementById('price-change').className = 'text-lg font-bold ' + changeColor;
+document.getElementById('volume').textContent = '$' + parseFloat(data.quoteVolume).toLocaleString();
+document.getElementById('high-low').textContent = parseFloat(data.highPrice).toFixed(2) + ' / ' + parseFloat(data.lowPrice).toFixed(2);
+try { localStorage.setItem('marketData_' + symbol, JSON.stringify(data)); } catch (e) {}
 })
-.catch(err => {
+.catch(function(err) {
 console.error('Error fetching market data:', err);
 let cachedData = {};
-try { cachedData = JSON.parse(localStorage.getItem(`marketData_${symbol}`)) || {}; } catch (e) {}
+try { cachedData = JSON.parse(localStorage.getItem('marketData_' + symbol)) || {}; } catch (e) {}
 if (cachedData.lastPrice) {
-document.getElementById('current-price').textContent = `$${parseFloat(cachedData.lastPrice).toLocaleString()}`;
-document.getElementById('price-change').textContent = `${parseFloat(cachedData.priceChangePercent || 0).toFixed(2)}%`;
-document.getElementById('volume').textContent = `$${parseFloat(cachedData.quoteVolume || 0).toLocaleString()}`;
-document.getElementById('high-low').textContent = `${parseFloat(cachedData.highPrice || 0).toFixed(2)} / ${parseFloat(cachedData.lowPrice || 0).toFixed(2)}`;
+document.getElementById('current-price').textContent = '$' + parseFloat(cachedData.lastPrice).toLocaleString();
+document.getElementById('price-change').textContent = parseFloat(cachedData.priceChangePercent || 0).toFixed(2) + '%';
+document.getElementById('volume').textContent = '$' + parseFloat(cachedData.quoteVolume || 0).toLocaleString();
+document.getElementById('high-low').textContent = parseFloat(cachedData.highPrice || 0).toFixed(2) + ' / ' + parseFloat(cachedData.lowPrice || 0).toFixed(2);
 } else {
 document.getElementById('current-price').textContent = '$0.00';
 document.getElementById('price-change').textContent = '+0.00%';
@@ -2714,26 +2551,26 @@ document.getElementById('high-low').textContent = '$0.00 / $0.00';
 function loadOrderBook(symbol) {
 if (wsDepth) { wsDepth.close(); wsDepth = null; }
 if (isBossXPair(symbol)) {
-document.getElementById('buy-orders').innerHTML = `<tr><td colspan="3" class="text-center text-cyan-300 py-8 text-sm"><i data-lucide="info" class="w-8 h-8 mx-auto mb-2 text-cyan-400"></i><br>Order book tidak tersedia untuk BossX</td></tr>`;
-document.getElementById('sell-orders').innerHTML = `<tr><td colspan="3" class="text-center text-cyan-300 py-8 text-sm"><i data-lucide="info" class="w-8 h-8 mx-auto mb-2 text-cyan-400"></i><br>Order book tidak tersedia untuk BossX</td></tr>`;
+document.getElementById('buy-orders').innerHTML = '<tr><td colspan="3" class="text-center text-cyan-300 py-8 text-sm"><i data-lucide="info" class="w-8 h-8 mx-auto mb-2 text-cyan-400"></i><br>Order book tidak tersedia untuk BossX</td></tr>';
+document.getElementById('sell-orders').innerHTML = '<tr><td colspan="3" class="text-center text-cyan-300 py-8 text-sm"><i data-lucide="info" class="w-8 h-8 mx-auto mb-2 text-cyan-400"></i><br>Order book tidak tersedia untuk BossX</td></tr>';
 document.getElementById('spread').textContent = 'Spread: N/A';
 lucide.createIcons();
 return;
 }
 try {
-wsDepth = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@depth@100ms`);
+wsDepth = new WebSocket('wss://stream.binance.com:9443/ws/' + symbol.toLowerCase() + '@depth@100ms');
 wsDepth.onmessage = function(event) { updateOrderBook(JSON.parse(event.data)); };
 wsDepth.onerror = function(error) { console.error('WebSocket depth error:', error); fetchOrderBook(symbol); };
 } catch (e) { fetchOrderBook(symbol); }
 }
 function fetchOrderBook(symbol) {
-fetch(`https://api.binance.com/api/v3/depth?symbol=${symbol}&limit=50`)
-.then(response => response.json())
-.then(data => updateOrderBook(data))
-.catch(err => console.error('Error fetching order book:', err));
+fetch('https://api.binance.com/api/v3/depth?symbol=' + symbol + '&limit=50')
+.then(function(response) { return response.json(); })
+.then(function(data) { updateOrderBook(data); })
+.catch(function(err) { console.error('Error fetching order book:', err); });
 }
 function updateOrderBook(data) {
-requestAnimationFrame(() => {
+requestAnimationFrame(function() {
 const asks = data.a || data.asks || [];
 const bids = data.b || data.bids || [];
 const buyOrdersEl = document.getElementById('buy-orders');
@@ -2741,26 +2578,26 @@ const sellOrdersEl = document.getElementById('sell-orders');
 buyOrdersEl.innerHTML = '';
 sellOrdersEl.innerHTML = '';
 if (asks.length === 0 && bids.length === 0) return;
-const allVolumes = [...asks.map(a => parseFloat(a[1])), ...bids.map(b => parseFloat(b[1]))];
-const maxVolume = Math.max(...allVolumes, 1);
-asks.slice(0, 15).reverse().forEach(ask => {
+const allVolumes = asks.map(function(a) { return parseFloat(a[1]); }).concat(bids.map(function(b) { return parseFloat(b[1]); }));
+const maxVolume = Math.max.apply(null, allVolumes.concat([1]));
+asks.slice(0, 15).reverse().forEach(function(ask) {
 const price = parseFloat(ask[0]);
 const amount = parseFloat(ask[1]);
 const total = price * amount;
 const width = (amount / maxVolume * 100) + '%';
 const row = document.createElement('tr');
 row.className = 'relative';
-row.innerHTML = `<td class="sell-order">${price.toFixed(2)}</td><td>${amount.toFixed(6)}</td><td>${total.toFixed(2)}</td><div class="depth-bar sell-depth" style="width: ${width};"></div>`;
+row.innerHTML = '<td class="sell-order">' + price.toFixed(2) + '</td><td>' + amount.toFixed(6) + '</td><td>' + total.toFixed(2) + '</td><div class="depth-bar sell-depth" style="width: ' + width + ';"></div>';
 sellOrdersEl.appendChild(row);
 });
-bids.slice(0, 15).forEach(bid => {
+bids.slice(0, 15).forEach(function(bid) {
 const price = parseFloat(bid[0]);
 const amount = parseFloat(bid[1]);
 const total = price * amount;
 const width = (amount / maxVolume * 100) + '%';
 const row = document.createElement('tr');
 row.className = 'relative';
-row.innerHTML = `<td class="buy-order">${price.toFixed(2)}</td><td>${amount.toFixed(6)}</td><td>${total.toFixed(2)}</td><div class="depth-bar buy-depth" style="width: ${width};"></div>`;
+row.innerHTML = '<td class="buy-order">' + price.toFixed(2) + '</td><td>' + amount.toFixed(6) + '</td><td>' + total.toFixed(2) + '</td><div class="depth-bar buy-depth" style="width: ' + width + ';"></div>';
 buyOrdersEl.appendChild(row);
 });
 if (asks.length > 0 && bids.length > 0) {
@@ -2768,7 +2605,7 @@ const bestBid = parseFloat(bids[0][0]);
 const bestAsk = parseFloat(asks[0][0]);
 const spreadValue = (bestAsk - bestBid).toFixed(2);
 const spreadPercent = ((bestAsk - bestBid) / bestBid * 100).toFixed(2);
-document.getElementById('spread').textContent = `Spread: ${spreadValue} (${spreadPercent}%)`;
+document.getElementById('spread').textContent = 'Spread: ' + spreadValue + ' (' + spreadPercent + '%)';
 } else {
 document.getElementById('spread').textContent = 'Spread: Loading...';
 }
@@ -2779,13 +2616,13 @@ if (wsTrades) { wsTrades.close(); wsTrades = null; }
 if (isBossXPair(symbol)) {
 const tradesBody = document.getElementById('recent-trades');
 if (tradesBody) {
-tradesBody.innerHTML = `<tr><td colspan="3" class="text-center text-cyan-300 py-8 text-sm"><i data-lucide="info" class="w-8 h-8 mx-auto mb-2 text-cyan-400"></i><br>Recent trades tidak tersedia untuk BossX</td></tr>`;
+tradesBody.innerHTML = '<tr><td colspan="3" class="text-center text-cyan-300 py-8 text-sm"><i data-lucide="info" class="w-8 h-8 mx-auto mb-2 text-cyan-400"></i><br>Recent trades tidak tersedia untuk BossX</td></tr>';
 lucide.createIcons();
 }
 return;
 }
 try {
-wsTrades = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@trade`);
+wsTrades = new WebSocket('wss://stream.binance.com:9443/ws/' + symbol.toLowerCase() + '@trade');
 wsTrades.onmessage = function(event) { addRecentTrade(JSON.parse(event.data)); };
 } catch (e) { console.error('Failed to connect trades WebSocket:', e); }
 }
@@ -2795,23 +2632,21 @@ if (!tradesBody) return;
 const placeholder = tradesBody.querySelector('.skeleton-loading');
 if (placeholder) placeholder.remove();
 const infoRow = tradesBody.querySelector('td[colspan]');
-if (infoRow && infoRow.textContent.includes('tidak tersedia')) infoRow.parentElement.remove();
+if (infoRow && infoRow.textContent.indexOf('tidak tersedia') !== -1) infoRow.parentElement.remove();
 const row = document.createElement('tr');
 const sideColor = trade.m ? 'text-rose-400' : 'text-emerald-400';
 const time = new Date(trade.T).toLocaleTimeString();
-row.innerHTML = `<td class="${sideColor}">${parseFloat(trade.p).toFixed(2)}</td><td class="text-white">${parseFloat(trade.q).toFixed(4)}</td><td class="text-cyan-200 text-xs">${time}</td>`;
-tradesBody.prepend(row);
+row.innerHTML = '<td class="' + sideColor + '">' + parseFloat(trade.p).toFixed(2) + '</td><td class="text-white">' + parseFloat(trade.q).toFixed(4) + '</td><td class="text-cyan-200 text-xs">' + time + '</td>';
+tradesBody.insertBefore(row, tradesBody.firstChild);
 while (tradesBody.children.length > 50) tradesBody.removeChild(tradesBody.lastChild);
 }
 function demoTrade(type) {
-showSuccessMessage(`${type.toUpperCase()} order demo berhasil! (Tidak ada transaksi nyata)`);
+showSuccessMessage(type.toUpperCase() + ' order demo berhasil! (Tidak ada transaksi nyata)');
 }
 function updateAvbl() {
 document.getElementById('buy-avbl').textContent = usdtBalance.toFixed(2) + ' USDT';
 document.getElementById('sell-avbl').textContent = bossxBalance.toFixed(9) + ' BossX';
 }
-
-// ============ EVENT LISTENERS ============
 function setupEventListeners() {
 const toggleBtn = document.getElementById('toggle-sidebar');
 if (toggleBtn) {
@@ -2823,18 +2658,18 @@ const toggleIcon = this.querySelector('[data-lucide]');
 if (sidebar.classList.contains('collapsed')) {
 sidebar.classList.remove('collapsed');
 logoText.style.display = 'block';
-menuTexts.forEach(text => text.style.display = 'inline');
+menuTexts.forEach(function(text) { text.style.display = 'inline'; });
 toggleIcon.setAttribute('data-lucide', 'chevron-left');
 } else {
 sidebar.classList.add('collapsed');
 logoText.style.display = 'none';
-menuTexts.forEach(text => text.style.display = 'none');
+menuTexts.forEach(function(text) { text.style.display = 'none'; });
 toggleIcon.setAttribute('data-lucide', 'chevron-right');
 }
 lucide.createIcons();
 });
 }
-document.querySelectorAll('.menu-item').forEach(item => {
+document.querySelectorAll('.menu-item').forEach(function(item) {
 item.addEventListener('click', function(e) {
 const page = this.getAttribute('data-page');
 if (page && page !== 'logout') {
@@ -2902,43 +2737,29 @@ if (priceInput) priceInput.style.display = e.target.value === 'market' ? 'none' 
 }
 });
 }
-
 setInterval(updateClock, 1000);
 setInterval(checkSixAMStop, 1000);
-
-// ============================================
-// SOCIALFI MODULE (Modul Terpisah - Prefix sfi)
-// ============================================
 const SFI_STORAGE_KEY = 'bossx_socialfi_posts';
 const SFI_SUB_KEY = 'bossx_socialfi_subscription';
 const SFI_COST = 1;
 const SFI_DURATION_DAYS = 30;
-
-// Team developer data untuk dummy posts
 const SFI_TEAM = {
 'Fery Muliawan': { role: 'CEO • BossX', avatar: 'FM', image: 'https://i.ibb.co.com/N2RF70Vs/IMG-1097-removebg-preview.png' },
-'Mr.Ramadhan': { role: 'CFO • BossX', avatar: 'MR', image: 'https://i.ibb.co.com/xKDSrKYw/Picsart-25-10-03-12-44-06-927.png' },
 'Lee': { role: 'CTO • BossX', avatar: 'LE', image: 'https://i.ibb.co/gbVsGLy0/FB-IMG-1617237754232.jpg' },
 'Michael Johnson': { role: 'Manager', avatar: 'MJ', image: null },
 'Emily Brown': { role: 'Secretary', avatar: 'EB', image: null }
 };
-
 let sfiCurrentMedia = { type: null, url: '' };
-
 function initSocialFi() {
-// Load subscription
 let sub = null;
 try {
 const saved = localStorage.getItem(SFI_SUB_KEY);
 if (saved) sub = JSON.parse(saved);
 } catch (e) {}
-
-// Jika belum ada subscription, buat dummy posts pertama kali
 if (!localStorage.getItem(SFI_STORAGE_KEY)) {
 seedDummyPosts();
 }
 }
-
 function seedDummyPosts() {
 const now = Date.now();
 const dummyPosts = [
@@ -2952,12 +2773,10 @@ content: '🧊 Selamat datang di BossX SocialFi! Platform sosial eksklusif untuk
 media: null,
 mediaType: null,
 timestamp: now - 2 * 3600000,
-likes: ['Admin', 'Lee', 'Mr.Ramadhan', 'Michael Johnson', 'Emily Brown', 'TraderPro', 'CryptoKing'],
+likes: ['Admin', 'Lee', 'Michael Johnson', 'Emily Brown', 'TraderPro', 'CryptoKing'],
 comments: [
 { id: 'c1', author: 'Lee', avatar: 'LE', text: 'Excited to be part of this journey, Bos! 🚀', timestamp: now - 1.5 * 3600000, replies: [] },
-{ id: 'c2', author: 'Mr.Ramadhan', avatar: 'MR', text: 'Platform yang sangat inovatif! Salut dengan visi BossX.', timestamp: now - 1 * 3600000, replies: [
-{ id: 'r1', author: 'Fery Muliawan', avatar: 'FM', text: 'Terima kasih! Ini baru permulaan, kita masih punya banyak rencana besar.', timestamp: now - 0.5 * 3600000 }
-]}
+{ id: 'c2', author: 'Fery Muliawan', avatar: 'FM', text: 'Terima kasih! Ini baru permulaan, kita masih punya banyak rencana besar.', timestamp: now - 0.5 * 3600000, replies: [] }
 ]
 },
 {
@@ -2976,21 +2795,6 @@ comments: [
 ]
 },
 {
-id: 'dummy-3',
-author: 'Mr.Ramadhan',
-role: 'CFO • BossX',
-avatar: 'MR',
-avatarImage: SFI_TEAM['Mr.Ramadhan'].image,
-content: '📊 Financial Update: Volume transaksi BossX meningkat 45% minggu ini! Terima kasih kepada seluruh komunitas yang telah mendukung. Mari kita pertahankan momentum ini dan capai target Q4. Numbers don\'t lie! 💪',
-media: null,
-mediaType: null,
-timestamp: now - 10 * 3600000,
-likes: ['Fery Muliawan', 'Lee', 'Admin', 'CryptoKing'],
-comments: [
-{ id: 'c4', author: 'Michael Johnson', avatar: 'MJ', text: 'Angka yang luar biasa! Tim marketing sudah siap untuk campaign berikutnya.', timestamp: now - 9 * 3600000, replies: [] }
-]
-},
-{
 id: 'dummy-4',
 author: 'Emily Brown',
 role: 'Secretary',
@@ -3000,7 +2804,7 @@ content: '📢 Pengumuman: Community meetup BossX akan diadakan bulan depan! Det
 media: null,
 mediaType: null,
 timestamp: now - 24 * 3600000,
-likes: ['Fery Muliawan', 'Lee', 'Mr.Ramadhan', 'Michael Johnson'],
+likes: ['Fery Muliawan', 'Lee', 'Michael Johnson'],
 comments: []
 },
 {
@@ -3025,7 +2829,6 @@ localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(dummyPosts));
 console.error('Error seeding dummy posts:', e);
 }
 }
-
 function loadSfiPosts() {
 try {
 const data = localStorage.getItem(SFI_STORAGE_KEY);
@@ -3034,7 +2837,6 @@ return data ? JSON.parse(data) : [];
 return [];
 }
 }
-
 function saveSfiPosts(posts) {
 try {
 localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(posts));
@@ -3042,13 +2844,11 @@ localStorage.setItem(SFI_STORAGE_KEY, JSON.stringify(posts));
 showErrorMessage('Gagal menyimpan postingan!');
 }
 }
-
 function getSfiSubscription() {
 try {
 const data = localStorage.getItem(SFI_SUB_KEY);
 if (!data) return null;
 const sub = JSON.parse(data);
-// Cek expired
 if (sub.expiresAt < Date.now()) {
 localStorage.removeItem(SFI_SUB_KEY);
 return null;
@@ -3058,43 +2858,31 @@ return sub;
 return null;
 }
 }
-
 function renderSocialFi() {
 const sub = getSfiSubscription();
 const statusEl = document.getElementById('sfi-subscription-status');
 const actionEl = document.getElementById('sfi-subscription-action');
 const mainContent = document.getElementById('sfi-main-content');
-
 if (sub) {
-// Aktif
 const daysLeft = Math.ceil((sub.expiresAt - Date.now()) / 86400000);
-statusEl.innerHTML = `<div class="sfi-status-badge active"><i data-lucide="check-circle" class="w-3 h-3"></i>AKTIF • ${daysLeft} hari tersisa</div>`;
-actionEl.innerHTML = `<p class="text-cyan-200 text-sm mt-2">Berlangganan hingga: ${new Date(sub.expiresAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>`;
+statusEl.innerHTML = '<div class="sfi-status-badge active"><i data-lucide="check-circle" class="w-3 h-3"></i>AKTIF • ' + daysLeft + ' hari tersisa</div>';
+actionEl.innerHTML = '<p class="text-cyan-200 text-sm mt-2">Berlangganan hingga: ' + new Date(sub.expiresAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + '</p>';
 mainContent.style.display = 'block';
 renderSfiFeed();
 updateSfiStats();
 } else {
-// Tidak aktif
-statusEl.innerHTML = `<div class="sfi-status-badge inactive"><i data-lucide="x-circle" class="w-3 h-3"></i>TIDAK AKTIF</div>`;
-actionEl.innerHTML = `
-<p class="text-cyan-200 text-sm mb-4">Aktifkan akses SocialFi dengan biaya <strong class="text-cyan-300">1 BossX / 30 hari</strong></p>
-<button class="node-button" style="max-width: 300px; margin: 0 auto;" onclick="subscribeSfi()">
-<i data-lucide="crown" class="w-4 h-4 inline mr-1"></i>Aktifkan Akses (1 BossX)
-</button>
-<p class="text-xs text-cyan-300 mt-3">Saldo Anda: <strong class="text-emerald-400">${bossxBalance.toFixed(9)} BossX</strong></p>
-`;
+statusEl.innerHTML = '<div class="sfi-status-badge inactive"><i data-lucide="x-circle" class="w-3 h-3"></i>TIDAK AKTIF</div>';
+actionEl.innerHTML = '<p class="text-cyan-200 text-sm mb-4">Aktifkan akses SocialFi dengan biaya <strong class="text-cyan-300">1 BossX / 30 hari</strong></p><button class="node-button" style="max-width: 300px; margin: 0 auto;" onclick="subscribeSfi()"><i data-lucide="crown" class="w-4 h-4 inline mr-1"></i>Aktifkan Akses (1 BossX)</button><p class="text-xs text-cyan-300 mt-3">Saldo Anda: <strong class="text-emerald-400">' + bossxBalance.toFixed(9) + ' BossX</strong></p>';
 mainContent.style.display = 'none';
 }
 lucide.createIcons();
 }
-
 function subscribeSfi() {
 if (bossxBalance < SFI_COST) {
-showErrorMessage(`Saldo tidak mencukupi! Dibutuhkan ${SFI_COST} BossX.`);
+showErrorMessage('Saldo tidak mencukupi! Dibutuhkan ' + SFI_COST + ' BossX.');
 return;
 }
-if (!confirm(`Aktifkan akses SocialFi selama ${SFI_DURATION_DAYS} hari dengan biaya ${SFI_COST} BossX?`)) return;
-
+if (!confirm('Aktifkan akses SocialFi selama ' + SFI_DURATION_DAYS + ' hari dengan biaya ' + SFI_COST + ' BossX?')) return;
 bossxBalance -= SFI_COST;
 const sub = {
 active: true,
@@ -3104,133 +2892,56 @@ expiresAt: Date.now() + (SFI_DURATION_DAYS * 86400000)
 try {
 localStorage.setItem(SFI_SUB_KEY, JSON.stringify(sub));
 } catch (e) {}
-
 updateBalanceDisplays();
-showSuccessMessage(`SocialFi berhasil diaktifkan selama ${SFI_DURATION_DAYS} hari!`);
+showSuccessMessage('SocialFi berhasil diaktifkan selama ' + SFI_DURATION_DAYS + ' hari!');
 renderSocialFi();
+saveValidationState();
 }
-
 function renderSfiFeed() {
 const feed = document.getElementById('sfi-feed');
-const posts = loadSfiPosts().sort((a, b) => b.timestamp - a.timestamp);
-
+const posts = loadSfiPosts().sort(function(a, b) { return b.timestamp - a.timestamp; });
 if (posts.length === 0) {
-feed.innerHTML = `<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="message-circle" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada postingan</h4><p class="text-cyan-300">Jadilah yang pertama membagikan sesuatu!</p></div>`;
+feed.innerHTML = '<div class="text-center py-12"><div class="w-16 h-16 bg-[#001845] rounded-full flex items-center justify-center mx-auto mb-4" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"><i data-lucide="message-circle" class="text-cyan-300 w-6 h-6"></i></div><h4 class="text-cyan-200 text-lg font-semibold mb-2">Belum ada postingan</h4><p class="text-cyan-300">Jadilah yang pertama membagikan sesuatu!</p></div>';
 return;
 }
-
-feed.innerHTML = posts.map(post => renderSfiPost(post)).join('');
+feed.innerHTML = posts.map(function(post) { return renderSfiPost(post); }).join('');
 lucide.createIcons();
 }
-
 function renderSfiPost(post) {
-const isLiked = post.likes.includes('Fery Muliawan');
+const isLiked = post.likes.indexOf('Fery Muliawan') !== -1;
 const likeClass = isLiked ? 'liked' : '';
-const likeIcon = isLiked ? 'heart' : 'heart';
+const likeIcon = 'heart';
 const likeText = post.likes.length;
-
 let mediaHtml = '';
 if (post.media) {
 if (post.mediaType === 'video') {
-mediaHtml = `<video class="sfi-post-media-video" controls src="${escapeHtml(post.media)}"></video>`;
+mediaHtml = '<video class="sfi-post-media-video" controls src="' + escapeHtml(post.media) + '"></video>';
 } else {
-mediaHtml = `<img class="sfi-post-media" src="${escapeHtml(post.media)}" alt="Media" onerror="this.style.display='none'" />`;
+mediaHtml = '<img class="sfi-post-media" src="' + escapeHtml(post.media) + '" alt="Media" onerror="this.style.display=\'none\'" />';
 }
 }
-
 const avatarHtml = post.avatarImage
-? `<div class="sfi-post-avatar"><img src="${post.avatarImage}" alt="${post.author}" onerror="this.style.display='none'; this.parentNode.textContent='${post.avatar}'"></div>`
-: `<div class="sfi-post-avatar">${post.avatar}</div>`;
-
+? '<div class="sfi-post-avatar"><img src="' + post.avatarImage + '" alt="' + post.author + '" onerror="this.style.display=\'none\'; this.parentNode.textContent=\'' + post.avatar + '\'"></div>'
+: '<div class="sfi-post-avatar">' + post.avatar + '</div>';
 const commentsHtml = renderSfiComments(post);
-
-return `
-<div class="sfi-post-card" data-post-id="${post.id}">
-<div class="sfi-post-header">
-${avatarHtml}
-<div class="sfi-post-meta">
-<div class="sfi-post-author">${escapeHtml(post.author)}</div>
-<div class="sfi-post-role">${escapeHtml(post.role)}</div>
-</div>
-<div class="sfi-post-time">${formatTimeAgo(post.timestamp)}</div>
-</div>
-<div class="sfi-post-content">${escapeHtml(post.content)}</div>
-${mediaHtml}
-<div class="sfi-post-actions">
-<button class="sfi-action-btn ${likeClass}" onclick="toggleSfiLike('${post.id}')">
-<i data-lucide="${likeIcon}" class="w-4 h-4"></i>
-<span>${likeText}</span>
-</button>
-<button class="sfi-action-btn" onclick="toggleSfiComments('${post.id}')">
-<i data-lucide="message-circle" class="w-4 h-4"></i>
-<span>${post.comments.length}</span>
-</button>
-<button class="sfi-action-btn" onclick="shareSfiPost('${post.id}')">
-<i data-lucide="share-2" class="w-4 h-4"></i>
-<span>Share</span>
-</button>
-</div>
-<div class="sfi-comments-section" id="sfi-comments-${post.id}" style="display: none;">
-${commentsHtml}
-<div class="sfi-comment-input-wrap">
-<input type="text" class="sfi-comment-input" id="sfi-comment-input-${post.id}" placeholder="Tulis komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiComment('${post.id}')" />
-<button class="sfi-comment-send" onclick="submitSfiComment('${post.id}')">
-<i data-lucide="send" class="w-4 h-4"></i>
-</button>
-</div>
-</div>
-</div>
-`;
+return '<div class="sfi-post-card" data-post-id="' + post.id + '"><div class="sfi-post-header">' + avatarHtml + '<div class="sfi-post-meta"><div class="sfi-post-author">' + escapeHtml(post.author) + '</div><div class="sfi-post-role">' + escapeHtml(post.role) + '</div></div><div class="sfi-post-time">' + formatTimeAgo(post.timestamp) + '</div></div><div class="sfi-post-content">' + escapeHtml(post.content) + '</div>' + mediaHtml + '<div class="sfi-post-actions"><button class="sfi-action-btn ' + likeClass + '" onclick="toggleSfiLike(\'' + post.id + '\')"><i data-lucide="' + likeIcon + '" class="w-4 h-4"></i><span>' + likeText + '</span></button><button class="sfi-action-btn" onclick="toggleSfiComments(\'' + post.id + '\')"><i data-lucide="message-circle" class="w-4 h-4"></i><span>' + post.comments.length + '</span></button><button class="sfi-action-btn" onclick="shareSfiPost(\'' + post.id + '\')"><i data-lucide="share-2" class="w-4 h-4"></i><span>Share</span></button></div><div class="sfi-comments-section" id="sfi-comments-' + post.id + '" style="display: none;">' + commentsHtml + '<div class="sfi-comment-input-wrap"><input type="text" class="sfi-comment-input" id="sfi-comment-input-' + post.id + '" placeholder="Tulis komentar..." maxlength="300" onkeypress="if(event.key===\'Enter\')submitSfiComment(\'' + post.id + '\')" /><button class="sfi-comment-send" onclick="submitSfiComment(\'' + post.id + '\')"><i data-lucide="send" class="w-4 h-4"></i></button></div></div></div>';
 }
-
 function renderSfiComments(post) {
 if (post.comments.length === 0) {
 return '<p class="text-cyan-300 text-xs text-center py-2">Belum ada komentar. Jadilah yang pertama!</p>';
 }
-return post.comments.map(c => {
+return post.comments.map(function(c) {
 const avatarHtml = c.avatarImage
-? `<div class="sfi-comment-avatar"><img src="${c.avatarImage}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none'; this.parentNode.textContent='${c.avatar}'"></div>`
-: `<div class="sfi-comment-avatar">${c.avatar}</div>`;
-
-const repliesHtml = (c.replies || []).map(r => `
-<div class="sfi-comment sfi-reply">
-<div class="sfi-comment-avatar">${r.avatar}</div>
-<div class="sfi-comment-body">
-<div class="sfi-comment-author">${escapeHtml(r.author)}</div>
-<div class="sfi-comment-text">${escapeHtml(r.text)}</div>
-<div class="sfi-comment-time">${formatTimeAgo(r.timestamp)}</div>
-</div>
-</div>
-`).join('');
-
-return `
-<div class="sfi-comment">
-${avatarHtml}
-<div class="sfi-comment-body">
-<div class="sfi-comment-author">${escapeHtml(c.author)}</div>
-<div class="sfi-comment-text">${escapeHtml(c.text)}</div>
-<div class="sfi-comment-time">
-${formatTimeAgo(c.timestamp)}
-<button class="sfi-reply-btn" onclick="showSfiReplyInput('${post.id}', '${c.id}')">Balas</button>
-</div>
-<div id="sfi-reply-input-${post.id}-${c.id}" style="display:none;" class="sfi-comment-input-wrap" style="margin-top:8px;">
-<input type="text" class="sfi-comment-input" placeholder="Balas komentar..." maxlength="300" onkeypress="if(event.key==='Enter')submitSfiReply('${post.id}','${c.id}')" />
-<button class="sfi-comment-send" onclick="submitSfiReply('${post.id}','${c.id}')">
-<i data-lucide="send" class="w-3 h-3"></i>
-</button>
-</div>
-</div>
-</div>
-${repliesHtml}
-`;
+? '<div class="sfi-comment-avatar"><img src="' + c.avatarImage + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display=\'none\'; this.parentNode.textContent=\'' + c.avatar + '\'"></div>'
+: '<div class="sfi-comment-avatar">' + c.avatar + '</div>';
+const repliesHtml = (c.replies || []).map(function(r) { return '<div class="sfi-comment sfi-reply"><div class="sfi-comment-avatar">' + r.avatar + '</div><div class="sfi-comment-body"><div class="sfi-comment-author">' + escapeHtml(r.author) + '</div><div class="sfi-comment-text">' + escapeHtml(r.text) + '</div><div class="sfi-comment-time">' + formatTimeAgo(r.timestamp) + '</div></div></div>'; }).join('');
+return '<div class="sfi-comment">' + avatarHtml + '<div class="sfi-comment-body"><div class="sfi-comment-author">' + escapeHtml(c.author) + '</div><div class="sfi-comment-text">' + escapeHtml(c.text) + '</div><div class="sfi-comment-time">' + formatTimeAgo(c.timestamp) + '<button class="sfi-reply-btn" onclick="showSfiReplyInput(\'' + post.id + '\', \'' + c.id + '\')">Balas</button></div><div id="sfi-reply-input-' + post.id + '-' + c.id + '" style="display:none;" class="sfi-comment-input-wrap"><input type="text" class="sfi-comment-input" placeholder="Balas komentar..." maxlength="300" onkeypress="if(event.key===\'Enter\')submitSfiReply(\'' + post.id + '\',\'' + c.id + '\')" /><button class="sfi-comment-send" onclick="submitSfiReply(\'' + post.id + '\',\'' + c.id + '\')"><i data-lucide="send" class="w-3 h-3"></i></button></div></div></div>' + repliesHtml;
 }).join('');
 }
-
 function toggleSfiLike(postId) {
 const posts = loadSfiPosts();
-const post = posts.find(p => p.id === postId);
+const post = posts.find(function(p) { return p.id === postId; });
 if (!post) return;
-
 const user = 'Fery Muliawan';
 const idx = post.likes.indexOf(user);
 if (idx > -1) {
@@ -3242,23 +2953,19 @@ saveSfiPosts(posts);
 renderSfiFeed();
 updateSfiStats();
 }
-
 function toggleSfiComments(postId) {
-const section = document.getElementById(`sfi-comments-${postId}`);
+const section = document.getElementById('sfi-comments-' + postId);
 if (section) {
 section.style.display = section.style.display === 'none' ? 'block' : 'none';
 }
 }
-
 function submitSfiComment(postId) {
-const input = document.getElementById(`sfi-comment-input-${postId}`);
+const input = document.getElementById('sfi-comment-input-' + postId);
 const text = input.value.trim();
 if (!text) return;
-
 const posts = loadSfiPosts();
-const post = posts.find(p => p.id === postId);
+const post = posts.find(function(p) { return p.id === postId; });
 if (!post) return;
-
 post.comments.push({
 id: 'c' + Date.now(),
 author: 'Fery Muliawan',
@@ -3268,38 +2975,32 @@ text: text,
 timestamp: Date.now(),
 replies: []
 });
-
 saveSfiPosts(posts);
 input.value = '';
 renderSfiFeed();
 updateSfiStats();
-// Re-open comments section
-setTimeout(() => {
-const section = document.getElementById(`sfi-comments-${postId}`);
+setTimeout(function() {
+const section = document.getElementById('sfi-comments-' + postId);
 if (section) section.style.display = 'block';
 }, 50);
 showSuccessMessage('Komentar berhasil ditambahkan!');
 }
-
 function showSfiReplyInput(postId, commentId) {
-const el = document.getElementById(`sfi-reply-input-${postId}-${commentId}`);
+const el = document.getElementById('sfi-reply-input-' + postId + '-' + commentId);
 if (el) {
 el.style.display = el.style.display === 'none' ? 'flex' : 'none';
 }
 }
-
 function submitSfiReply(postId, commentId) {
-const wrap = document.getElementById(`sfi-reply-input-${postId}-${commentId}`);
+const wrap = document.getElementById('sfi-reply-input-' + postId + '-' + commentId);
 const input = wrap.querySelector('input');
 const text = input.value.trim();
 if (!text) return;
-
 const posts = loadSfiPosts();
-const post = posts.find(p => p.id === postId);
+const post = posts.find(function(p) { return p.id === postId; });
 if (!post) return;
-const comment = post.comments.find(c => c.id === commentId);
+const comment = post.comments.find(function(c) { return c.id === commentId; });
 if (!comment) return;
-
 if (!comment.replies) comment.replies = [];
 comment.replies.push({
 id: 'r' + Date.now(),
@@ -3308,29 +3009,24 @@ avatar: 'FM',
 text: text,
 timestamp: Date.now()
 });
-
 saveSfiPosts(posts);
 renderSfiFeed();
 updateSfiStats();
-setTimeout(() => {
-const section = document.getElementById(`sfi-comments-${postId}`);
+setTimeout(function() {
+const section = document.getElementById('sfi-comments-' + postId);
 if (section) section.style.display = 'block';
 }, 50);
 showSuccessMessage('Balasan berhasil ditambahkan!');
 }
-
 function shareSfiPost(postId) {
 showSuccessMessage('Link postingan disalin ke clipboard!');
 }
-
 function toggleSfiMedia(type) {
 const btnImage = document.getElementById('sfi-btn-image');
 const btnVideo = document.getElementById('sfi-btn-video');
 const urlInput = document.getElementById('sfi-media-url');
 const preview = document.getElementById('sfi-media-preview');
-
 if (sfiCurrentMedia.type === type) {
-// Toggle off
 sfiCurrentMedia = { type: null, url: '' };
 btnImage.classList.remove('active');
 btnVideo.classList.remove('active');
@@ -3339,35 +3035,27 @@ urlInput.value = '';
 preview.classList.remove('show');
 return;
 }
-
 sfiCurrentMedia.type = type;
 sfiCurrentMedia.url = '';
 btnImage.classList.toggle('active', type === 'image');
 btnVideo.classList.toggle('active', type === 'video');
 urlInput.classList.add('show');
-urlInput.placeholder = type === 'image'
-? 'Paste URL gambar (contoh: https://images.unsplash.com/...)'
-: 'Paste URL video (contoh: https://...mp4)';
+urlInput.placeholder = type === 'image' ? 'Paste URL gambar (contoh: https://images.unsplash.com/...)' : 'Paste URL video (contoh: https://...mp4)';
 preview.classList.remove('show');
 urlInput.focus();
 }
-
 function submitSfiPost() {
 const textarea = document.getElementById('sfi-compose-text');
 const content = textarea.value.trim();
 const mediaUrl = document.getElementById('sfi-media-url').value.trim();
-
 if (!content && !mediaUrl) {
 showErrorMessage('Tulis sesuatu atau tambahkan media!');
 return;
 }
-
 if (content.length > 500) {
 showErrorMessage('Postingan maksimal 500 karakter!');
 return;
 }
-
-// Validasi URL media
 if (mediaUrl && sfiCurrentMedia.type) {
 try {
 new URL(mediaUrl);
@@ -3376,7 +3064,6 @@ showErrorMessage('URL media tidak valid!');
 return;
 }
 }
-
 const posts = loadSfiPosts();
 const newPost = {
 id: 'post-' + Date.now(),
@@ -3391,11 +3078,8 @@ timestamp: Date.now(),
 likes: [],
 comments: []
 };
-
 posts.unshift(newPost);
 saveSfiPosts(posts);
-
-// Reset form
 textarea.value = '';
 document.getElementById('sfi-char-count').textContent = '0';
 document.getElementById('sfi-media-url').value = '';
@@ -3404,22 +3088,19 @@ document.getElementById('sfi-media-preview').classList.remove('show');
 document.getElementById('sfi-btn-image').classList.remove('active');
 document.getElementById('sfi-btn-video').classList.remove('active');
 sfiCurrentMedia = { type: null, url: '' };
-
 renderSfiFeed();
 updateSfiStats();
 showSuccessMessage('Postingan berhasil dipublikasikan!');
 }
-
 function updateSfiStats() {
 const posts = loadSfiPosts();
 const totalPosts = posts.length;
-const totalLikes = posts.reduce((sum, p) => sum + p.likes.length, 0);
-const totalComments = posts.reduce((sum, p) => {
+const totalLikes = posts.reduce(function(sum, p) { return sum + p.likes.length; }, 0);
+const totalComments = posts.reduce(function(sum, p) {
 const c = p.comments.length;
-const r = p.comments.reduce((s, cm) => s + (cm.replies ? cm.replies.length : 0), 0);
+const r = p.comments.reduce(function(s, cm) { return s + (cm.replies ? cm.replies.length : 0); }, 0);
 return sum + c + r;
 }, 0);
-
 const el1 = document.getElementById('sfi-stat-posts');
 const el2 = document.getElementById('sfi-stat-likes');
 const el3 = document.getElementById('sfi-stat-comments');
@@ -3427,7 +3108,6 @@ if (el1) el1.textContent = totalPosts;
 if (el2) el2.textContent = totalLikes;
 if (el3) el3.textContent = totalComments;
 }
-
 function escapeHtml(text) {
 if (!text) return '';
 const div = document.createElement('div');
@@ -3436,87 +3116,146 @@ return div.innerHTML;
 }
 
 // ============================================
-// BOSSX AI AGENT - KNOWLEDGE BASE & LOGIC
+// 🌙☀️ DARK/LIGHT MODE TOGGLE
 // ============================================
-const BOSSX_AI_KB = [
-{
-keywords: ['apa itu bossx', 'bossx itu apa', 'tentang bossx', 'pengertian bossx', 'bossx cryptocurrency'],
-question: 'Apa itu BossX?',
-answer: '<strong>BossX</strong> adalah salah satu cryptocurrency yang berjalan pada jaringan blockchain <strong>TRC20</strong> (TRON). BossX merupakan token internal platform BossX Masternode yang dirancang untuk sistem validator masternode dengan reward mechanism yang unik. Platform ini mengusung tema <strong>"Glacier/Ice"</strong> dengan warna khas cyan yang merepresentasikan kekuatan, kecepatan, dan transparansi.'
-},
-{
-keywords: ['cara deposit', 'deposit bagaimana', 'deposit usdt', 'deposit bossx', 'cara top up'],
-question: 'Bagaimana cara deposit?',
-answer: 'Untuk melakukan deposit ke akun BossX Anda:<br><br><strong>1.</strong> Buka menu <strong>"Deposit"</strong> di sidebar<br><strong>2.</strong> Pilih currency: <strong>USDT</strong> atau <strong>BOSSX</strong><br><strong>3.</strong> Copy alamat wallet yang ditampilkan<br><strong>4.</strong> Kirim crypto dari wallet eksternal Anda<br><br><strong>⚠️ Penting:</strong><br>• USDT: Network <strong>TRC20</strong> (TRON), minimal deposit <strong>10 USDT</strong><br>• BOSSX: Network internal, minimal deposit <strong>1 BOSSX</strong><br>• Deposit dikonfirmasi setelah 1 konfirmasi network'
-},
-{
-keywords: ['access key', 'apa itu access key', 'fungsi access key', 'private key'],
-question: 'Apa itu Access Key?',
-answer: '<strong>Access Key</strong> adalah kode unik sepanjang <strong>25 karakter</strong> (kombinasi huruf A-Z dan angka 0-9) yang digunakan untuk mengaktivasi node validator BossX.<br><br><strong>Spesifikasi:</strong><br>• Format: 25 karakter (A-Z, 0-9)<br>• Minimal stake: <strong>10 BossX</strong><br>• Fee generate: <strong>1 BossX</strong> (dipotong otomatis)<br>• Status: <strong>One-time use</strong> (hangus setelah redeem)<br><br><strong>Cara pakai:</strong> Generate di menu "Access Key" → Copy kode → Paste di Dashboard → Klik "Redeem Now"'
-},
-{
-keywords: ['reward', 'bagaimana reward', 'cara dapat reward', 'reward validasi', 'auto claim'],
-question: 'Bagaimana reward bekerja?',
-answer: 'Sistem reward BossX bekerja dengan mekanisme <strong>Masternode Validator</strong>:<br><br><strong>📊 Rate Reward:</strong><br>• <code>0.000000038580246913580247 BossX/detik</code> per 1 BossX stake<br>• Auto claim setiap <strong>60 detik</strong> (masuk ke Pending Reward)<br><br><strong>⏰ Sistem:</strong><br>• Auto claim berjalan otomatis saat validasi aktif<br>• Manual claim: Kapan saja tanpa minimal ke wallet<br>• Auto stop: Setiap hari jam <strong>06:00</strong><br>• Masa berlaku: <strong>40.000.000 detik</strong><br><br><strong>💡 Tips:</strong> Semakin besar stake, semakin besar reward per detik!'
-},
-{
-keywords: ['cara withdrawal', 'withdrawal bagaimana', 'tarik dana', 'withdraw usdt', 'withdraw bossx'],
-question: 'Bagaimana cara withdrawal?',
-answer: 'Untuk menarik dana dari akun BossX:<br><br><strong>1.</strong> Buka menu <strong>"Withdrawal"</strong><br><strong>2.</strong> Pilih currency (USDT/BOSSX)<br><strong>3.</strong> Pilih network:<br>  • USDT: <strong>TRC20</strong> atau <strong>BEP20</strong><br>  • BOSSX: <strong>TRC20</strong><br><strong>4.</strong> Masukkan alamat wallet tujuan<br><strong>5.</strong> Masukkan jumlah withdrawal<br><strong>6.</strong> Klik "Submit Withdrawal"<br><br><strong>💰 Fee & Minimal:</strong><br>• USDT: Fee <strong>1 USDT</strong>, minimal <strong>10 USDT</strong><br>• BOSSX: Fee <strong>0.1 BOSSX</strong>, minimal <strong>1 BOSSX</strong><br><br><strong>⏱️ Proses:</strong> 1-24 jam setelah submit'
-},
-{
-keywords: ['team developer', 'siapa team', 'tim developer', 'founder', 'ceo bossx'],
-question: 'Siapa team developer BossX?',
-answer: 'Tim di balik BossX Crypto Exchange Platform:<br><br><strong>👑 Fery Muliawan</strong> — CEO (Chief Executive Officer)<br>Pendiri dan visioner BossX<br><br><strong>💰 Mr.Ramadhan</strong> — CFO (Chief Financial Officer)<br>Mengawasi operasi harian<br><br><strong>📊 Michael Johnson</strong> — Manager<br>Mengatur tim operasional<br><br><strong>💻 Lee</strong> — CTO (Chief Technology Officer)<br>Infrastruktur teknis & keamanan<br><br><strong>📝 Emily Brown</strong> — Secretary<br>Administrasi & komunikasi'
-},
-{
-keywords: ['masternode', 'validator', 'apa itu masternode', 'cara kerja masternode'],
-question: 'Apa itu Masternode Validator?',
-answer: '<strong>Masternode Validator</strong> adalah node khusus di jaringan BossX yang bertugas memvalidasi transaksi dan menjaga keamanan blockchain. Sebagai imbalannya, validator mendapatkan reward BossX.<br><br><strong>🔧 Cara Kerja:</strong><br>1. Generate Access Key (minimal stake 10 BossX)<br>2. Redeem Access Key di Dashboard<br>3. Aktifkan Power Button (ON)<br>4. Reward mengalir otomatis setiap detik<br><br><strong>⚙️ Fitur:</strong><br>• Auto claim setiap 60 detik<br>• Auto stop jam 06:00 setiap hari<br>• Masa berlaku 40.000.000 detik<br>• Log engine real-time'
-},
-{
-keywords: ['login', 'cara login', 'masuk akun', 'akun demo'],
-question: 'Bagaimana cara login?',
-answer: 'Untuk login ke BossX Masternode:<br><br><strong>🔐 Demo Credentials:</strong><br>• Username: <code>admin</code><br>• Password: <code>admin123</code><br><br><strong>📝 Langkah:</strong><br>1. Buka halaman login BossX<br>2. Masukkan username & password<br>3. Klik "Masuk"<br>4. Anda akan diarahkan ke Dashboard<br><br><strong>💾 Session:</strong> Login tersimpan di browser (localStorage), jadi Anda tidak perlu login ulang setiap kali membuka website.'
-},
-{
-keywords: ['p2p', 'peer to peer', 'transfer bossx', 'kirim bossx'],
-question: 'Bagaimana cara transfer P2P?',
-answer: 'Fitur <strong>Peer to Peer (P2P)</strong> memungkinkan Anda transfer BossX ke sesama pengguna BossX:<br><br><strong>📤 Cara Transfer:</strong><br>1. Buka menu <strong>"Peer to Peer"</strong><br>2. Masukkan username penerima (format: <code>@username</code>)<br>3. Masukkan jumlah BossX (minimal 1 BossX)<br>4. Klik "Kirim BossX"<br><br><strong>✅ Fitur:</strong><br>• Transfer instan antar user BossX<br>• Tanpa fee<br>• History transfer tercatat lengkap<br>• Statistik total dikirim & diterima'
-},
-{
-keywords: ['referral', 'kode referral', 'ajak teman', 'komisi referral'],
-question: 'Bagaimana sistem referral?',
-answer: 'Sistem <strong>Referral BossX</strong> memungkinkan Anda mendapatkan reward dengan mengajak teman bergabung:<br><br><strong>🎯 Cara Kerja:</strong><br>1. Dapatkan kode referral unik Anda<br>2. Bagikan kode ke teman/komunitas<br>3. Setiap orang yang daftar pakai kode Anda = referral aktif<br>4. Dapatkan reward BossX dari setiap referral<br><br><strong>💡 Tips:</strong><br>• Klik "Generate Kode Baru" untuk refresh kode<br>• Bagikan via sosial media, grup chat, dll<br>• Statistik referral tersedia di menu Referral'
-},
-{
-keywords: ['socialfi', 'sosial', 'media sosial', 'fitur sosial', 'bossx social'],
-question: 'Apa itu SocialFi BossX?',
-answer: '<strong>SocialFi BossX</strong> adalah platform sosial eksklusif untuk holder token BossX. Mirip dengan Binance Square, tetapi khusus untuk komunitas BossX.<br><br><strong>✨ Fitur:</strong><br>• Posting teks, gambar, dan video<br>• Like & komentar pada postingan<br>• Balas komentar user lain<br>• Feed komunitas yang aktif<br><br><strong>💎 Akses:</strong><br>• Biaya: <strong>1 BossX / 30 hari</strong><br>• User aktif bisa menikmati semua fitur<br>• Utilitas token BossX yang nyata<br><br><strong>📍 Lokasi:</strong> Menu "SocialFi" di sidebar'
+const THEME_STORAGE_KEY = 'bossx_theme_preference';
+const THEME_ICON_KEY = 'bossx_theme_icon';
+
+function toggleTheme() {
+  const body = document.body;
+  const themeIcon = document.getElementById('theme-icon');
+  const isLightMode = body.classList.contains('light-mode');
+  
+  if (isLightMode) {
+    body.classList.remove('light-mode');
+    if (themeIcon) {
+      themeIcon.setAttribute('data-lucide', 'moon');
+      lucide.createIcons();
+    }
+    localStorage.setItem(THEME_STORAGE_KEY, 'dark');
+    showSuccessMessage('🌙 Dark Mode diaktifkan!');
+  } else {
+    body.classList.add('light-mode');
+    if (themeIcon) {
+      themeIcon.setAttribute('data-lucide', 'sun');
+      lucide.createIcons();
+    }
+    localStorage.setItem(THEME_STORAGE_KEY, 'light');
+    showSuccessMessage('☀️ Light Mode diaktifkan!');
+  }
+  
+  localStorage.setItem(THEME_ICON_KEY, isLightMode ? 'moon' : 'sun');
 }
+
+function loadThemePreference() {
+  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+  const savedIcon = localStorage.getItem(THEME_ICON_KEY);
+  const body = document.body;
+  const themeIcon = document.getElementById('theme-icon');
+  
+  if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+    if (themeIcon && savedIcon === 'sun') {
+      themeIcon.setAttribute('data-lucide', 'sun');
+    }
+  } else {
+    body.classList.remove('light-mode');
+    if (themeIcon) {
+      themeIcon.setAttribute('data-lucide', 'moon');
+    }
+  }
+  
+  setTimeout(() => {
+    lucide.createIcons();
+  }, 100);
+}
+
+// ============================================
+// 🧠 BOSSX AI AGENT - PREMIUM FEATURES
+// ============================================
+
+const THINKING_STAGES = [
+  { icon: '🔍', text: 'Menganalisis pertanyaan Anda...' },
+  { icon: '🧠', text: 'Membaca data blockchain & whitepaper...' },
+  { icon: '⚡', text: 'Memproses konteks akun Anda...' },
+  { icon: '📊', text: 'Menyusun jawaban terbaik...' }
 ];
 
-const BOSSX_AI_FALLBACK = 'Maaf, informasi yang Anda tanyakan <strong>tidak tersedia di whitepaper BossX</strong>. Saya hanya dapat menjawab pertanyaan seputar:<br><br>• Tentang BossX & Masternode<br>• Access Key & Validasi<br>• Deposit & Withdrawal<br>• Reward & Claim<br>• P2P & Referral<br>• SocialFi<br>• Team Developer<br><br>Silakan coba pertanyaan lain atau hubungi tim support untuk bantuan lebih lanjut.';
+const BOSSX_AI_FALLBACK = 'Maaf, informasi yang Anda tanyakan <strong>tidak tersedia di whitepaper BossX</strong>. Saya hanya dapat menjawab pertanyaan seputar:<br><br>• Tentang BossX & Masternode<br>• Access Key & Validasi<br>• Deposit & Withdrawal<br>• Reward & Claim<br>• P2P & Referral<br>• SocialFi<br>• Team Developer<br>• <strong>Status akun Anda</strong> (coba tanya: "status saya", "saldo saya")<br><br>Silakan coba pertanyaan lain atau hubungi tim support.';
 
-const BOSSX_AI_WELCOME = '🧊 Halo! Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX. Saya siap menjawab pertanyaan seputar whitepaper BossX.<br><br>Silakan ketik pertanyaan Anda atau pilih <strong>quick reply</strong> di bawah untuk memulai!';
+function getContextualGreeting() {
+  const username = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+  let statusBadge = '';
+  let statusInfo = '';
+  if (isNodeActive) {
+    if (isValidationRunning) {
+      statusBadge = '<span class="bossx-ai-context-badge active">⚡ Node AKTIF • Validasi Berjalan</span>';
+      statusInfo = 'Node Anda sedang <strong style="color:#00FFC8;">AKTIF</strong> dengan stake <strong>' + stakedAmount.toFixed(2) + ' BossX</strong>. Reward mengalir setiap detik! 🚀';
+    } else {
+      statusBadge = '<span class="bossx-ai-context-badge">🔌 Node Siap</span>';
+      statusInfo = 'Node Anda <strong style="color:#00E5FF;">siap</strong> dengan stake <strong>' + stakedAmount.toFixed(2) + ' BossX</strong>. Tekan Power ON untuk mulai validasi.';
+    }
+  } else {
+    statusBadge = '<span class="bossx-ai-context-badge inactive">❌ Node Belum Aktif</span>';
+    statusInfo = 'Node Anda <strong style="color:#FF006E;">belum aktif</strong>. Redeem Access Key untuk mulai mendapatkan reward!';
+  }
+  return '🧊 Halo, <strong>' + username + '</strong>! 👋<br><br>Saya <strong>BossX AI AGENT</strong>, asisten virtual platform BossX.<br><br>' + statusBadge + '<br><br><em style="color:#7DF9FF;font-size:12px;">' + statusInfo + '</em><br><br>Silakan ketik pertanyaan Anda! 💬';
+}
+
+const BOSSX_AI_KB = [
+  { keywords: ['apa itu bossx', 'bossx itu apa', 'tentang bossx'], question: 'Apa itu BossX?', answer: '<strong>BossX</strong> adalah cryptocurrency berbasis <strong>TRC20</strong> (TRON) untuk sistem validator masternode dengan tema Glacier/Ice.' },
+  { keywords: ['cara deposit', 'deposit bagaimana', 'deposit usdt'], question: 'Cara Deposit', answer: '1. Buka menu <strong>Deposit</strong><br>2. Pilih USDT/BOSSX<br>3. Copy alamat wallet<br>4. Kirim crypto Anda<br><br>⚠️ USDT: Network TRC20, min 10 USDT' },
+  { keywords: ['access key', 'apa itu access key', 'private key'], question: 'Access Key', answer: '<strong>Access Key</strong> = kode 25 karakter (A-Z, 0-9) untuk aktivasi node.<br>• Min stake: <strong>10 BossX</strong><br>• Fee: <strong>1 BossX</strong><br>• One-time use' },
+  { keywords: ['reward', 'bagaimana reward', 'auto claim'], question: 'Reward System', answer: 'Rate: <code>0.000000038580246913580247 BossX/detik</code> per 1 BossX stake<br>• Auto claim: <strong>60 detik</strong><br>• Auto stop: <strong>06:00</strong><br>• Masa berlaku: <strong>40.000.000 detik</strong>' },
+  { keywords: ['cara withdrawal', 'tarik dana', 'withdraw'], question: 'Withdrawal', answer: '1. Menu <strong>Withdrawal</strong><br>2. Pilih USDT/BOSSX<br>3. Pilih network (TRC20/BEP20)<br>4. Masukkan alamat & jumlah<br><br>💰 Fee USDT: 1, Min: 10 | Fee BOSSX: 0.1, Min: 1' },
+  { keywords: ['team developer', 'siapa team', 'ceo'], question: 'Team', answer: '👑 <strong>Fery Muliawan</strong> — CEO<br>📊 <strong>Michael Johnson</strong> — Manager<br>💻 <strong>Lee</strong> — CTO<br>📝 <strong>Emily Brown</strong> — Secretary' },
+  { keywords: ['masternode', 'validator'], question: 'Masternode', answer: 'Node khusus untuk validasi transaksi & keamanan blockchain. Reward BossX mengalir otomatis.' },
+  { keywords: ['p2p', 'peer to peer', 'transfer'], question: 'P2P Transfer', answer: 'Transfer BossX ke user lain via <strong>@username</strong>. Min 1 BossX, tanpa fee, instan.' },
+  { keywords: ['referral', 'kode referral'], question: 'Referral', answer: 'Dapatkan reward dengan mengajak teman. Klik "Generate Kode Baru" untuk kode unik Anda.' },
+  { keywords: ['socialfi', 'sosial'], question: 'SocialFi', answer: 'Platform sosial eksklusif holder BossX. Biaya: <strong>1 BossX / 30 hari</strong>. Fitur: post, like, comment, share.' },
+  { keywords: ['status saya', 'status akun', 'node saya', 'apakah node aktif'], question: 'Status Akun', answer: function() {
+    const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+    if (!isNodeActive) return '📊 <strong>' + u + '</strong>: Node <span style="color:#FF006E">Belum Aktif</span><br>💰 BossX: ' + bossxBalance.toFixed(9) + ' | USDT: ' + usdtBalance.toFixed(2) + '<br>💡 Redeem Access Key untuk mulai!';
+    if (isValidationRunning) return '📊 <strong>' + u + '</strong>: Node <span style="color:#00FFC8">AKTIF ✓</span><br>• Stake: ' + stakedAmount.toFixed(2) + ' BossX<br>• Rate: ' + (stakedAmount * 0.000000038580246913580247).toFixed(12) + ' BossX/dtk<br>• Pending: ' + totalRewardBalance.toFixed(9) + ' BossX<br>• Masa: ' + masaBerlaku.toLocaleString('id-ID') + ' detik';
+    return '📊 <strong>' + u + '</strong>: Node <span style="color:#00E5FF">Siap (Idle)</span><br>• Stake: ' + stakedAmount.toFixed(2) + ' BossX<br>• Pending: ' + totalRewardBalance.toFixed(9) + ' BossX<br>💡 Tekan Power ON!';
+  }},
+  { keywords: ['saldo saya', 'berapa saldo', 'cek saldo'], question: 'Saldo', answer: function() {
+    const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+    return '💰 <strong>Saldo ' + u + ':</strong><br>• BOSSX: ' + bossxBalance.toFixed(9) + '<br>• USDT: ' + usdtBalance.toFixed(2) + '<br>• Pending Reward: ' + totalRewardBalance.toFixed(9) + '<br>• Staked: ' + stakedAmount.toFixed(9);
+  }},
+  { keywords: ['reward saya', 'berapa reward', 'pendapatan'], question: 'Reward', answer: function() {
+    const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+    const rateH = stakedAmount * 0.000000038580246913580247 * 3600;
+    return '🎁 <strong>Reward ' + u + ':</strong><br>• Pending: ' + totalRewardBalance.toFixed(9) + ' BossX<br>• Rate: ' + (stakedAmount * 0.000000038580246913580247).toFixed(12) + ' BossX/dtk<br>• Estimasi/jam: ' + rateH.toFixed(6) + ' BossX';
+  }},
+  { keywords: ['siapa saya', 'nama saya', 'profil saya'], question: 'Profil', answer: function() {
+    const u = localStorage.getItem('bossx_username') || 'Fery Muliawan';
+    return '👤 <strong>' + u + '</strong><br>• Role: CEO • BossX<br>• Validator ID: 8055x<br>• Status: ' + (isNodeActive ? (isValidationRunning ? '<span style="color:#00FFC8">AKTIF</span>' : '<span style="color:#00E5FF">Siap</span>') : '<span style="color:#FF006E">Belum Aktif</span>');
+  }}
+];
 
 let bossxAIHistory = [];
 let bossxAIIsOpen = false;
 let bossxAIIsMinimized = false;
 let bossxAIIsInitialized = false;
 let bossxAIWelcomeShown = false;
-
+function showBossxAIFab() {
+const fab = document.getElementById('bossx-ai-fab');
+if (fab) fab.classList.add('visible');
+}
+function hideBossxAIFab() {
+const fab = document.getElementById('bossx-ai-fab');
+const win = document.getElementById('bossx-ai-window');
+if (fab) fab.classList.remove('visible');
+if (win) win.classList.remove('active');
+bossxAIIsOpen = false;
+bossxAIIsMinimized = false;
+}
 function initBossxAI() {
 if (bossxAIIsInitialized) return;
 bossxAIIsInitialized = true;
 loadBossxAIHistory();
 lucide.createIcons();
-setTimeout(() => {
-const fab = document.getElementById('bossx-ai-fab');
-if (fab && !bossxAIWelcomeShown) {
-document.getElementById('bossx-ai-badge').style.display = 'block';
-}
-}, 2000);
 }
 function loadBossxAIHistory() {
 try {
@@ -3539,7 +3278,6 @@ function toggleBossxAI() {
 if (bossxAIIsMinimized) {
 bossxAIIsMinimized = false;
 document.getElementById('bossx-ai-window').classList.remove('minimized');
-document.getElementById('bossx-ai-fab').classList.remove('minimized');
 document.getElementById('bossx-ai-badge').style.display = 'none';
 return;
 }
@@ -3571,7 +3309,6 @@ document.getElementById('bossx-ai-window').classList.remove('active');
 function minimizeBossxAI() {
 bossxAIIsMinimized = true;
 document.getElementById('bossx-ai-window').classList.add('minimized');
-document.getElementById('bossx-ai-fab').classList.add('minimized');
 }
 function clearBossxAIChat() {
 if (bossxAIHistory.length === 0) {
@@ -3588,30 +3325,28 @@ showSuccessMessage('Riwayat chat berhasil dihapus!');
 function renderBossxAIWelcome() {
 const body = document.getElementById('bossx-ai-body');
 body.innerHTML = '';
-addBossxAIMessage('bot', BOSSX_AI_WELCOME, false);
+addBossxAIMessage('bot', getContextualGreeting(), false);
 bossxAIWelcomeShown = true;
 }
 function renderBossxAIHistory() {
 const body = document.getElementById('bossx-ai-body');
 body.innerHTML = '';
-bossxAIHistory.forEach(msg => {
+bossxAIHistory.forEach(function(msg) {
 addBossxAIMessage(msg.role, msg.content, false);
 });
 scrollBossxAIToBottom();
 }
-function addBossxAIMessage(role, content, animate = true) {
+function addBossxAIMessage(role, content, animate) {
+animate = animate !== false;
 const body = document.getElementById('bossx-ai-body');
 const msgDiv = document.createElement('div');
-msgDiv.className = `bossx-ai-msg ${role}`;
+msgDiv.className = 'bossx-ai-msg ' + role;
 if (animate) msgDiv.style.opacity = '0';
 const avatar = role === 'bot' ? '🤖' : 'U';
-msgDiv.innerHTML = `
-<div class="bossx-ai-msg-avatar">${avatar}</div>
-<div class="bossx-ai-msg-content">${content}</div>
-`;
+msgDiv.innerHTML = '<div class="bossx-ai-msg-avatar">' + avatar + '</div><div class="bossx-ai-msg-content">' + content + '</div>';
 body.appendChild(msgDiv);
 if (animate) {
-requestAnimationFrame(() => {
+requestAnimationFrame(function() {
 msgDiv.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
 msgDiv.style.opacity = '1';
 });
@@ -3620,32 +3355,47 @@ scrollBossxAIToBottom();
 }
 function scrollBossxAIToBottom() {
 const body = document.getElementById('bossx-ai-body');
-setTimeout(() => {
+setTimeout(function() {
 body.scrollTop = body.scrollHeight;
 }, 50);
 }
+
+// 🧠 DEEP THINKING ANIMATION
 function showBossxAITyping() {
-const body = document.getElementById('bossx-ai-body');
-const typingDiv = document.createElement('div');
-typingDiv.className = 'bossx-ai-msg bot';
-typingDiv.id = 'bossx-ai-typing-indicator';
-typingDiv.innerHTML = `
-<div class="bossx-ai-msg-avatar">🤖</div>
-<div class="bossx-ai-msg-content" style="padding: 12px 14px;">
-<div class="bossx-ai-typing">
-<div class="bossx-ai-typing-dot"></div>
-<div class="bossx-ai-typing-dot"></div>
-<div class="bossx-ai-typing-dot"></div>
-</div>
-</div>
-`;
-body.appendChild(typingDiv);
-scrollBossxAIToBottom();
+  const body = document.getElementById('bossx-ai-body');
+  const typingDiv = document.createElement('div');
+  typingDiv.className = 'bossx-ai-msg bot';
+  typingDiv.id = 'bossx-ai-typing-indicator';
+  typingDiv.innerHTML = '<div class="bossx-ai-msg-avatar">🤖</div><div class="bossx-ai-msg-content" style="padding: 12px 14px;"><div class="bossx-ai-thinking-stage fade-in" id="thinking-stage-text"><div class="bossx-ai-thinking-spinner"></div><span>' + THINKING_STAGES[0].icon + ' ' + THINKING_STAGES[0].text + '</span></div></div>';
+  body.appendChild(typingDiv);
+  scrollBossxAIToBottom();
+  let currentStage = 0;
+  const stageInterval = setInterval(function() {
+    currentStage++;
+    if (currentStage >= THINKING_STAGES.length) { clearInterval(stageInterval); return; }
+    const stageText = document.getElementById('thinking-stage-text');
+    if (stageText) {
+      stageText.classList.remove('fade-in');
+      stageText.classList.add('fade-out');
+      setTimeout(function() {
+        stageText.innerHTML = '<div class="bossx-ai-thinking-spinner"></div><span>' + THINKING_STAGES[currentStage].icon + ' ' + THINKING_STAGES[currentStage].text + '</span>';
+        stageText.classList.remove('fade-out');
+        stageText.classList.add('fade-in');
+        scrollBossxAIToBottom();
+      }, 300);
+    }
+  }, 2000);
+  typingDiv.dataset.intervalId = stageInterval.toString();
 }
+
 function hideBossxAITyping() {
-const typing = document.getElementById('bossx-ai-typing-indicator');
-if (typing) typing.remove();
+  const typing = document.getElementById('bossx-ai-typing-indicator');
+  if (typing) {
+    if (typing.dataset.intervalId) clearInterval(parseInt(typing.dataset.intervalId));
+    typing.remove();
+  }
 }
+
 function playBossxAISound() {
 try {
 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -3671,19 +3421,19 @@ const input = userInput.toLowerCase().trim();
 if (!input) return null;
 let bestMatch = null;
 let bestScore = 0;
-BOSSX_AI_KB.forEach(entry => {
+BOSSX_AI_KB.forEach(function(entry) {
 let score = 0;
-entry.keywords.forEach(keyword => {
-if (input.includes(keyword)) {
+entry.keywords.forEach(function(keyword) {
+if (input.indexOf(keyword) !== -1) {
 score += keyword.length;
 if (input === keyword) score += 10;
 }
 });
 const inputWords = input.split(/\s+/);
-entry.keywords.forEach(keyword => {
+entry.keywords.forEach(function(keyword) {
 const kwWords = keyword.split(/\s+/);
-kwWords.forEach(kw => {
-if (inputWords.includes(kw)) score += 2;
+kwWords.forEach(function(kw) {
+if (inputWords.indexOf(kw) !== -1) score += 2;
 });
 });
 if (score > bestScore) {
@@ -3702,13 +3452,13 @@ addBossxAIMessage('user', escapeHtml(text));
 bossxAIHistory.push({ role: 'user', content: escapeHtml(text) });
 saveBossxAIHistory();
 showBossxAITyping();
-const delay = 800 + Math.random() * 800;
-setTimeout(() => {
+const delay = 6000 + Math.random() * 2000;
+setTimeout(function() {
 hideBossxAITyping();
 const match = findBossxAIAnswer(text);
 let answer;
 if (match) {
-answer = match.answer;
+answer = typeof match.answer === 'function' ? match.answer() : match.answer;
 } else {
 answer = BOSSX_AI_FALLBACK;
 }
@@ -3718,10 +3468,6 @@ saveBossxAIHistory();
 playBossxAISound();
 }, delay);
 }
-function sendQuickReply(text) {
-document.getElementById('bossx-ai-input').value = text;
-sendBossxAIMessage();
-}
 function handleBossxAIKey(event) {
 if (event.key === 'Enter') {
 event.preventDefault();
@@ -3729,7 +3475,96 @@ sendBossxAIMessage();
 }
 }
 
-console.log('🚀 Script dimulai');
+// ============================================
+// PWA INSTALLATION HANDLER
+// ============================================
+let deferredPrompt = null;
+const PWA_DISMISS_KEY = 'bossx_pwa_dismissed';
+function initPWA() {
+if (!('serviceWorker' in navigator)) {
+console.log('[PWA] Service Worker tidak didukung browser ini');
+return;
+}
+navigator.serviceWorker.register('./sw.js')
+.then(function(registration) {
+console.log('[PWA] Service Worker registered:', registration.scope);
+})
+.catch(function(error) {
+console.warn('[PWA] SW registration failed:', error);
+});
+window.addEventListener('beforeinstallprompt', function(e) {
+e.preventDefault();
+deferredPrompt = e;
+const dismissed = localStorage.getItem(PWA_DISMISS_KEY);
+if (dismissed) {
+const dismissedDate = new Date(parseInt(dismissed));
+const daysSinceDismiss = (Date.now() - dismissedDate.getTime()) / (1000 * 60 * 60 * 24);
+if (daysSinceDismiss < 7) return;
+}
+if (window.matchMedia('(display-mode: standalone)').matches) return;
+if (window.navigator.standalone === true) return;
+setTimeout(showPWAInstallBanner, 3000);
+});
+window.addEventListener('appinstalled', function() {
+console.log('[PWA] BossX App berhasil di-install!');
+hidePWAInstallBanner();
+deferredPrompt = null;
+showSuccessMessage('🎉 BossX App berhasil di-install! Buka dari home screen HP Anda.');
+});
+}
+function showPWAInstallBanner() {
+const banner = document.getElementById('pwa-install-banner');
+if (banner) banner.classList.add('show');
+}
+function hidePWAInstallBanner() {
+const banner = document.getElementById('pwa-install-banner');
+if (banner) banner.classList.remove('show');
+}
+function installPWA() {
+if (!deferredPrompt) {
+showManualInstallInstructions();
+return;
+}
+try {
+deferredPrompt.prompt();
+deferredPrompt.userChoice.then(function(choiceResult) {
+console.log('[PWA] User response to install prompt: ' + choiceResult.outcome);
+deferredPrompt = null;
+hidePWAInstallBanner();
+});
+} catch (err) {
+console.error('[PWA] Install error:', err);
+showManualInstallInstructions();
+}
+}
+function showManualInstallInstructions() {
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const isAndroid = /Android/.test(navigator.userAgent);
+let message = '';
+if (isIOS) {
+message = '📱 Cara Install di iPhone/iPad:\n1. Ketuk tombol Share (kotak dengan panah) di Safari\n2. Gulir ke bawah dan pilih "Add to Home Screen"\n3. Ketuk "Add" di pojok kanan atas\n4. BossX App akan muncul di home screen!';
+} else if (isAndroid) {
+message = '📱 Cara Install di Android:\n1. Ketuk menu (⋮) di pojok kanan atas Chrome\n2. Pilih "Install app" atau "Add to Home screen"\n3. Ketuk "Install"\n4. BossX App akan muncul di home screen!';
+} else {
+message = '💻 Cara Install di Desktop:\n1. Klik ikon install (⊕) di address bar browser\n2. Atau tekan menu browser → "Install BossX"\n3. Konfirmasi instalasi\n4. BossX App akan muncul di desktop/start menu!';
+}
+alert(message);
+hidePWAInstallBanner();
+}
+function dismissPWAInstall() {
+hidePWAInstallBanner();
+localStorage.setItem(PWA_DISMISS_KEY, Date.now().toString());
+}
+document.addEventListener('DOMContentLoaded', function() {
+const installBtn = document.getElementById('pwa-install-btn');
+const closeBtn = document.getElementById('pwa-install-close');
+if (installBtn) installBtn.addEventListener('click', installPWA);
+if (closeBtn) closeBtn.addEventListener('click', dismissPWAInstall);
+loadThemePreference();
+});
+initPWA();
+
+console.log('🚀 BossX Masternode Platform - Premium AI Agent + Dark/Light Mode Loaded');
 checkAuth();
 lucide.createIcons();
 </script>
