@@ -101,13 +101,11 @@ body.light-mode .order-book th { background: rgba(0, 229, 255, 0.1); color: #00B
 body.light-mode .order-book td { border-bottom-color: rgba(0, 229, 255, 0.1); color: #001233; }
 body.light-mode .history-table th { background: rgba(0, 229, 255, 0.1); color: #00B8D4; }
 body.light-mode .history-table td { border-bottom-color: rgba(0, 229, 255, 0.1); color: #001233; }
-/* Toggle Button Styles */
 .theme-toggle-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 229, 255, 0.15); border: 2px solid rgba(0, 229, 255, 0.4); color: #00E5FF; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
 .theme-toggle-btn:hover { background: rgba(0, 229, 255, 0.25); border-color: #00E5FF; color: #E0FFFF; transform: rotate(180deg) scale(1.1); box-shadow: 0 0 25px rgba(0, 229, 255, 0.5); }
 body.light-mode .theme-toggle-btn { background: rgba(0, 184, 212, 0.15); border-color: rgba(0, 184, 212, 0.4); color: #00B8D4; box-shadow: 0 0 15px rgba(0, 184, 212, 0.3); }
 body.light-mode .theme-toggle-btn:hover { background: rgba(0, 184, 212, 0.25); border-color: #00B8D4; color: #001233; box-shadow: 0 0 25px rgba(0, 184, 212, 0.5); }
 .theme-toggle-btn svg { width: 20px; height: 20px; transition: transform 0.5s ease; }
-/* Smooth transition for all elements */
 body, body *, .stat-card, .exchange-card, .sidebar, header, .login-card, .bossx-ai-window, .pwa-install-banner { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important; }
 .login-page { min-height: 100vh; background: radial-gradient(ellipse at center, #001845 0%, #000814 50%, #000000 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
 .login-page::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0, 229, 255, 0.2) 0%, rgba(125, 249, 255, 0.1) 30%, transparent 70%); animation: rotate 30s linear infinite; }
@@ -166,7 +164,7 @@ body, body *, .stat-card, .exchange-card, .sidebar, header, .login-card, .bossx-
 .crypto-icon-large { width: 4rem; height: 4rem; border-radius: 1rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, rgba(0, 229, 255, 0.2), rgba(125, 249, 255, 0.1)); border: 2px solid rgba(0, 229, 255, 0.5); box-shadow: 0 0 25px rgba(0, 229, 255, 0.4); }
 .profile-picture { width: 2rem; height: 2rem; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(0, 229, 255, 0.5); box-shadow: 0 0 10px rgba(0, 229, 255, 0.4); }
 .profile-picture img { width: 100%; height: 100%; object-fit: cover; }
-.stat-card { background: linear-gradient(145deg, #001233, #001845); border: 2px solid rgba(0, 229, 255, 0.2); border-radius: 0.75rem; padding: 1.5rem; transition: all 0.3s ease; position: relative; overflow: hidden; min-height: 260px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 229, 255, 0.03); }
+.stat-card { background: linear-gradient(145deg, #001233, #001845); border: 2px solid rgba(0, 229, 255, 0.2); border-radius: 0.75rem; padding: 1.5rem; transition: all 0.3s ease; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 229, 255, 0.03); }
 .stat-card:hover { border-color: rgba(0, 229, 255, 0.8); box-shadow: 0 0 30px rgba(0, 229, 255, 0.5), 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(0, 229, 255, 0.08); transform: translateY(-2px); }
 .corner-dot { position: absolute; width: 8px; height: 8px; background: radial-gradient(circle, #E0FFFF, #00E5FF); border-radius: 50%; opacity: 0; transition: opacity 0.3s ease; box-shadow: 0 0 10px #00E5FF, 0 0 20px #00F5FF; pointer-events: none; }
 .stat-card:hover .corner-dot { opacity: 1; animation: dotPulse 2s ease-in-out infinite; }
@@ -188,13 +186,13 @@ body, body *, .stat-card, .exchange-card, .sidebar, header, .login-card, .bossx-
 #running-text { animation: scroll-left 60s linear infinite; text-shadow: 0 0 15px rgba(0, 229, 255, 0.8), 0 0 25px rgba(0, 229, 255, 0.5); }
 @keyframes scroll-left { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 #running-text:hover { animation-play-state: paused; }
-.power-button { position: relative; width: 60px; height: 60px; border-radius: 50%; border: 3px solid rgba(0, 229, 255, 0.3); background: linear-gradient(145deg, #001845, #001233); cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+.power-button { position: relative; width: 80px; height: 80px; border-radius: 50%; border: 3px solid rgba(0, 229, 255, 0.3); background: linear-gradient(145deg, #001845, #001233); cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1); }
 .power-button:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1); }
 .power-button.on { border-color: #00FFC8; background: linear-gradient(145deg, #00D4A8, #00B896); box-shadow: 0 0 30px rgba(0, 255, 200, 0.7), 0 0 60px rgba(0, 255, 200, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); cursor: not-allowed; }
 .power-button.on:hover { transform: none; }
 .power-button.off { border-color: #FF006E; background: linear-gradient(145deg, #D4005A, #B8004E); box-shadow: 0 0 30px rgba(255, 0, 110, 0.6), 0 0 60px rgba(255, 0, 110, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
 .power-button.off:hover { box-shadow: 0 0 40px rgba(255, 0, 110, 0.8), 0 0 80px rgba(255, 0, 110, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
-.power-icon { font-size: 24px; color: #ffffff; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)); }
+.power-icon { font-size: 32px; color: #ffffff; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)); }
 .copy-button { position: relative; overflow: hidden; }
 .copy-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(224, 255, 255, 0.4), transparent); transition: left 0.5s; }
 .copy-button:hover::before { left: 100%; }
@@ -220,37 +218,54 @@ body, body *, .stat-card, .exchange-card, .sidebar, header, .login-card, .bossx-
 .page-content { opacity: 0; transform: translateY(20px); transition: all 0.3s ease; display: none; }
 .page-content.active { opacity: 1; transform: translateY(0); display: block; }
 /* ============================================ */
-/* 🎯 DASHBOARD STATS GRID - 2x2 LAYOUT (BESAR) */
+/* 🎯 DASHBOARD STATS GRID - ASYMMETRIC LAYOUT */
+/* Kiri: 1 card besar (Validasi Running)        */
+/* Kanan: 3 card kecil disusun vertikal         */
 /* ============================================ */
 .stats-grid { 
     display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: repeat(3, minmax(180px, auto));
     gap: 1.5rem; 
     width: 100%; 
 }
+/* Card pertama (Validasi Running) = span 3 baris */
+.stats-grid .stat-card:first-child { 
+    grid-row: span 3; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 @media (min-width: 1024px) { 
     .stats-grid { 
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: repeat(3, minmax(200px, auto));
         gap: 2rem; 
     } 
 }
 @media (max-width: 1023px) { 
     .stats-grid { 
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: repeat(3, minmax(160px, auto));
         gap: 1.25rem; 
     } 
 }
 @media (max-width: 768px) { 
     .stats-grid { 
         grid-template-columns: 1fr; 
+        grid-template-rows: auto;
         gap: 1rem; 
     } 
+    .stats-grid .stat-card:first-child {
+        grid-row: span 1;
+        min-height: 400px;
+    }
 }
-@media (max-width: 1440px) { .sidebar { width: 12rem; min-width: 12rem; } .stat-card { padding: 1.25rem; } }
+@media (max-width: 1440px) { .sidebar { width: 12rem; min-width: 12rem; } .stat-card { padding: 1rem; } }
 @media (max-width: 1200px) { .sidebar { width: 10rem; min-width: 10rem; } .profile-picture { width: 1.5rem; height: 1.5rem; } }
 .main-container { max-width: 100vw; overflow-x: hidden; }
 .content-container { max-width: 100%; padding: 1rem; }
-.countdown-timer { font-family: 'Courier New', monospace; font-size: 1.1rem; font-weight: bold; color: #00FFC8; text-shadow: 0 0 15px rgba(0, 255, 200, 0.8), 0 0 25px rgba(0, 255, 200, 0.5); }
+.countdown-timer { font-family: 'Courier New', monospace; font-size: 1.5rem; font-weight: bold; color: #00FFC8; text-shadow: 0 0 15px rgba(0, 255, 200, 0.8), 0 0 25px rgba(0, 255, 200, 0.5); }
 .auto-claim-timer { font-family: 'Courier New', monospace; font-size: 1rem; font-weight: bold; color: #00E5FF; text-shadow: 0 0 15px rgba(0, 229, 255, 0.8), 0 0 25px rgba(0, 229, 255, 0.5); }
 @keyframes glowingBorder { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
 .glowing-border::before { content: ''; position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px; background: linear-gradient(45deg, #00E5FF, #E0FFFF, #7DF9FF, #00E5FF); background-size: 300% 300%; z-index: -1; border-radius: 26px; opacity: 0.8; filter: blur(2px); animation: glowingBorder 6s linear infinite; box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); pointer-events: none; }
@@ -360,7 +375,6 @@ body, body *, .stat-card, .exchange-card, .sidebar, header, .login-card, .bossx-
 .bossx-ai-typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .bossx-ai-typing-dot:nth-child(3) { animation-delay: 0.4s; }
 @keyframes typingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-8px); opacity: 1; } }
-/* 🧠 DEEP THINKING STYLES */
 .bossx-ai-thinking-stage { display: flex; align-items: center; gap: 10px; color: #E0FFFF; font-size: 13.5px; font-weight: 500; min-height: 20px; transition: opacity 0.3s ease, transform 0.3s ease; }
 .bossx-ai-thinking-stage.fade-out { opacity: 0; transform: translateX(-5px); }
 .bossx-ai-thinking-stage.fade-in { opacity: 1; transform: translateX(0); }
@@ -621,7 +635,40 @@ Dengan melanjutkan, Anda menyetujui <a href="#" style="color: #00E5FF;">Syarat &
 </div>
 </div>
 </div>
+<!-- ============================================ -->
+<!-- 🎯 DASHBOARD STATS GRID - ASYMMETRIC LAYOUT -->
+<!-- Kiri: 1 card besar (Validasi Running)        -->
+<!-- Kanan: 3 card kecil disusun vertikal         -->
+<!-- ============================================ -->
 <div class="stats-grid">
+<!-- CARD 1: VALIDASI RUNNING (KIRI - BESAR, span 3 rows) -->
+<div class="stat-card hover-scale validation-card">
+<div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
+<div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
+<div>
+<div class="flex items-center justify-between mb-4">
+<p class="text-lg text-cyan-200 font-semibold">Validasi Running</p>
+<i data-lucide="zap" class="w-6 h-6 text-emerald-400"></i>
+</div>
+<div class="text-2xl font-bold text-white mb-3 frost-text">
+<span id="validation-balance">0.000000000 BossX</span>
+</div>
+<p id="validation-status" class="text-sm text-cyan-200 text-center" style="display: none;">Belum berjalan</p>
+</div>
+<div style="flex: 1;"></div>
+<div class="validation-bottom-section text-center">
+<div class="flex justify-center mb-4">
+<button id="power-btn" class="power-button off" onclick="togglePower()">
+<i id="power-icon" data-lucide="power" class="power-icon"></i>
+</button>
+</div>
+<div id="countdown-display" class="countdown-timer" style="display: none;">
+<span class="text-sm text-cyan-300 block mb-2" style="text-shadow: none;">Countdown to 06:00</span>
+<span id="countdown-time">00:00:00</span>
+</div>
+</div>
+</div>
+<!-- CARD 2: REDEEM ACCESS KEY (KANAN ATAS) -->
 <div class="stat-card hover-scale" style="display: flex; flex-direction: column; justify-content: space-between;">
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
@@ -639,32 +686,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </p>
 </div>
 </div>
-<div class="stat-card hover-scale validation-card">
-<div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
-<div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
-<div>
-<div class="flex items-center justify-between mb-3">
-<p class="text-sm text-cyan-200">Validasi Running</p>
-<i data-lucide="zap" class="w-4 h-4 text-emerald-400"></i>
-</div>
-<div class="text-lg font-bold text-white mb-2">
-<span id="validation-balance">0.000000000 BossX</span>
-</div>
-<p id="validation-status" class="text-sm text-cyan-200 text-center" style="display: none;">Belum berjalan</p>
-</div>
-<div style="flex: 1;"></div>
-<div class="validation-bottom-section text-center">
-<div class="flex justify-center mb-3">
-<button id="power-btn" class="power-button off" onclick="togglePower()">
-<i id="power-icon" data-lucide="power" class="power-icon"></i>
-</button>
-</div>
-<div id="countdown-display" class="countdown-timer" style="display: none;">
-<span class="text-xs text-cyan-300 block mb-1" style="text-shadow: none;">Countdown to 06:00</span>
-<span id="countdown-time">00:00:00</span>
-</div>
-</div>
-</div>
+<!-- CARD 3: REWARD VALIDASI (KANAN TENGAH) -->
 <div class="stat-card hover-scale" style="display: flex; flex-direction: column; justify-content: space-between;">
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
@@ -672,7 +694,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <p class="text-sm text-cyan-200">Reward Validasi</p>
 <i data-lucide="gift" class="w-4 h-4 text-cyan-300"></i>
 </div>
-<div class="text-lg font-bold text-white mb-3">
+<div class="text-xl font-bold text-white mb-3 frost-text">
 <span id="reward-balance">0.000000000 BossX</span>
 </div>
 <div class="space-y-3" style="margin-top: auto;">
@@ -682,6 +704,7 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 </button>
 </div>
 </div>
+<!-- CARD 4: MY WALLET BALANCE (KANAN BAWAH) -->
 <div class="stat-card hover-scale">
 <div class="corner-dot top-left"></div><div class="corner-dot top-right"></div><div class="corner-dot bottom-right"></div><div class="corner-dot bottom-left"></div>
 <div class="border-line border-top"></div><div class="border-line border-right"></div><div class="border-line border-bottom"></div><div class="border-line border-left"></div>
@@ -689,33 +712,33 @@ Beli Access Key di menu <span class="text-cyan-400 font-semibold cursor-pointer 
 <p class="text-sm text-cyan-200">My Wallet Balance</p>
 <i data-lucide="wallet" class="w-4 h-4 text-emerald-400"></i>
 </div>
-<div class="space-y-3">
-<div class="bg-gradient-to-r from-emerald-400/15 to-cyan-400/5 border-2 border-emerald-400/30 rounded-lg p-3" style="box-shadow: inset 0 0 15px rgba(0, 255, 200, 0.05);">
+<div class="space-y-2">
+<div class="bg-gradient-to-r from-emerald-400/15 to-cyan-400/5 border-2 border-emerald-400/30 rounded-lg p-2" style="box-shadow: inset 0 0 15px rgba(0, 255, 200, 0.05);">
 <div class="flex items-center justify-between">
 <div class="flex items-center gap-2">
-<div class="w-8 h-8 rounded-full bg-emerald-400/20 flex items-center justify-center" style="box-shadow: 0 0 10px rgba(0, 255, 200, 0.4);">
-<i data-lucide="dollar-sign" class="w-4 h-4 text-emerald-400"></i>
+<div class="w-6 h-6 rounded-full bg-emerald-400/20 flex items-center justify-center" style="box-shadow: 0 0 10px rgba(0, 255, 200, 0.4);">
+<i data-lucide="dollar-sign" class="w-3 h-3 text-emerald-400"></i>
 </div>
-<span class="text-sm text-cyan-200">USDT</span>
+<span class="text-xs text-cyan-200">USDT</span>
 </div>
 <span class="text-xs text-emerald-400">TRC20/BEP20</span>
 </div>
-<div class="text-xl font-bold text-white mt-2">
-<span id="usdt-balance">1000.00</span> <span class="text-sm text-cyan-200">USDT</span>
+<div class="text-lg font-bold text-white mt-1">
+<span id="usdt-balance">1000.00</span> <span class="text-xs text-cyan-200">USDT</span>
 </div>
 </div>
-<div class="bg-gradient-to-r from-cyan-400/15 to-sky-400/5 border-2 border-cyan-400/30 rounded-lg p-3" style="box-shadow: inset 0 0 15px rgba(0, 229, 255, 0.05);">
+<div class="bg-gradient-to-r from-cyan-400/15 to-sky-400/5 border-2 border-cyan-400/30 rounded-lg p-2" style="box-shadow: inset 0 0 15px rgba(0, 229, 255, 0.05);">
 <div class="flex items-center justify-between">
 <div class="flex items-center gap-2">
-<div class="w-8 h-8 rounded-full bg-cyan-400/20 flex items-center justify-center" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">
-<i data-lucide="coins" class="w-4 h-4 text-cyan-400"></i>
+<div class="w-6 h-6 rounded-full bg-cyan-400/20 flex items-center justify-center" style="box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">
+<i data-lucide="coins" class="w-3 h-3 text-cyan-400"></i>
 </div>
-<span class="text-sm text-cyan-200">BOSSX</span>
+<span class="text-xs text-cyan-200">BOSSX</span>
 </div>
 <span class="text-xs text-cyan-400">Internal Token</span>
 </div>
-<div class="text-xl font-bold text-white mt-2">
-<span id="bossx-balance">1000.000000000</span> <span class="text-sm text-cyan-200">BossX</span>
+<div class="text-lg font-bold text-white mt-1">
+<span id="bossx-balance">1000.000000000</span> <span class="text-xs text-cyan-200">BossX</span>
 </div>
 </div>
 </div>
@@ -3133,9 +3156,6 @@ const div = document.createElement('div');
 div.textContent = text;
 return div.innerHTML;
 }
-// ============================================
-// 🌙☀️ DARK/LIGHT MODE TOGGLE
-// ============================================
 const THEME_STORAGE_KEY = 'bossx_theme_preference';
 const THEME_ICON_KEY = 'bossx_theme_icon';
 function toggleTheme() {
@@ -3181,9 +3201,6 @@ setTimeout(() => {
 lucide.createIcons();
 }, 100);
 }
-// ============================================
-// 🧠 BOSSX AI AGENT - PREMIUM FEATURES
-// ============================================
 const THINKING_STAGES = [
 { icon: '🔍', text: 'Menganalisis pertanyaan Anda...' },
 { icon: '🧠', text: 'Membaca data blockchain & whitepaper...' },
@@ -3365,7 +3382,6 @@ setTimeout(function() {
 body.scrollTop = body.scrollHeight;
 }, 50);
 }
-// 🧠 DEEP THINKING ANIMATION
 function showBossxAITyping() {
 const body = document.getElementById('bossx-ai-body');
 const typingDiv = document.createElement('div');
@@ -3477,9 +3493,6 @@ event.preventDefault();
 sendBossxAIMessage();
 }
 }
-// ============================================
-// PWA INSTALLATION HANDLER
-// ============================================
 let deferredPrompt = null;
 const PWA_DISMISS_KEY = 'bossx_pwa_dismissed';
 function initPWA() {
